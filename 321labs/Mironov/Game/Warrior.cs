@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Mironov.Game
 {
-    class Hero
+    class Warrior
     {
     }
 }
