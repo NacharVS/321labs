@@ -1,12 +1,13 @@
-﻿using System;
-
-namespace _321labs.Game
+﻿namespace _321labs.Game
 {
     interface IUnit
     {
-        public int Helth { get; set; }
-        public int Damage { get; set; }
-        public int Speed { get; set; }
-        public int Range { get; set; }
+        int Helth { get; set; }
+        int Damage { get; set; }
+        int Speed { get; set; }
+        int Range { get; set; }
+        double PositionX { get; set; }
+        double PositionY { get; set; }
+
     }
 }
