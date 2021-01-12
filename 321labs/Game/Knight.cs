@@ -6,6 +6,6 @@ namespace _321labs.Game
 {
     class Knight : Hero
     {
-
+        Knight = new Knight()
     }
 }
