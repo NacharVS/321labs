@@ -5,8 +5,9 @@ namespace _321labs.LabGame.Base
 {
     public interface IMoveable
     {
-        abstract bool CanMoveToPoint(Vector2 position);
+        public abstract float Speed { get; set; }
+        public abstract bool CanMoveToPoint(Vector2 position);
 
-        abstract void MoveToPoint(Vector2 position);
+        public abstract void MoveToPoint(Vector2 position);
     }
 }
