@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Game
 {
-    interface IMage
+    interface IBarbarian
     {
-        public void Heal(Unit unit);
+        public void DoubleHit(Unit unit);
     }
 }

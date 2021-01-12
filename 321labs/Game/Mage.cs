@@ -11,12 +11,9 @@ namespace _321labs.Game
 
         }
 
-        public void Heal(object obj)
+        public void Heal(Unit unit)
         {
-            if(obj is Unit unit)
-            {
-                unit.Hp += 100;
-            }
+            unit.Hp += 100;
         }
     }
 }

@@ -7,6 +7,6 @@ namespace _321labs.Game
     interface ITank
     {
         public void HighDefence();
-        public void Agressive(object obj);
+        public void Agressive(Unit unit);
     }
 }

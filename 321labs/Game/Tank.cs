@@ -11,12 +11,9 @@ namespace _321labs.Game
 
         }
 
-        public void Agressive(object obj)
+        public void Agressive(Unit unit)
         {
-            if(obj is Unit unit)
-            {
-                Console.WriteLine($"{this.ToString().GetType()} attracted attencion {unit.ToString().GetType()}");
-            }
+            Console.WriteLine($"{this.ToString()} attracted attencion {unit.ToString()}");
         }
 
         public void HighDefence()
