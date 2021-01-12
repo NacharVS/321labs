@@ -10,9 +10,7 @@ namespace _321labs.LabGame
         public abstract float HealthPoint { get; set; }
         public abstract float Defense { get; set; }
         public abstract float Attack { get; set; }
-
         public abstract float Range { get; set; }
-
         public abstract bool InRange(position position);
     }
 }
