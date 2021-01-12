@@ -21,7 +21,7 @@ namespace _321labs.LabGame.Heroes
                     hp = 0;
                 } 
         } 
-        public override int Defense { get; set ; }
+        public override int Defense { get; set; }
         public override float Range { get; set; }
         public int Attack { get; set; }
         public override float Size { get; set; }
@@ -32,6 +32,7 @@ namespace _321labs.LabGame.Heroes
         // Все настройки Unit
         public Warrior(Vector2 UnitPosition)
         {
+            units.Add(this);
             this.UnitPosition = UnitPosition;
         }
         public Warrior(Vector2 UnitPosition, float Size): this(UnitPosition)
@@ -59,7 +60,7 @@ namespace _321labs.LabGame.Heroes
             this.Range = Range; 
         }
         // Все настройки Warrior
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1,float Sense = 1)
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1,float Sense = 1) : this(Name, UnitPosition, Size, HealthPoints, Defense, Stealth, Range)
         {
             this.Attack = Attack;
             this.Speed = Speed;
@@ -67,7 +68,7 @@ namespace _321labs.LabGame.Heroes
         }
         public void AttackToPoint(Vector2 position)
         {
-            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position));
+            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position) && unit != this) ;
             if (AttackedUnits != null)
             {
                 foreach(Unit u in AttackedUnits)
@@ -80,7 +81,7 @@ namespace _321labs.LabGame.Heroes
         public bool CanMoveToPoint(Vector2 position)
         {
             //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => unit.InSize(position)) == null)
+            if (units.Find((unit) => unit.InSize(position) && unit != this) == null)
                 return true;
             else 
                 return false;
@@ -115,11 +116,11 @@ namespace _321labs.LabGame.Heroes
             Console.WriteLine($"{Name} осмотрелся вокруг и увидел:");
 
             //Поиск всех юнитов что находятся в радиусе чувствительности персонажей с учетом скрытности
-            List <Unit> sensedUnits = units.FindAll((unit) => Math.Pow(unit.UnitPosition.X - UnitPosition.X, 2) + Math.Pow(unit.UnitPosition.Y - UnitPosition.Y, 2) <= Math.Pow(Sense-unit.Stealth, 2));
+            List<Unit> sensedUnits = units.FindAll((unit) => Math.Pow(unit.UnitPosition.X - UnitPosition.X, 2) + Math.Pow(unit.UnitPosition.Y - UnitPosition.Y, 2) <= Math.Pow(Sense - unit.Stealth, 2) && unit != this);
             
             foreach (Unit unit in sensedUnits)
             {
-                unit.ScanInfo();
+                Console.WriteLine(unit.ScanInfo());
             }
 
             return sensedUnits;
@@ -130,12 +131,12 @@ namespace _321labs.LabGame.Heroes
             return new String('_',Name.Length + GetType().Name.Length+2) + "\n" +
                 $" {GetType().Name} - {Name} \n" +
                 $" На позиции: " +
-                $" X:{UnitPosition.X} Y:{UnitPosition.Y} "+
+                $" X:{UnitPosition.X} Y:{UnitPosition.Y} \n"+
                 new String('_', Name.Length + GetType().Name.Length + 2);
 
         }
 
-        void IMoveable.MoveToPoint(Vector2 position)
+        public void MoveToPoint(Vector2 position)
         {
             if (!CanMoveToPoint(position)) return;
             UnitPosition = Vector2.Lerp(UnitPosition, position, Speed);
@@ -143,7 +144,7 @@ namespace _321labs.LabGame.Heroes
 
         public override void GetDamage(int Damage)
         {
-            HealthPoints -= Damage;
+            HealthPoints -= (Damage-Defense);
         }
     }
 }
