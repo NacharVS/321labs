@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Game
 {
-    class Unit
+    class Unit : IUnit
     {
         private int hp;
         private int defence;
@@ -25,6 +25,24 @@ namespace _321labs.Game
             this.range = range;
             this.damage = damage;
             this.speed = speed;
+        }
+
+        public void Move()
+        {
+            this.Speed = 100;
+        }
+
+        public void Attack(object obj)
+        {
+            if(obj is Unit unit)
+            {
+                this.Damage -= unit.Hp;
+            }
+        }
+
+        public void Teleport()
+        {
+            Console.WriteLine("Unit teleported to base!");
         }
     }
 }
