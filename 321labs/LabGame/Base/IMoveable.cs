@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Numerics;
 
 namespace _321labs.LabGame.Base
 {
-    interface IMoveable
+    public interface IMoveable
     {
-        abstract position Target 
-        {
-            get; set;
-        }
+        abstract bool CanMoveToPoint(Vector2 position);
+
+        abstract void MoveToPoint(Vector2 position);
     }
 }
