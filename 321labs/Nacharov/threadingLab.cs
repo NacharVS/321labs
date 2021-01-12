@@ -6,7 +6,7 @@ namespace _321labs.Nacharov
     {
         static void Task1()
         {
-            Thread thread;
+            Thread thread = new Thread();
         }
     }
 }
