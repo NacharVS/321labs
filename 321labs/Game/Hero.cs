@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.asdasdasd
 {
-    class Class1
+    class Hero
     {
-        sdffasdfsdaasdfsdf
+        
     }
 }
