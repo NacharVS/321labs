@@ -3,27 +3,78 @@ using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
 using _321labs.LabGame.Base;
-using System.Drawing;
+
 
 namespace _321labs.LabGame.Heroes
 {
     class Warrior : Unit, IMoveable, IScan, IAttacker
     {
-        public override string Name { get; set; }
+        private int hp;
+
+        public override string Name { get; set; } = "Безымянный воин";
         public override Vector2 UnitPosition { get; set; }
-        public override int HealthPoint { get; set; }
+        public override int HealthPoints { 
+            get => hp;
+            set {
+                hp = value;
+                if (hp < 0) 
+                    hp = 0;
+                } 
+        } 
         public override int Defense { get; set ; }
-        public override double Range { get; set; }
-        public override double Size { get; set; }
-        public override Color Color { get; set; }
-        public float Speed { get; set; }
-        public int Sense { get; set; }
+        public override float Range { get; set; }
         public int Attack { get; set; }
+        public override float Size { get; set; }
+        public float Speed { get; set; }
+        public float Sense { get; set; }
+        public override float Stealth { get; set; }
 
-
+        // Все настройки Unit
+        public Warrior(Vector2 UnitPosition)
+        {
+            this.UnitPosition = UnitPosition;
+        }
+        public Warrior(Vector2 UnitPosition, float Size): this(UnitPosition)
+        {
+            this.Size = Size;
+        }
+        public Warrior(string Name,Vector2 UnitPosition, float Size) : this(UnitPosition, Size)
+        {
+            this.Name = Name;
+        }
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints) : this(Name,UnitPosition, Size)
+        {
+            this.HealthPoints = HealthPoints;
+        }
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints,int Defense) : this(Name, UnitPosition, Size, HealthPoints)
+        {
+            this.Defense = Defense; 
+        }
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth) : this(Name, UnitPosition, Size, HealthPoints)
+        {
+            this.Stealth = Stealth;
+        }
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense,float Stealth, float Range) : this(Name, UnitPosition, Size, HealthPoints, Defense, Stealth)
+        { 
+            this.Range = Range; 
+        }
+        // Все настройки Warrior
+        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1,float Sense = 1)
+        {
+            this.Attack = Attack;
+            this.Speed = Speed;
+            this.Sense = Sense;
+        }
         public void AttackToPoint(Vector2 position)
         {
-            throw new NotImplementedException();
+            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position));
+            if (AttackedUnits != null)
+            {
+                foreach(Unit u in AttackedUnits)
+                {
+                    u.GetDamage(Attack);
+                }
+            }
         }
 
         public bool CanMoveToPoint(Vector2 position)
@@ -34,6 +85,7 @@ namespace _321labs.LabGame.Heroes
             else 
                 return false;
         }
+
         public override bool InRange(Vector2 position)
         {
             //Дистанция до точка
@@ -73,10 +125,25 @@ namespace _321labs.LabGame.Heroes
             return sensedUnits;
         }
 
+        public override string ScanInfo()
+        {
+            return new String('_',Name.Length + GetType().Name.Length+2) + "\n" +
+                $" {GetType().Name} - {Name} \n" +
+                $" На позиции: " +
+                $" X:{UnitPosition.X} Y:{UnitPosition.Y} "+
+                new String('_', Name.Length + GetType().Name.Length + 2);
+
+        }
+
         void IMoveable.MoveToPoint(Vector2 position)
         {
             if (!CanMoveToPoint(position)) return;
             UnitPosition = Vector2.Lerp(UnitPosition, position, Speed);
+        }
+
+        public override void GetDamage(int Damage)
+        {
+            HealthPoints -= Damage;
         }
     }
 }
