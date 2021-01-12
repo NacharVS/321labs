@@ -4,7 +4,9 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    class Hero
+    interface ILife
     {
+        bool flagLive { get; set; }
+        int health { get; set; }
     }
 }
