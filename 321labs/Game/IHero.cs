@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _321labs.asdasdasd
+namespace _321labs.Game
 {
-    class Hero
+    interface IHero : IUnit
     {
-        
+
     }
 }

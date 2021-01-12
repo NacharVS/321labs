@@ -4,14 +4,14 @@ using System.Text;
 
 namespace _321labs.Game
 {
-    interface Unit
+    interface IUnit
     {
-        public int Health
+        public string Name
         {
             get;
             set;
         }
-        public int MoveSpeed
+        public int Health
         {
             get;
             set;
@@ -26,6 +26,23 @@ namespace _321labs.Game
             get;
             set;
         }
+        public int Armor
+        {
+            get;
+            set;
+        }
+        public int Damage
+        {
+            get;
+            set;
+        }
+        public int AttackRange
+        {
+            get;
+            set;
+        }
 
+        public void Shoot();
+        public void Move();
     }
 }
