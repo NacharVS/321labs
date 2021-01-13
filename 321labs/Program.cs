@@ -6,7 +6,7 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("gg");
+            Console.WriteLine("Я без понятия правильно это или нет, я не мб это все вообще не правильно");
         }
     }
 }
