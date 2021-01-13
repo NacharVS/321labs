@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
-    class Hero
+    abstract class Hero
     {
         int Health { get; set; }
         int Armor { get; set; }
