@@ -42,28 +42,28 @@ namespace _321labs.LabGame.Heroes
         {
             this.Size = Size;
         }
-        public Warrior(string Name,Vector2 UnitPosition, float Size) : this(UnitPosition, Size)
+        public Warrior(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
         {
             this.Name = Name;
         }
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints) : this(Name,UnitPosition, Size)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size,Name)
         {
             this.HealthPoints = HealthPoints;
         }
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints,int Defense) : this(Name, UnitPosition, Size, HealthPoints)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints,int Defense) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Defense = Defense; 
         }
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth) : this(Name, UnitPosition, Size, HealthPoints)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Stealth = Stealth;
         }
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense,float Stealth, float Range) : this(Name, UnitPosition, Size, HealthPoints, Defense, Stealth)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense,float Stealth, float Range) : this( UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
         { 
             this.Range = Range; 
         }
         // Все настройки Warrior
-        public Warrior(string Name, Vector2 UnitPosition, float Size, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1,float Sense = 1) : this(Name, UnitPosition, Size, HealthPoints, Defense, Stealth, Range)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1,float Sense = 1) : this( UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
         {
             this.Attack = Attack;
             this.Speed = Speed;
@@ -93,7 +93,7 @@ namespace _321labs.LabGame.Heroes
         public override bool InRange(Vector2 position)
         {
             //Дистанция до точка
-            double dist = Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
+            float dist = ToPointDist(position);
 
            //Находится ли точка в досягаемости нашего юнита?
             if (dist < Range)
@@ -105,7 +105,7 @@ namespace _321labs.LabGame.Heroes
         public override bool InSize(Vector2 position)
         {
             //Дистанция до точки
-            double dist = Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
+            float dist = ToPointDist(position);
 
             //Находится ли точка внутри нашего юнита?
             if (dist < Size)
@@ -139,11 +139,14 @@ namespace _321labs.LabGame.Heroes
 
         }
 
-
+        private float ToPointDist(Vector2 position)
+        {
+            return (float) Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
+        }
         public void MoveToPoint(Vector2 position)
         {
             if (!CanMoveToPoint(position)) return;
-            UnitPosition = Vector2.Lerp(UnitPosition, position, Speed);
+            UnitPosition = Vector2.Add(UnitPosition,Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Speed % ToPointDist(position)));     
         }
 
         public override void GetDamage(int Damage)
