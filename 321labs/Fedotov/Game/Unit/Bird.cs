@@ -4,13 +4,16 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    class Bird : ILife, IFlight
+    class Bird : IUnit, IFlight
     {
-        public bool flagLive { get; set; }
-        public int health { get; set; }
-        public int speedFlight { get; set; }
-        public int agilityFlight { get; set; }
-        public int hightFlight { get; set; }
+        public bool FlagLive { get; set; }
+        public int Health { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int PositionZ { get; set; }
+        public int SpeedFlight { get; set; }
+        public int AgilityFlight { get; set; }
+        public int HightFlight { get; set; }
         public void StopFlight()
         {
             Console.WriteLine("Птица взлетела");

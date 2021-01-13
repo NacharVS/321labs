@@ -4,15 +4,18 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    class Archer : ILife, IMove, IShooting
+    class Archer : IUnit, IMove, IShooting
     {
-        public bool flagLive { get; set; }
-        public int health { get; set; }
-        public int speedMove { get; set; }
-        public int agilityMove { get; set; }
-        public int damage { get; set; }
-        public int distance { get; set; }
-        public int accuracy { get; set; }
+        public bool FlagLive { get; set; }
+        public int Health { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int PositionZ { get; set; }
+        public int SpeedMove { get; set; }
+        public int AgilityMove { get; set; }
+        public int Damage { get; set; }
+        public int Distance { get; set; }
+        public int Accuracy { get; set; }
 
         public void StopMove()
         {

@@ -6,7 +6,7 @@ namespace _321labs.Fedotov.Game
 {
     interface IAttack
     {
-        int damage { get; set; }
+        int Damage { get; set; }
 
         void TakeDamage();
     }

@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace _321labs.Fedotov.Game
+namespace _321labs.Fedotov.Game.Unit
 {
-    class Swordsman : ILife, IMove, IAttack
+    class Swordsman : IUnit, IMove, IAttack
     {
-        public bool flagLive { get; set; }
-        public int health { get; set; }
-        public int speedMove { get; set; }
-        public int agilityMove { get; set; }
-        public int damage { get; set; }
+        public bool FlagLive { get; set; }
+        public int Health { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int PositionZ { get; set; }
+        public int SpeedMove { get; set; }
+        public int AgilityMove { get; set; }
+        public int Damage { get; set; }
 
         public void StopMove()
         {

@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    interface IStorage : IStructure
+    interface IStorage
     {
-        int capacity { get; set; }
+        int Capacity { get; set; }
     }
 }

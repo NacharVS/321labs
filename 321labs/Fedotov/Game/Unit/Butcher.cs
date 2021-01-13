@@ -4,12 +4,15 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    class Butcher : ILife, IMove, IWork
+    class Butcher : IUnit, IMove, IWork
     {
-        public bool flagLive { get; set; }
-        public int health { get; set; }
-        public int speedMove { get; set; }
-        public int agilityMove { get; set; }
+        public bool FlagLive { get; set; }
+        public int Health { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int PositionZ { get; set; }
+        public int SpeedMove { get; set; }
+        public int AgilityMove { get; set; }
         public void StopMove()
         {
             Console.WriteLine("Стоит");

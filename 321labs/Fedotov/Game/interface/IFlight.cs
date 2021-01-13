@@ -6,9 +6,9 @@ namespace _321labs.Fedotov.Game
 {
     interface IFlight
     {
-        int speedFlight { get; set; }
-        int agilityFlight { get; set; }
-        int hightFlight { get; set; }
+        int SpeedFlight { get; set; }
+        int AgilityFlight { get; set; }
+        int HightFlight { get; set; }
 
         void StopFlight();
         void StartFlight();

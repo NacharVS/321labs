@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    interface IManufactory : IStructure
+    interface IManufactory 
     {
-        int countWorker { get; set; }
+        int CountWorker { get; set; }
     }
 }

@@ -4,11 +4,15 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    class WeaponsStorage : IStorage
+    class WeaponsStorage : IUnit, IStorage
     {
-        public int durability { get; set; }
-        public int destroyed { get; set; }
-        public int capacity { get; set; }
         public string typeWeapons;
+        public bool FlagLive { get; set; }
+        public int Health { get; set; }
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
+        public int PositionZ { get; set; }
+        public int Capacity { get; set; }
+        
     }
 }

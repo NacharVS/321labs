@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Fedotov.Game
 {
-    interface IBarracks : IStructure
+    interface IBarracks
     {
-        int countLife { get; set; }
+        int CountLife { get; set; }
     }
 }
