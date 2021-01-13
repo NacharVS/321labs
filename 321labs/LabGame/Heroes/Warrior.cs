@@ -10,7 +10,7 @@ namespace _321labs.LabGame.Heroes
     class Warrior : Unit, IMoveable, IScan, IAttacker
     {
         private int hp;
-
+        private float defCoef=0.01f;
         public override string Name { get; set; } = "Безымянный воин";
         public override Vector2 UnitPosition { get; set; }
         public override int HealthPoints { 
@@ -50,11 +50,11 @@ namespace _321labs.LabGame.Heroes
         {
             this.HealthPoints = HealthPoints;
         }
-        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints,int Defense) : this(UnitPosition, Size, Name, HealthPoints)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Defense = Defense; 
         }
-        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints)
+        public Warrior( Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
         {
             this.Stealth = Stealth;
         }
@@ -146,13 +146,13 @@ namespace _321labs.LabGame.Heroes
         public void MoveToPoint(Vector2 position)
         {
             if (!CanMoveToPoint(position)) return;
-            UnitPosition = Vector2.Add(UnitPosition,Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Speed % ToPointDist(position)));     
+            UnitPosition = Vector2.Add(UnitPosition, Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Math.Clamp(Speed, 0, ToPointDist(position))));     
         }
 
         public override void GetDamage(int Damage)
         {
-            HealthPoints -= (Damage-Defense);
-            HealthPoints -= Damage;
+            float Damaged = Math.Max(Damage - Defense * defCoef, 0);
+            HealthPoints -= (int)Damaged;
         }
     }
 }
