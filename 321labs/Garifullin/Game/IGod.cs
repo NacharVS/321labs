@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Garifullin.Game
 {
-    class Building
+    interface IGod
     {
     }
 }
