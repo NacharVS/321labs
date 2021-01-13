@@ -6,10 +6,10 @@ namespace _321labs.Kamalov.Game
 {
     abstract class Hero
     {
-        int Health { get; set; }
-        int Speed { get; set; }
-        string Name { get; set; }
-        int Damage { get; set; }
+       public int Health { get; set; }
+       public int Speed { get; set; }
+       public string Name { get; set; }
+       public int Damage { get; set; }
         
 
         public Hero(int health, int speed, string name, int damage)

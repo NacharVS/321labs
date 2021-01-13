@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
-    interface IRun
+    interface IStop
     {
-        void Run(int x, int y);
+        void Stop(DynamicHero hero);
     }
 }
