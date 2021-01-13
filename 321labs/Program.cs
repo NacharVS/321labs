@@ -6,7 +6,8 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Leave hope behind all who enters here....");
+      
+           
         }
     }
 }

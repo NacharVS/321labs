@@ -41,8 +41,9 @@ namespace _321labs.Game
             get;
             set;
         }
+        
 
         public void Shoot();
-        public void Move();
+     
     }
 }
