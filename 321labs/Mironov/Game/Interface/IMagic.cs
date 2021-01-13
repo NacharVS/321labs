@@ -4,7 +4,11 @@ using System.Text;
 
 namespace _321labs.Mironov.Game
 {
-    class Warrior
+    interface IMagic
     {
+        public int Mana {get; set;}
+
+        public void MagicAttack();
+
     }
 }

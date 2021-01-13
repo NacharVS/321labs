@@ -4,8 +4,11 @@ using System.Text;
 
 namespace _321labs.Mironov.Game
 {
-    class Worker
+    interface ICloseAttacker
     {
-        
+        public int Damage { get; set; }
+
+        public void CloseAttack();
+
     }
 }
