@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
-    interface IUltimage
+    interface IDefense
     {
-        void Ultimage();
+        void Defense();
     }
 }

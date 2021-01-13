@@ -19,23 +19,31 @@ namespace _321labs.Kamalov.Game
             Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {0}; y - {1} ");
         }
 
-        public void Shoot(DynamicHero hero)
+        public void Shoot(DynamicHero hero, StaticHero hero1)
         {
             int sum = Damage / 5;
-            if (hero.Damage > sum)
+            if (hero.Damage > sum )
             {
                 hero.Health -= Damage / 5;
                 Console.WriteLine(hero.Health);
             }
+
+            else if(hero1.Damage > sum)
+            {
+                hero1.Health -= Damage / 5;
+                Console.WriteLine(hero1.Health);
+            }
+
             else
             {
                 Console.WriteLine("Ошибка: Очень слабый противник!\n +" +
-                    $"так как его здоровье состовляет:{hero.Health}");
+                    $"Пожалей его...!");
             }
         }
 
         public void Stop(DynamicHero hero)
         {
+            hero.Speed = 0;
             Console.WriteLine($"Персонаж {hero.Name} остановился");
         }
     }
