@@ -6,6 +6,6 @@ namespace _321labs.Kamalov.Game
 {
     interface IFly
     {
-        void Fly();
+        void Fly(int x, int y);
     }
 }
