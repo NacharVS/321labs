@@ -21,7 +21,10 @@ namespace _321labs.LabGame.Heroes
                     hp = 0;
                 } 
         } 
+
         public override int Defense { get; set; }
+
+
         public override float Range { get; set; }
         public int Attack { get; set; }
         public override float Size { get; set; }
@@ -68,7 +71,7 @@ namespace _321labs.LabGame.Heroes
         }
         public void AttackToPoint(Vector2 position)
         {
-            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position) && unit != this) ;
+            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position) && unit != this);
             if (AttackedUnits != null)
             {
                 foreach(Unit u in AttackedUnits)
@@ -136,6 +139,7 @@ namespace _321labs.LabGame.Heroes
 
         }
 
+
         public void MoveToPoint(Vector2 position)
         {
             if (!CanMoveToPoint(position)) return;
@@ -145,6 +149,7 @@ namespace _321labs.LabGame.Heroes
         public override void GetDamage(int Damage)
         {
             HealthPoints -= (Damage-Defense);
+            HealthPoints -= Damage;
         }
     }
 }
