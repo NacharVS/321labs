@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
@@ -11,7 +9,7 @@ namespace _321labs.Kamalov.Game
             string name, 
             int damage) : base(health, speed, name, damage)
         {
-
+            
         }
 
         public void Run(int x, int y)
@@ -21,7 +19,7 @@ namespace _321labs.Kamalov.Game
 
         public void Shoot(DynamicHero hero, StaticHero hero1)
         {
-            int sum = Damage / 5;
+            double sum = Damage / 5.0;
             if (hero.Damage > sum )
             {
                 hero.Health -= Damage / 5;

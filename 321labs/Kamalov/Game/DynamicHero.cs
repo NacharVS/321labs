@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace _321labs.Kamalov.Game
 {
     class DynamicHero:Hero
@@ -13,6 +10,5 @@ namespace _321labs.Kamalov.Game
         {
 
         }
-        
     }
 }

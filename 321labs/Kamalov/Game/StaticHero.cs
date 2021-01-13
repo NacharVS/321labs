@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace _321labs.Kamalov.Game
 {
     class StaticHero : Hero
@@ -13,6 +10,7 @@ namespace _321labs.Kamalov.Game
         {
 
         }
+
         int speed = 0;
     }
 }

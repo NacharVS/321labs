@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class DefenseTower:StaticHero, IShoot
+    class DefenseTower:StaticHero, IShoot, IHeal
     {
         public DefenseTower(int health,
             int speed,
@@ -14,9 +13,18 @@ namespace _321labs.Kamalov.Game
 
         }
 
+        public void Heal(StaticHero hero1)
+        {
+            if (hero1.Health<30)
+            {
+                Thread.Sleep(5000);
+                hero1.Health += 30;
+            }
+        }
+
         public void Shoot(DynamicHero hero, StaticHero hero1)
         {
-            int sum = Damage / 10;
+            double sum = Damage / 10;
             if (hero.Damage > sum)
             {
                 hero.Health -= Damage / 10;
@@ -35,5 +43,6 @@ namespace _321labs.Kamalov.Game
                     $"Пожалей его...!");
             }
         }
+
     }
 }
