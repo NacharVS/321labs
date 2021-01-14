@@ -1,3 +1,11 @@
+Task 12.01.2021 (Deadline 18/01/2021)
+Create library which reprezents units of strategy game. All units must have some characteristics.
+At least three units-buildings, three war-units and 3 workers.
+Craete reauired interfaces.
+
 Task 14.01.2021
-1. Create programm which solves summ of elements in array, max element in array, and make sorting of array.
+1. Create programm which has three operations:
+a) summ of elements in array
+b) max element in array
+c) sorting of array
 1.1 All operations implements in different theads.
