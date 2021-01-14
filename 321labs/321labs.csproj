@@ -6,8 +6,4 @@
     <RootNamespace>_321labs</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="game\" />
-  </ItemGroup>
-
 </Project>
