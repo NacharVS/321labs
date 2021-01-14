@@ -1,0 +1,3 @@
+Task 14.01.2021
+1. Create programm which solves summ of elements in array, max element in array, and make sorting of array.
+1.1 All operations implements in different theads.
