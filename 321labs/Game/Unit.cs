@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Game
 {
-     class Unit : IUnit, IAttack
+    class Unit : IUnit, IAttack
     {
         public int Helth { get; set; }
         public int Damage { get; set; }
@@ -15,7 +15,7 @@ namespace _321labs.Game
 
         public void Attack(Unit enemy)
         {
-
+            Console.WriteLine("Attack hahaha");
         }
     }
 }

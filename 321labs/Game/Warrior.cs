@@ -8,7 +8,7 @@ namespace _321labs.Game
     {
         public void UpDamage()
         {
-
+            Console.WriteLine("Damage upper");
         }
     }
 }

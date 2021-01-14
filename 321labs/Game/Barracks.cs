@@ -8,7 +8,7 @@ namespace _321labs.Game
     {
         public void СreateHero()
         {
-
+            Console.WriteLine("Create hero");
         }
     }
 }

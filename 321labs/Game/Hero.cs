@@ -8,12 +8,12 @@ namespace _321labs.Game
     {
         public void Move()
         {
-
+            Console.WriteLine("I running");
         }
 
         public void Teleport()
         {
-
+            Console.WriteLine("Teleport");
         }
     }
 }

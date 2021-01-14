@@ -10,7 +10,7 @@ namespace _321labs.Game
 
         public void Blocking()
         {
-            
+            Console.WriteLine("I powered");
         }
     }
 }
