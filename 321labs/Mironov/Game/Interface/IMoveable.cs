@@ -8,6 +8,6 @@ namespace _321labs.Mironov.Game
     {
         public int Speed { get; set; }
         public void Move(int X,int Y);
-
+        public void MoveStop();
     }
 }

@@ -25,5 +25,10 @@ namespace _321labs.Mironov.Game.Class.Heroes
         {
             throw new NotImplementedException();
         }
+
+        public void MoveStop()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

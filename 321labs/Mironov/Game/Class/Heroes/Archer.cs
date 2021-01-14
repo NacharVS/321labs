@@ -21,6 +21,11 @@ namespace _321labs.Mironov.Game
             throw new NotImplementedException();
         }
 
+        public void MoveStop()
+        {
+            throw new NotImplementedException();
+        }
+
         public void RangedAttack()
         {
             throw new NotImplementedException();
