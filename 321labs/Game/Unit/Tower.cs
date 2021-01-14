@@ -4,7 +4,9 @@ using System.Text;
 
 namespace _321labs.Game.Unit
 {
-    class Tower
+    class Tower: Iattack
     {
+
+
     }
 }

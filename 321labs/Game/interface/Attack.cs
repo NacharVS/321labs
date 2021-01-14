@@ -4,7 +4,9 @@ using System.Text;
 
 namespace _321labs
 {
-    interface Interface1
+    interface Iattack
     {
+        damage{get;set;}
+        void takedamage;
     }
 }
