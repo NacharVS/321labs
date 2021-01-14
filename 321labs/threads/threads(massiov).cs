@@ -11,7 +11,7 @@ namespace _321labs.Treads
         {
             array = mass;
         }
-        void Max()
+        void M()
         {
             int max = array[0];
             for (int i = 1; i < array.Length; i++)
@@ -23,7 +23,7 @@ namespace _321labs.Treads
             Console.WriteLine("Max=" + max);
         }
 
-        void Sum()
+        void S()
         {
             int sum = 0;
             for (int i = 0; i < array.Length; i++)
@@ -39,6 +39,14 @@ namespace _321labs.Treads
                 Console.Write(item + " ");
             }
         }
-     
+        public void Start()
+        {
+            Thread threadM = new Thread(new ThreadStart(M));
+            Thread threadS = new Thread(new ThreadStart(S));
+            Thread threadSort = new Thread(new ThreadStart(Sort));
+            threadM.Start();
+            threadS.Start();
+            threadSort.Start();
+        }
     }
 }
