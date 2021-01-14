@@ -22,9 +22,7 @@ namespace _321labs.Kamalov.Game
 
         public void Run(int x, int y)
         {
-            Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {x}; y - {y} ");
+            Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {0}; y - {1}", x, y);
         }
-
-
     }
 }

@@ -12,7 +12,10 @@ namespace _321labs.Kamalov.Game
             string name,
             int damage) : base(health, speed, name, damage)
         {
-
+            this.Health = health;
+            this.Speed = speed;
+            this.Name = name;
+            this.Damage = damage;
         }
 
         public void Fly(int x, int y)

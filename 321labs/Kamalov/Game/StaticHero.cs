@@ -1,16 +1,15 @@
 ﻿
 namespace _321labs.Kamalov.Game
 {
-    class StaticHero : Hero
+    abstract class StaticHero : Hero
     {
         public StaticHero(int health,
             int speed,
             string name,
             int damage) : base(health, speed, name, damage)
         {
-
+            Speed = 0;
         }
 
-        int speed = 0;
     }
 }

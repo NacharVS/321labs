@@ -9,7 +9,11 @@ namespace _321labs.Kamalov.Game
             string name, 
             int damage) : base(health, speed, name, damage)
         {
-            
+            this.Health = health;
+            this.Speed = speed;
+            this.Name = name;
+            this.Damage = damage;
+            Console.WriteLine($"Создан персонаж класса Sniper. Его имя: {Name}");
         }
 
         public void Run(int x, int y)

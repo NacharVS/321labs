@@ -1,7 +1,7 @@
 ﻿
 namespace _321labs.Kamalov.Game
 {
-    abstract class Hero
+    abstract class Hero : IHero
     {
        public int Health { get; set; }
        public int Speed { get; set; }
@@ -11,10 +11,10 @@ namespace _321labs.Kamalov.Game
 
         public Hero(int health, int speed, string name, int damage)
         {
-            Health = health;
-            Speed = speed;
-            Name = name;
-            Damage = damage;
+            this.Health = health;
+            this.Speed = speed;
+            this.Name = name;
+            this.Damage = damage;
         }
     }
 }
