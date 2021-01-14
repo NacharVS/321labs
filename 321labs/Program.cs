@@ -8,7 +8,6 @@ namespace _321labs
         static void Main(string[] args)
         {
             Console.WriteLine("Leave hope behind all who enters here....");
-            Sniper sniper = new Sniper(12, 12, "sd", 12);
         }
     }
 }
