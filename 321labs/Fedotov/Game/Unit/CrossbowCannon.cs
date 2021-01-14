@@ -11,8 +11,6 @@ namespace _321labs.Fedotov.Game
         public int PositionX { get; set; }
         public int PositionY { get; set; }
         public int PositionZ { get; set; }
-        public int Durability { get; set; }
-        public int Destroyed { get; set; }
         public int Damage { get; set; }
 
         public void TakeDamage()

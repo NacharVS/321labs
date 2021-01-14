@@ -15,12 +15,12 @@ namespace _321labs.Fedotov.Game.Unit
 
         public void StopMove()
         {
-            Console.WriteLine("Стоит");
+            Console.WriteLine("Мечник стоит");
         }
 
         public void StartMove()
         {
-            Console.WriteLine("Идет");
+            Console.WriteLine("Мечник идет");
         }
 
         public void TakeDamage()

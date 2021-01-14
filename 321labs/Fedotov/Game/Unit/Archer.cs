@@ -19,12 +19,12 @@ namespace _321labs.Fedotov.Game
 
         public void StopMove()
         {
-            Console.WriteLine("Стоит");
+            Console.WriteLine("Лучник стоит");
         }
 
         public void StartMove()
         {
-            Console.WriteLine("Идет");
+            Console.WriteLine("Лучник идет");
         }
 
         public void TakeDamage()

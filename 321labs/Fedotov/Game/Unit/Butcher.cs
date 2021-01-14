@@ -15,22 +15,22 @@ namespace _321labs.Fedotov.Game
         public int AgilityMove { get; set; }
         public void StopMove()
         {
-            Console.WriteLine("Стоит");
+            Console.WriteLine("Мясник стоит");
         }
 
         public void StartMove()
         {
-            Console.WriteLine("Идет");
+            Console.WriteLine("Мясник идет");
         }
 
         public void StartWork()
         {
-            Console.WriteLine("Начинает резать МЯСО");
+            Console.WriteLine("Начинает резать мясо");
         }
 
         public void StopWork()
         {
-            Console.WriteLine("Перестал резать МЯСО");
+            Console.WriteLine("Перестал резать мясо");
         }
     }
 }
