@@ -5,13 +5,13 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Threads
 {
-    class CustomThread
+    class CustomThreads
     {
         int total;
         int amount;
         int temp;
 
-        public CustomThread()
+        public CustomThreads()
         {
 
         }
