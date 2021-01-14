@@ -6,4 +6,10 @@
     <RootNamespace>_321labs</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Game\**" />
+    <EmbeddedResource Remove="Game\**" />
+    <None Remove="Game\**" />
+  </ItemGroup>
+
 </Project>
