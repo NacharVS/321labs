@@ -15,7 +15,7 @@ namespace _321labs.Threads
             this.array = array;
         }
 
-        public int Sum()
+        public void Sum()
         {
             int sum = 0;
             for (int i = 0; i < this.array.Length; i++)
@@ -23,10 +23,9 @@ namespace _321labs.Threads
                 sum += this.array[i];
             }
             Console.WriteLine("Сумма:" + sum);
-            return sum;
         }
 
-        public int Max()
+        public void Max()
         {
             int max = this.array[0];
             for (int i = 1; i < this.array.Length; i++)
@@ -37,7 +36,6 @@ namespace _321labs.Threads
                 }
             }
             Console.WriteLine("Максимальное число:" + max);
-            return max;
         }
 
         public void Sort()
