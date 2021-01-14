@@ -4,7 +4,7 @@ using System.Text;
 
 namespace _321labs.Sudakov
 {
-    class Hero : IUnit
+    class Hero
     {
         public string Name { get; set; }
         public int Health { get; set; }
