@@ -21,19 +21,14 @@ namespace _321labs.Kamalov.Game
             Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {x}; y - {y} ");
         }
 
-        public void Shoot(DynamicHero hero, StaticHero hero1)
+        public void Shoot(Hero hero)
         {
+            Console.WriteLine("Использовано умение <=>Shoot<=>");
             double sum = Damage / 5.0;
             if (hero.Damage > sum )
             {
                 hero.Health -= Damage / 5;
-                Console.WriteLine(hero.Health);
-            }
-
-            else if(hero1.Damage > sum)
-            {
-                hero1.Health -= Damage / 5;
-                Console.WriteLine(hero1.Health);
+                Console.WriteLine($"Теперь у противника: {hero.Health}");
             }
 
             else

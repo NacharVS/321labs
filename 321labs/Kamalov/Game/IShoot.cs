@@ -6,6 +6,6 @@ namespace _321labs.Kamalov.Game
 {
     interface IShoot
     {
-        void Shoot(DynamicHero hero, StaticHero hero1);
+        void Shoot(Hero hero);
     }
 }

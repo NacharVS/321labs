@@ -12,12 +12,12 @@ namespace _321labs.Kamalov.Game
             string name,
             int damage) : base(health, speed, name, damage)
         {
-
+                
         }
 
-        public void Heal(StaticHero hero1)
+        public void Heal(Hero hero)
         {
-            hero1.Health += 10;
+            hero.Health += 10;
         }
 
         public void Run(int x, int y)

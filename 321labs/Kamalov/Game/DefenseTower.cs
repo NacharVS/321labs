@@ -16,28 +16,22 @@ namespace _321labs.Kamalov.Game
             this.Damage = damage;
         }
 
-        public void Heal(StaticHero hero1)
+        public void Heal(Hero hero)
         {
-            if (hero1.Health<30)
+            if (hero.Health<30)
             {
                 Thread.Sleep(5000);
-                hero1.Health += 30;
+                hero.Health += 30;
             }
         }
 
-        public void Shoot(DynamicHero hero, StaticHero hero1)
+        public void Shoot(Hero hero)
         {
             double sum = Damage / 10;
             if (hero.Damage > sum)
             {
                 hero.Health -= Damage / 10;
                 Console.WriteLine(hero.Health);
-            }
-
-            else if (hero1.Damage > sum)
-            {
-                hero1.Health -= Damage / 10;
-                Console.WriteLine(hero1.Health);
             }
 
             else

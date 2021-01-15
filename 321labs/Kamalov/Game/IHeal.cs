@@ -6,6 +6,6 @@ namespace _321labs.Kamalov.Game
 {
     interface IHeal
     {
-        void Heal(StaticHero hero1);
+        void Heal(Hero hero1);
     }
 }
