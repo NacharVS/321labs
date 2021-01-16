@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace _321labs.Game
+{
+    class CommandCenter : IBuilding, ICanProduce<Worker>
+    {
+        int hp = 2000;
+        bool isDisabled = false;
+        public string Name { get => "Командный центр"; }
+        public int Hp { get => hp; set => hp = value; }
+        public int Armor { get => 4; }
+        public int EnergyConsumption { get => 10;  }
+        public int EnergyCost { get => 500; }
+        public Player Team { get; set; }
+        public int X { get; }
+        public int Y { get; }
+        public bool IsDisabled { get; }
+
+        public void Consume()
+        {
+            if (!IsDisabled)
+            {
+                Team.Energy -= EnergyConsumption;
+            }
+        }
+
+        public void Produce(Worker worker)
+        {
+            if (!IsDisabled)
+            {
+                int cost = worker.EnergyCost;
+                if (Team.Energy >= cost)
+                {
+                    worker.Team = this.Team;
+                    Team.Energy -= cost;
+                }
+                else
+                {
+                    Console.WriteLine("Не хватает енергии");
+                }
+            }
+        }
+
+        public void Switch()
+        {
+            isDisabled = !isDisabled;
+        }
+    }
+}
