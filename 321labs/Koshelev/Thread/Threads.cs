@@ -17,7 +17,7 @@ namespace _321labs.Koshelev.Thread
         public void SortMas()
         {
             Array.Sort(intNums);
-            foreach(int i in intNums)
+            foreach (int i in intNums)
             {
                 Console.Write(i + ", ");
             }

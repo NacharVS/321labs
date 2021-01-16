@@ -7,20 +7,28 @@ namespace _321labs
 {
     class Program
     {
+        static int[] mas1 = new int[10];
+        static int[] mas2 = new int[10];
+        static int[] mas3 = new int[10];
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Leave hope behind all who enters here....");
-            int[] mas = { 1, 2, 4, 63, 4, 85, 3, 6, 9, 6, 3, 5, 9, 35, 6 };
-            Threads threads = new Threads(mas);
-            Thread thread = new Thread(new ThreadStart(threads.Max));
+            Thread thread = new Thread(() => RandomIntNumForMas1(mas1));
             thread.Start();
-            thread = new Thread(new ThreadStart(threads.SortMas));
-            thread.Start();
-            thread = new Thread(new ThreadStart(threads.SumMas));
+            thread = new Thread(() => RandomIntNumForMas1(mas2));
             thread.Start();
 
-
-
+        }
+        static void RandomIntNumForMas1(int[] mas)
+        {
+            Random random = new Random();
+            lock (new object())
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    mas[i] = random.Next(0, 50);
+                }
+            }
         }
     }
 }
