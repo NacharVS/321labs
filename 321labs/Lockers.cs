@@ -15,33 +15,35 @@ namespace _321labs
 
         static Lockers()
         {
-            var thr1 = new Thread(new ThreadStart(Arr1FillIn));
-            var thr2 = new Thread(new ThreadStart(Arr2FillIn));
-            var thr3 = new Thread(new ThreadStart(Summ));
-        }
-        static void Arr1FillIn()
-        {
+            Thread[] threads = new Thread[3];
+            threads[0] = new Thread(Arr1FillIn);
+            threads[1] = new Thread(Arr2FillIn);
+            threads[2] = new Thread(Summ);
+
             lock (locker)
             {
+                threads[0].Start();
+                threads[1].Start();
+            }
+            threads[2].Start();
+
+        }
+        public static void Arr1FillIn()
+        {
                 var rnd = new Random();
                 for (int i = 0; i < array1.Length; i++)
                 {
                     array1[i] = rnd.Next(0, 100);
                 }
-            }
         }
 
         static void Arr2FillIn()
         {
-            lock (locker)
-            {
                 var rnd = new Random();
                 for (int i = 0; i < array2.Length; i++)
                 {
                     array2[i] = rnd.Next(0, 100);
                 }
-            }
-            
         }
 
         static void Summ()
@@ -52,7 +54,12 @@ namespace _321labs
                 {
                     results[i] = array1[i] + array2[i];
                 }
+                foreach (var item in results)
+                {
+                    Console.WriteLine(item);
+                }
             }
+            
         }
 
     }
