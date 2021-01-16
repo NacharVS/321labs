@@ -10,28 +10,49 @@ namespace _321labs
         static int[] mas2 = new int[10];
         static int[] masResult = new int[10];
 
-        public void Filling()
+        static object locker = new object();
+        public static void Filling()
         {
-            Random rand = new Random();
-            for (int i = 0; i < mas1.Length; i++)
+            lock (locker)
             {
-                mas1[i] = rand.Next(1,10);
+                Random rand = new Random();
+                for (int i = 0; i < mas1.Length; i++)
+                {
+                    mas1[i] = rand.Next(1, 10);
+                }
+
+                for (int i = 0; i < mas2.Length; i++)
+                {
+                    mas2[i] = rand.Next(1, 10);
+                }
+                Out();
             }
-            Console.WriteLine(mas1);
-            for (int i = 0; i < mas2.Length; i++)
-            {
-                mas2[i] = rand.Next(1, 10);
-            }
-            Console.WriteLine(mas2);
         }
 
-        public void Sum()
+        public static void Sum()
         {
             for (int i = 0; i < masResult.Length; i++)
             {
                 masResult[i] = mas1[i] + mas2[i];
             }
-            Console.WriteLine(masResult);
+            for (int i = 0; i < masResult.Length; i++)
+            {
+                Console.Write(masResult[i] + " ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void Out()
+        {
+            for (int i = 0; i < mas1.Length; i++)
+            {
+                Console.Write(mas1[i] + " ");
+            }
+            Console.WriteLine();
+            for (int i = 0; i < mas2.Length; i++)
+            {
+                Console.Write(mas2[i] + " ");
+            }
         }
     }
 }

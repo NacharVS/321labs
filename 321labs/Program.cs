@@ -9,8 +9,11 @@ namespace _321labs
         {
             Console.WriteLine("Leave hope behind all who enters here....");
 
-            ThreadLocker t = new ThreadLocker();
-            Thread thread = new Thread(new ThreadStart(t.Sum));
+            Thread thread = new Thread(new ThreadStart(ThreadLocker.Filling));
+            thread.Start();
+
+            Thread resultThread = new Thread(new ThreadStart(ThreadLocker.Sum));
+            resultThread.Start();
         }
     }
 }

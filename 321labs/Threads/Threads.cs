@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace _321labs.Thread
+namespace _321labs.Threads
 {
     class Threads
     {
@@ -35,11 +35,6 @@ namespace _321labs.Thread
         public void SortArray()
         {
             Array.Sort(numbers);
-        }
-
-        public static void Start()
-        {
-            Thread potok1 = new Thread(Sum);
         }
     }
 }
