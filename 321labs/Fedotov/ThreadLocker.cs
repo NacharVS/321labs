@@ -61,7 +61,7 @@ namespace _321labs.Fedotov
             Console.WriteLine("\nResult");
             for (int i = 0; i < 10; i++)
             {
-                array3[i] = array1[i] + array2[2];
+                array3[i] = array1[i] + array2[i];
                 Console.Write(array3[i] + " ");
             }
             Console.WriteLine();
