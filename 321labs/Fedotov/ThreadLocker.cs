@@ -10,11 +10,11 @@ namespace _321labs.Fedotov
         static int[] array1 = new int[10];
         static int[] array2 = new int[10];
         static int[] array3 = new int[10];
-            
 
-        static public void Start()
+
+        public void Start()
         {
-            Thread thread1 = new Thread(() => GenericArray(array1)); 
+            Thread thread1 = new Thread(() => GenericArray(array1));
             Thread thread2 = new Thread(() => GenericArray(array2));
             Thread thread3 = new Thread(() => Summ(array1, array2, array3));
             thread1.Start();
@@ -22,9 +22,9 @@ namespace _321labs.Fedotov
             thread3.Start();
         }
 
-        static void GenericArray(int[] mass)
+        void GenericArray(int[] mass)
         {
-            lock(new object())
+            lock (new object())
             {
                 Random rnd = new Random();
                 Console.WriteLine("Thread");
@@ -37,8 +37,9 @@ namespace _321labs.Fedotov
             }
         }
 
-        static void Summ(int[] mass1, int[] mass2, int[] mass3)
+        void Summ(int[] mass1, int[] mass2, int[] mass3)
         {
+            Console.WriteLine("Result");
             for (int i = 0; i < 10; i++)
             {
                 array3[i] = array1[i] + array2[2];

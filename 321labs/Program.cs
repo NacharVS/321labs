@@ -10,7 +10,7 @@ namespace _321labs
         {
             //Console.WriteLine("Я без понятия правильно это или нет, я не мб это все вообще не правильно");
             ThreadLocker threads = new ThreadLocker();
-            ThreadLocker.Start();
+            threads.Start();
         }
     }
 }
