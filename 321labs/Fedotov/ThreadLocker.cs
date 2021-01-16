@@ -14,55 +14,36 @@ namespace _321labs.Fedotov
 
         public void Start()
         {
-            Thread thread1 = new Thread(() => GenericArray1());
-            Thread thread2 = new Thread(() => GenericArray2());
-            Thread thread3 = new Thread(() => Summ());
+            Thread thread1 = new Thread(() => GenericArray(array1));
+            Thread thread2 = new Thread(() => GenericArray(array2));
+            Thread thread3 = new Thread(() => Summ(array1, array2, array3));
             thread1.Start();
             thread2.Start();
             thread3.Start();
         }
 
-        void GenericArray1()
+        void GenericArray(int[] mass)
         {
             lock (new object())
             {
                 Random rnd = new Random();
+                Console.WriteLine("Thread");
                 for (int i = 0; i < 10; i++)
                 {
-                    array1[i] = rnd.Next(0, 100);
+                    mass[i] = rnd.Next(0, 100);
+                    Console.Write(mass[i] + " ");
                 }
+                Console.WriteLine();
             }
         }
 
-        void GenericArray2()
+        void Summ(int[] mass1, int[] mass2, int[] mass3)
         {
-            lock (new object())
-            {
-                Random rnd = new Random();
-                for (int i = 0; i < 10; i++)
-                {
-                    array2[i] = rnd.Next(0, 100);
-                }
-            }
-        }
-
-        void Summ()
-        {
-            Console.WriteLine("Thread 1");
-            foreach (int item in array1)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nThread 2");
-            foreach (int item in array2)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nResult");
+            Console.WriteLine("Result");
             for (int i = 0; i < 10; i++)
             {
-                array3[i] = array1[i] + array2[i];
-                Console.Write(array3[i] + " ");
+                array3[i] = array1[i] + array2[2];
+                Console.Write(mass3[i] + " ");
             }
             Console.WriteLine();
         }
