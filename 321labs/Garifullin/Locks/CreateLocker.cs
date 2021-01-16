@@ -8,16 +8,18 @@ namespace _321labs.Garifullin.Locks
 {
     class CreateLocker
     {
-        static object locker = new object();
+        private static object locker = new object();
+
         int[] firstArr = new int[10];
         int[] secondArr = new int[10];
         int[] sum = new int[10];
-        int d;
+        
         public void First()
         {
-            Random rand = new Random();
             lock (locker)
             {
+                Random rand = new Random();
+
                 for (int i = 0; i < firstArr.Length; i++)
                 {
                     firstArr[i] = rand.Next(0, 20);
@@ -25,31 +27,33 @@ namespace _321labs.Garifullin.Locks
                     Thread.Sleep(10);
                 }
             }
-
         }
         public void Last()
         {
-            Random rand = new Random();
-
-            for (int i = 0; i < secondArr.Length; i++)
+            lock (locker)
             {
-                secondArr[i] = rand.Next(0, 20);
-                Console.WriteLine($"{i} Второй массив {secondArr[i]}");
-                Thread.Sleep(10);
+                Random rand = new Random();
+
+                for (int i = 0; i < secondArr.Length; i++)
+                {
+                    secondArr[i] = rand.Next(0, 20);
+                    Console.WriteLine($"{i} Второй массив {secondArr[i]}");
+                    Thread.Sleep(10);
+                }
             }
         }
         public void Sum()
         {
-            for (int i = 0; i < sum.Length; i++)
+            lock (locker)
             {
-                sum[i] = firstArr[i] = secondArr[i];
-                Console.WriteLine(sum[i]);
-                Thread.Sleep(10);
+                for (int i = 0; i < sum.Length; i++)
+                {
+                    sum[i] = firstArr[i] + secondArr[i];
+                    Console.WriteLine(sum[i]);
+                    Thread.Sleep(10);
+                }
             }
         }
-    }
-    class Program
-    {
         static void Main(string[] args)
         {
             Console.WriteLine("Leave hope behind all who enters here....");
@@ -57,7 +61,6 @@ namespace _321labs.Garifullin.Locks
             Thread thread = new Thread(createLocker.First);
             Thread thread1 = new Thread(createLocker.Last);
             Thread thread2 = new Thread(createLocker.Sum);
-
 
             thread.Start();
             thread1.Start();
