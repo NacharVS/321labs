@@ -24,16 +24,16 @@ namespace _321labs.Threads
             }
         }
 
-        public void Max()
-        {
-            for (int i = 0; i < number.Length; i++)
-            {
-                int a;
-                if (a <= number[i])
-                {
+        //public void Max()
+        //{
+        //    for (int i = 0; i < number.Length; i++)
+        //    {
+        //        int a;
+        //        if (a <= number[i])
+        //        {
                     
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
     }
 }
