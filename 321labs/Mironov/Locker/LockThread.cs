@@ -13,13 +13,33 @@ namespace _321labs.Mironov.Locker
 
         public static void Start()
         {
-            for(int i = 0; i < 3; i++)
+            Thread generateValue1 = new Thread(GenerateValueFirst);
+            Thread generateValue2 = new Thread(GenerateValueSecond);
+            Thread findSum = new Thread();
+               
+
+        }
+
+   
+
+        private static void GenerateValueFirst()
+        {
+            Random rnd = new Random();
+          for(int i = 0; i <arr1.Length;i++)
+          {
+                arr1[i] = rnd.Next();
+          }
+        }
+
+        private static void GenerateValueSecond()
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < arr2.Length; i++)
             {
-                Thread myThread = new Thread();
-                myThread.Name = "Поток " + i.ToString();
-                myThread.Start();
+                arr2[i] = rnd.Next();
             }
         }
+
 
 
     }
