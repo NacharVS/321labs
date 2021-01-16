@@ -7,6 +7,7 @@ namespace _321labs.Threads
 {
     public class RunThread
     {
+            /*
         static void Main()
         {
             Threads threads = new Threads();
@@ -18,5 +19,6 @@ namespace _321labs.Threads
             Thread thirdThread = new Thread(new ThreadStart(threads.Sum));
             thirdThread.Start();
         }
+            */
     }
 }
