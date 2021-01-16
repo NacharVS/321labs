@@ -8,9 +8,6 @@ namespace _321labs.Theards
         static void Main(string[] args)
         {
 
-            Locks cock = new Locks();
-            cock.Start();
-
 
         }
     }
