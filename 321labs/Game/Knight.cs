@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace _321labs.Game
-{
-    class Knight : Hero
-    {
-       // Knight = new Knight()
-    }
-}
+//namespace _321labs.Game
+//{
+//    class Knight : Hero
+//    {
+//       // Knight = new Knight()
+//    }
+//}

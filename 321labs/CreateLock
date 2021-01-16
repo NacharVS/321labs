@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading;
+
+namespace _321labs
+{
+    class Program
+    {
+        static int[] mas1 = new int[10];
+        static int[] mas2 = new int[10];
+        static int[] mas3 = new int[10];
+        object o = new object();
+
+        static void Main()
+        {
+            Random r = new Random();
+            for (int i = 0; i < mas1.Length; i++)
+            {
+                mas1[i] = r.Next(0,10);
+            }
+            foreach (int item in mas1)
+            {
+                Console.Write(item + ", ");
+            }
+            Console.WriteLine();
+
+           
+
+            public static void summ()
+            {
+                for (int i = 1; i < 9; i++)
+                {
+                    Console.WriteLine("Второй поток:");
+                    Console.WriteLine(i * i);
+                    Thread.Sleep(400);
+                }
+            }
+        }
+    }
+}
+
