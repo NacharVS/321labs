@@ -6,4 +6,8 @@
     <RootNamespace>_321labs</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ThreadLocker\" />
+  </ItemGroup>
+
 </Project>
