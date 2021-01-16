@@ -21,8 +21,8 @@ namespace _321labs.Mironov.Threads
             Thread threadSort = new Thread(new ThreadStart(SortArr));
             Thread threadMax = new Thread(new ThreadStart(MaxArr));
             Thread threadSum = new Thread(new ThreadStart(SumArr));
-            threadMax.Start();
             threadSum.Start();
+            threadMax.Start();
             threadSort.Start();
          
            
@@ -54,7 +54,7 @@ namespace _321labs.Mironov.Threads
             Array.Sort(this.Arr);
             foreach(var item in this.Arr)
             {
-                Console.WriteLine(item+" ");
+                Console.Write(item+" ");
             }
         }
 
