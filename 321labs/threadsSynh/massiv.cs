@@ -71,7 +71,7 @@ namespace _321labs.Synh
             Thread thread3 = new Thread(Sum);
             thread1.Start();
             thread2.Start();
- thread3.Start();
+            thread3.Start();
             thread3.Priority = ThreadPriority.Lowest;
            
             

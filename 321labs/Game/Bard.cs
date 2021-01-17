@@ -1,8 +1,19 @@
 ﻿using System;
-
-public class Class1
+using _321labs.Game.inteface;
+public class Bard : Iunit
 {
-	public Class1()
+	public int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	public int PositionX { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	public int PositionY { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	public int PositionZ { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+	public int armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+
+	public void Song()
 	{
+
+		Console.WriteLine("Бафф");
+
 	}
+
 }

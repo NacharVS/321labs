@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using _321labs.intaface;
+using _321labs.Game.inteface;
 namespace _321labs.inteface
 {
-    class Tower: IAttack , IUnit
+    class Tower: Iattack , Iunit
     {
         public int Health { get; set; }
         public int PositionX { get; set; }
