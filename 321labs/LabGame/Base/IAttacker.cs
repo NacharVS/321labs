@@ -7,6 +7,5 @@ namespace _321labs.LabGame.Base
     {
         public abstract int Attack { get; set; }
         abstract void AttackToPoint(Vector2 position);
-
     }
 }

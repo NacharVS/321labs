@@ -5,9 +5,9 @@ using System.Threading;
 
 namespace _321labs.Threads
 {
-    class ThreadsProgram
+    public class ThreadsProgram
     {
-        static void Main(string[] args)
+        public static void ThreadsMain()
         {
             int[] arr = new int[10] { 1, 2, 33, 44, 5, 3, 2, 4, 2, 4 };
             ArrayThreadData arrData = new ArrayThreadData(arr);

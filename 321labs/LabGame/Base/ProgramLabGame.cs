@@ -4,11 +4,11 @@ using _321labs.LabGame.Base;
 using _321labs.LabGame.Heroes;
 using System.Numerics;
 
-namespace _321labs
+namespace _321labs.LabGame
 {
-    class Program
+    public class ProgramLabGame
     {
-        static void Main(string[] args)
+        public static void MainLabGame()
         {
             Console.WriteLine("Leave hope behind all who enters here....");
             Warrior warrior1 = new Warrior(new Vector2(8, 8), 1, "Элезар", 100, 20, 1, 2, 20, 10, 24);
@@ -22,7 +22,7 @@ namespace _321labs
 
 
             Console.WriteLine(warrior1.UnitPosition);
-            Vector2 position = new Vector2(-9, -9);
+            Vector2 position = new Vector2(-8, -8);
 
             while (warrior1.UnitPosition != position)
             {
