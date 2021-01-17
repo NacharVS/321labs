@@ -10,9 +10,9 @@ namespace _321labs.Garifullin.Locks
     {
         private static object locker = new object();
 
-        int[] firstArr = new int[10];
-        int[] secondArr = new int[10];
-        int[] sum = new int[10];
+        static int[] firstArr = new int[10];
+        static int[] secondArr = new int[10];
+        static int[] sum = new int[10];
         
         public void First()
         {
@@ -23,9 +23,10 @@ namespace _321labs.Garifullin.Locks
                 for (int i = 0; i < firstArr.Length; i++)
                 {
                     firstArr[i] = rand.Next(0, 20);
-                    Console.WriteLine($"{i} Первый массив {firstArr[i]}");
+                    Console.WriteLine($"{i + 1} элемент первого массива {firstArr[i]}");
                     Thread.Sleep(10);
                 }
+                Console.WriteLine();
             }
         }
         public void Last()
@@ -37,9 +38,10 @@ namespace _321labs.Garifullin.Locks
                 for (int i = 0; i < secondArr.Length; i++)
                 {
                     secondArr[i] = rand.Next(0, 20);
-                    Console.WriteLine($"{i} Второй массив {secondArr[i]}");
+                    Console.WriteLine($"{i + 1} элемент второго массива {secondArr[i]}");
                     Thread.Sleep(10);
                 }
+                Console.WriteLine();
             }
         }
         public void Sum()
@@ -49,7 +51,7 @@ namespace _321labs.Garifullin.Locks
                 for (int i = 0; i < sum.Length; i++)
                 {
                     sum[i] = firstArr[i] + secondArr[i];
-                    Console.WriteLine(sum[i]);
+                    Console.WriteLine($"Сумма {i + 1} элементов: {sum[i]}");
                     Thread.Sleep(10);
                 }
             }
@@ -64,7 +66,10 @@ namespace _321labs.Garifullin.Locks
 
             thread.Start();
             thread1.Start();
-            thread2.Start();
+            lock (locker)
+            {
+                thread2.Start();
+            }
         }
     }
 }
