@@ -18,31 +18,41 @@ namespace _321labs.Kamalov.Game
             this.Damage = damage;
         }
 
-        public void Heal(Hero hero)
+        public void Heal(Hero hero1)
         {
-            if (hero.Health < 30)
+            if (hero1.Health < 30)
             {
                 Thread.Sleep(5000);
-                while (hero.Health == 100)
-                {
-                    hero.Health += 30;
-                }
+                hero1.Health += 30;
+                Console.WriteLine($"Здоровье у {Name} восстановлена до {hero1.Health}");
+            }
+            else
+            {
+                Console.WriteLine($"Невозможно использовать Heal на {hero1.Name}, у него HP больше 30");
             }
         }
 
         public void Shoot(Hero hero)
         {
-            double sum = Damage / 10.0;
-            if (hero.Damage > sum)
             {
-                hero.Health -= Damage / 10;
-                Console.WriteLine(hero.Health);
-            }
+                double sum = this.Damage / 2;
 
-            else
-            {
-                Console.WriteLine("Ошибка: Очень слабый противник!");
+                if (this.Damage > sum)
+                {
+                    Console.WriteLine("Использована способность Shoot");
+                    this.Damage = this.Damage / 8;
+                    this.Health = this.Health - this.Damage;
+                    Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health}");
+                }
+
+                else
+                {
+                    Console.WriteLine("Ошибка: Очень слабый противник!");
+                }
+
             }
         }
     }
 }
+   
+

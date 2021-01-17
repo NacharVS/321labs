@@ -23,25 +23,25 @@ namespace _321labs.Kamalov.Game
 
         public void Shoot(Hero hero)
         {
-            Console.WriteLine("Использовано умение <=>Shoot<=>");
-            double sum = Damage / 5.0;
-            if (hero.Damage > sum )
+            double sum = this.Damage / 2;
+            if (this.Damage > sum)
             {
-                hero.Health -= Damage / 5;
-                Console.WriteLine($"Теперь у противника: {hero.Health}");
+                Console.WriteLine("Использована способность Shoot");
+                this.Damage = this.Damage / 2;
+                this.Health = this.Health - this.Damage;
+                Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health}");
             }
 
             else
             {
-                Console.WriteLine("Ошибка: Очень слабый противник!\n +" +
-                    $"Пожалей его...!");
+                Console.WriteLine("Ошибка: Очень слабый противник!");
             }
         }
 
         public void Stop(DynamicHero hero)
         {
-            hero.Speed = 0;
-            Console.WriteLine($"Персонаж {hero.Name} остановился");
+            this.Speed = 0;
+            Console.WriteLine($"Персонаж {this.Name} остановился");
         }
     }
 }
