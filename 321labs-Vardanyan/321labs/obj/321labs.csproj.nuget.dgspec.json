@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\номе\\source\\repos\\321labs-Vardanyan\\321labs\\321labs.csproj": {}
+    "C:\\Users\\номе\\source\\321labs-Vardanyan\\321labs\\321labs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\номе\\source\\repos\\321labs-Vardanyan\\321labs\\321labs.csproj": {
+    "C:\\Users\\номе\\source\\321labs-Vardanyan\\321labs\\321labs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\номе\\source\\repos\\321labs-Vardanyan\\321labs\\321labs.csproj",
+        "projectUniqueName": "C:\\Users\\номе\\source\\321labs-Vardanyan\\321labs\\321labs.csproj",
         "projectName": "321labs",
-        "projectPath": "C:\\Users\\номе\\source\\repos\\321labs-Vardanyan\\321labs\\321labs.csproj",
+        "projectPath": "C:\\Users\\номе\\source\\321labs-Vardanyan\\321labs\\321labs.csproj",
         "packagesPath": "C:\\Users\\номе\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\номе\\source\\repos\\321labs-Vardanyan\\321labs\\obj\\",
+        "outputPath": "C:\\Users\\номе\\source\\321labs-Vardanyan\\321labs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\номе\\AppData\\Roaming\\NuGet\\NuGet.Config",
