@@ -2,7 +2,7 @@
 using System.Threading;
 
 
-namespace _321labs.Treads
+namespace _321labs.Lock
 {
     class Program
     {
