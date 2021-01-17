@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Numerics;
 using _321labs.LabGame.Base;
 
-namespace _321labs.LabGame.Heroes
+namespace _321labs.LabGame.Buildings
 {
-    public class Archer : Unit, IMoveable, IScan, IAttacker, IBlinkeable
+    class ArcherTower : Unit, IAttacker, IScan
     {
         private int hp;
         private int maxHp;
@@ -41,40 +41,39 @@ namespace _321labs.LabGame.Heroes
         public override float Stealth { get; set; }
 
         // Все настройки Unit
-        public Archer(Vector2 UnitPosition)
+        public ArcherTower(Vector2 UnitPosition)
         {
             units.Add(this);
             this.UnitPosition = UnitPosition;
         }
-        public Archer(Vector2 UnitPosition, float Size) : this(UnitPosition)
+        public ArcherTower(Vector2 UnitPosition, float Size) : this(UnitPosition)
         {
             this.Size = Size;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
         {
             this.Name = Name;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
         {
             this.HealthPoints = HealthPoints;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Defense = Defense;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
         {
             this.Stealth = Stealth;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
         {
             this.Range = Range;
         }
-        // Все настройки Archer
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
+        // Все настройки ArcherTower
+        public ArcherTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
         {
             this.Attack = Attack;
-            this.Speed = Speed;
             this.Sense = Sense;
         }
         public void AttackToPoint(Vector2 position)
@@ -89,14 +88,6 @@ namespace _321labs.LabGame.Heroes
             }
         }
 
-        public bool CanMoveToPoint(Vector2 position)
-        {
-            //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size + this.Speed) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
 
         public override bool InRange(Vector2 position)
         {
@@ -150,11 +141,7 @@ namespace _321labs.LabGame.Heroes
         {
             return (float)Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
         }
-        public void MoveToPoint(Vector2 position)
-        {
-            if (!CanMoveToPoint(position)) return;
-            UnitPosition = Vector2.Add(UnitPosition, Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Math.Clamp(Speed, 0, ToPointDist(position))));
-        }
+
 
         public override void GetDamage(int Damage)
         {
@@ -162,24 +149,10 @@ namespace _321labs.LabGame.Heroes
             HealthPoints -= (int)Damaged;
         }
 
-        public void Blink(Vector2 position)
-        {
-            if (CanBlink(position))
-            {
-                this.UnitPosition = position;
-            }
-        }
-
-        public bool CanBlink(Vector2 position)
-        {
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
         public override void GetHeal(int Heal)
         {
             HealthPoints += Heal;
         }
+
     }
 }

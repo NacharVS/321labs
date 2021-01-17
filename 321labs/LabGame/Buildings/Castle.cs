@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Numerics;
+using System.Collections.Generic;
 using _321labs.LabGame.Base;
 
-namespace _321labs.LabGame.Heroes
+namespace _321labs.LabGame.Buildings
 {
-    public class Archer : Unit, IMoveable, IScan, IAttacker, IBlinkeable
+    class Castle : Unit, IUpgrader, IScan
     {
         private int hp;
         private int maxHp;
@@ -26,7 +26,6 @@ namespace _321labs.LabGame.Heroes
             set
             {
                 maxHp = Math.Max(value, 0);
-
             }
         }
 
@@ -34,70 +33,50 @@ namespace _321labs.LabGame.Heroes
 
 
         public override float Range { get; set; }
-        public int Attack { get; set; }
         public override float Size { get; set; }
-        public float Speed { get; set; }
         public float Sense { get; set; }
         public override float Stealth { get; set; }
+        public float UpgradeCoef { get; set; }
+        public float UpgradeCost { get; set; }
+
 
         // Все настройки Unit
-        public Archer(Vector2 UnitPosition)
+        public Castle(Vector2 UnitPosition)
         {
             units.Add(this);
             this.UnitPosition = UnitPosition;
         }
-        public Archer(Vector2 UnitPosition, float Size) : this(UnitPosition)
+        public Castle(Vector2 UnitPosition, float Size) : this(UnitPosition)
         {
             this.Size = Size;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
+        public Castle(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
         {
             this.Name = Name;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
+        public Castle(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
         {
             this.HealthPoints = HealthPoints;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
+        public Castle(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Defense = Defense;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
+        public Castle(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
         {
             this.Stealth = Stealth;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
+        public Castle(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
         {
             this.Range = Range;
         }
-        // Все настройки Archer
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
+        // Все настройки Castle
+        public Castle(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, float Sense = 1, float UpradeCost = 1, float UpgradeCoef = 1.1f) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
         {
-            this.Attack = Attack;
-            this.Speed = Speed;
+            this.UpgradeCost = UpgradeCost;
+            this.UpgradeCoef = UpgradeCoef;
             this.Sense = Sense;
         }
-        public void AttackToPoint(Vector2 position)
-        {
-            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position) && unit != this);
-            if (AttackedUnits != null)
-            {
-                foreach (Unit u in AttackedUnits)
-                {
-                    u.GetDamage(Attack);
-                }
-            }
-        }
-
-        public bool CanMoveToPoint(Vector2 position)
-        {
-            //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size + this.Speed) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
-
         public override bool InRange(Vector2 position)
         {
             //Дистанция до точка
@@ -150,11 +129,6 @@ namespace _321labs.LabGame.Heroes
         {
             return (float)Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
         }
-        public void MoveToPoint(Vector2 position)
-        {
-            if (!CanMoveToPoint(position)) return;
-            UnitPosition = Vector2.Add(UnitPosition, Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Math.Clamp(Speed, 0, ToPointDist(position))));
-        }
 
         public override void GetDamage(int Damage)
         {
@@ -162,24 +136,27 @@ namespace _321labs.LabGame.Heroes
             HealthPoints -= (int)Damaged;
         }
 
-        public void Blink(Vector2 position)
-        {
-            if (CanBlink(position))
-            {
-                this.UnitPosition = position;
-            }
-        }
-
-        public bool CanBlink(Vector2 position)
-        {
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
         public override void GetHeal(int Heal)
         {
             HealthPoints += Heal;
+        }
+
+        public void Upgrade(Vector2 position)
+        {
+            if (UpgradeCost > Player.Money) return;
+
+            List<Unit> UpgradedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position));
+            if (UpgradedUnits == null) return;
+
+            foreach (Unit unit in UpgradedUnits)
+            {
+                unit.Defense = Convert.ToInt32(unit.Defense * UpgradeCoef);
+                unit.MaxHeathPoints = Convert.ToInt32(unit.MaxHeathPoints * UpgradeCoef);
+                unit.Range = Convert.ToInt32(unit.Range * UpgradeCoef);
+                unit.Stealth = Convert.ToInt32(unit.Stealth * UpgradeCoef);
+                Player.Money -= UpgradeCost;
+            }
+
         }
     }
 }

@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="LabGame\Buildings\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="LabGame\Base\ProgramLabGame.cs" />
   </ItemGroup>
 

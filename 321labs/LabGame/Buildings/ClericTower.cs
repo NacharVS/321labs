@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Numerics;
+using System.Collections.Generic;
 using _321labs.LabGame.Base;
 
-namespace _321labs.LabGame.Heroes
+namespace _321labs.LabGame.Buildings
 {
-    public class Archer : Unit, IMoveable, IScan, IAttacker, IBlinkeable
+    class ClericTower : Unit, IHealer, IScan
     {
         private int hp;
         private int maxHp;
@@ -34,69 +34,53 @@ namespace _321labs.LabGame.Heroes
 
 
         public override float Range { get; set; }
-        public int Attack { get; set; }
         public override float Size { get; set; }
         public float Speed { get; set; }
         public float Sense { get; set; }
         public override float Stealth { get; set; }
+        public int HealZoneSize { get; set; }
+        public int HealStr { get; set; }
+
 
         // Все настройки Unit
-        public Archer(Vector2 UnitPosition)
+        public ClericTower(Vector2 UnitPosition)
         {
             units.Add(this);
             this.UnitPosition = UnitPosition;
         }
-        public Archer(Vector2 UnitPosition, float Size) : this(UnitPosition)
+        public ClericTower(Vector2 UnitPosition, float Size) : this(UnitPosition)
         {
             this.Size = Size;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
+        public ClericTower(Vector2 UnitPosition, float Size, string Name) : this(UnitPosition, Size)
         {
             this.Name = Name;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
+        public ClericTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints) : this(UnitPosition, Size, Name)
         {
             this.HealthPoints = HealthPoints;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
+        public ClericTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense) : this(UnitPosition, Size, Name, HealthPoints)
         {
             this.Defense = Defense;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
+        public ClericTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth) : this(UnitPosition, Size, Name, HealthPoints, Defense)
         {
             this.Stealth = Stealth;
         }
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
+        public ClericTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth)
         {
             this.Range = Range;
         }
-        // Все настройки Archer
-        public Archer(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int Attack = 1, float Speed = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
+        // Все настройки Cleric
+        public ClericTower(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int HealZoneSize = 1, int HealStr = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
         {
-            this.Attack = Attack;
-            this.Speed = Speed;
+            this.HealStr = HealStr;
+            this.HealZoneSize = HealZoneSize;
             this.Sense = Sense;
         }
-        public void AttackToPoint(Vector2 position)
-        {
-            List<Unit> AttackedUnits = units.FindAll((unit) => unit.InSize(position) && this.InRange(position) && unit != this);
-            if (AttackedUnits != null)
-            {
-                foreach (Unit u in AttackedUnits)
-                {
-                    u.GetDamage(Attack);
-                }
-            }
-        }
 
-        public bool CanMoveToPoint(Vector2 position)
-        {
-            //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size + this.Speed) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
+
 
         public override bool InRange(Vector2 position)
         {
@@ -150,11 +134,6 @@ namespace _321labs.LabGame.Heroes
         {
             return (float)Math.Sqrt(Math.Pow((position.X - UnitPosition.X), 2) + Math.Pow((position.Y - UnitPosition.Y), 2));
         }
-        public void MoveToPoint(Vector2 position)
-        {
-            if (!CanMoveToPoint(position)) return;
-            UnitPosition = Vector2.Add(UnitPosition, Vector2.Normalize(Vector2.Subtract(position, UnitPosition)) * (Math.Clamp(Speed, 0, ToPointDist(position))));
-        }
 
         public override void GetDamage(int Damage)
         {
@@ -162,24 +141,26 @@ namespace _321labs.LabGame.Heroes
             HealthPoints -= (int)Damaged;
         }
 
-        public void Blink(Vector2 position)
-        {
-            if (CanBlink(position))
-            {
-                this.UnitPosition = position;
-            }
-        }
-
-        public bool CanBlink(Vector2 position)
-        {
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size) > 0 && unit != this) == null)
-                return true;
-            else
-                return false;
-        }
         public override void GetHeal(int Heal)
         {
             HealthPoints += Heal;
+        }
+
+        public void HealToPoint(Vector2 position)
+        {
+            List<Unit> HealedUnits = units.FindAll((unit) => this.InHealZone(position, unit.UnitPosition));
+            if (HealedUnits != null)
+            {
+                foreach (Unit u in HealedUnits)
+                {
+                    u.GetHeal(HealStr);
+                }
+            }
+        }
+
+        public bool InHealZone(Vector2 healPosition, Vector2 position)
+        {
+            return (float)Math.Sqrt(Math.Pow((healPosition.X - position.X), 2) + Math.Pow((healPosition.Y - position.Y), 2)) < HealZoneSize;
         }
     }
 }
