@@ -9,8 +9,7 @@ namespace _321labs.Synh
         static int[] array2 = new int[10];
         static int[] sumArray = new int[10];
         object x = new object();
-        object f = new object();
-        object b = new object();
+       
 
         public void GenerateArray1()
         {
@@ -32,12 +31,12 @@ namespace _321labs.Synh
         }
         public void GenerateArray2()
         {
-            lock (b)
+            lock (x)
             {
                 Random rnd = new Random();
-                for (int i = 0; i < array.Length; i++)
+                for (int i = 0; i < array2.Length; i++)
                 {
-                    array[i] = rnd.Next(1, 20);
+                    array2[i] = rnd.Next(1, 20);
                 }
                 Console.WriteLine("Второй массив");
                 foreach (var item in array2)
@@ -50,7 +49,7 @@ namespace _321labs.Synh
         }
        public void Sum()
         {
-            lock (f)
+            lock (x)
             {
                 for (int i = 0; i < sumArray.Length; i++)
                 {
@@ -72,7 +71,12 @@ namespace _321labs.Synh
             Thread thread3 = new Thread(Sum);
             thread1.Start();
             thread2.Start();
+            lock (x)
+            {
             thread3.Start();
+            }
+            
+          
         }
     }
 

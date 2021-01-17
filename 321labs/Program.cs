@@ -6,8 +6,9 @@ namespace _321labs
 	{
 		static void Main(string[] args)
 		{
-			
-			
+
+			ThreadLocker threadLocker = new ThreadLocker();
+			threadLocker.start();
 
 		}
 	}
