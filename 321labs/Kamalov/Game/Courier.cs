@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class Courier : DynamicHero, IFly, IStop
+    class Courier : Hero, IFly, IStop
     {
         public Courier(int health,
             int speed,
@@ -16,6 +16,7 @@ namespace _321labs.Kamalov.Game
             this.Speed = speed;
             this.Name = name;
             this.Damage = damage;
+            Console.WriteLine("Создан персонаж класса Courier");
         }
 
         public void Fly(int x, int y)
@@ -27,7 +28,7 @@ namespace _321labs.Kamalov.Game
         }
 
 
-        public void Stop(DynamicHero hero1)
+        public void Stop(Hero hero1)
         {
             hero1.Speed = 0;
             Console.WriteLine($"Персонаж {hero1.Name} остановился");

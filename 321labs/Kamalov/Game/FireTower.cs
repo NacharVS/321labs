@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class FireTower : StaticHero, IShoot, IHeal
+    class FireTower : Hero, IShoot, IHeal
     {
         public FireTower(int health,
             int speed,
@@ -16,6 +16,7 @@ namespace _321labs.Kamalov.Game
             this.Speed = speed;
             this.Name = name;
             this.Damage = damage;
+            Console.WriteLine("Создан персонаж класса FireTower");
         }
 
         public void Heal(Hero hero1)

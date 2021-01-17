@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
-    class Sniper : Hero, IRun, IShoot, IStop
+    class Assasin : Hero, IShoot, IRun, IStop
     {
-        public Sniper(int health,
+        public Assasin(int health,
             int speed,
             string name,
             int damage) : base(health, speed, name, damage)
@@ -18,7 +20,7 @@ namespace _321labs.Kamalov.Game
 
         public void Run(int x, int y)
         {
-            Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {x}; y - {y}");
+            Console.WriteLine($"{this.Name} перместился по координатам x:{x} x:{y}");
         }
 
         public void Shoot(Hero hero)
@@ -26,7 +28,7 @@ namespace _321labs.Kamalov.Game
             double sum = this.Damage / 2;
             if (this.Damage > sum)
             {
-                Console.WriteLine("Использована способность Shoot");
+                Console.WriteLine($"{this.Name} выстрелил незаметно из духовой трубы");
                 this.Damage = this.Damage / 2;
                 this.Health = this.Health - this.Damage;
                 Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health} HP");
@@ -34,14 +36,14 @@ namespace _321labs.Kamalov.Game
 
             else
             {
-                Console.WriteLine("Он и без выстрела, скоро умрет...");
+                Console.WriteLine("Он и без яда, скоро умрет...");
             }
         }
 
         public void Stop(Hero hero)
         {
-            this.Speed = 0;
-            Console.WriteLine($"Персонаж {this.Name} остановился");
+            Speed = 0;
+            Console.WriteLine($"{this.Name} - остановился и слился с фауной.");
         }
     }
 }

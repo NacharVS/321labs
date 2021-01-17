@@ -16,6 +16,7 @@ namespace _321labs.Kamalov.Game
             this.Speed = speed;
             this.Name = name;
             this.Damage = damage;
+            Console.WriteLine("Создан персонаж класса ElectricTower");
         }
 
         public void Heal(Hero hero1)

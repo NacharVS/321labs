@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class DefenseTower : StaticHero, IShoot, IHeal
+    class DefenseTower : Hero, IShoot, IHeal
     {
         public DefenseTower(int health,
             int speed,

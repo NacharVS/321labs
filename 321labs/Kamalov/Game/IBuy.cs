@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs.Kamalov.Game
 {
-    interface IStop
+    interface IBuy
     {
-        void Stop(Hero hero);
+        public void Buy(Hero hero);
     }
 }
