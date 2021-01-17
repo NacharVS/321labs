@@ -12,4 +12,8 @@
     <None Remove="Game\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Game\Unit\Iunit.cs" />
+  </ItemGroup>
+
 </Project>
