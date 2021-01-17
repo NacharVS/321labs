@@ -6,7 +6,8 @@ namespace _321labs.Game
 {
     class Generator : IBuilding, IGenerator
     {
-
+        double x;
+        double y;
         int hp = 1000;
         bool isDisabled = false;
         public string Name { get => "Генератор"; }
@@ -15,10 +16,16 @@ namespace _321labs.Game
         public int EnergyConsumption { get => 5; }
         public int EnergyCost { get => 200; }
         public Player Team { get; set; }
-        public int X { get; }
-        public int Y { get; }
+        public double X { get; }
+        public double Y { get; }
         public int EnergyProduction { get => 25; }
         public bool IsDisabled { get; }
+
+        public Generator(double x, double y)
+        {
+            this.y = y;
+            this.x = x;
+        }
 
         public void Consume()
         {
@@ -33,6 +40,7 @@ namespace _321labs.Game
             if (!IsDisabled)
             {
                 Team.Energy += EnergyProduction;
+                this.Consume();
             }
         }
         public void Switch()

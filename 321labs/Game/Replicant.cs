@@ -7,8 +7,8 @@ namespace _321labs.Game
     class Replicant : ICanWalk, ICanAttack, ICanProduce<Nanite>
     {
         const int maxNaniteCapacity = 15;
-        int x;
-        int y;
+        double x;
+        double y;
         int hp = 150;
         List<Nanite> nanites = new List<Nanite>(maxNaniteCapacity);
         public string Name { get => "Репликант"; }
@@ -19,28 +19,40 @@ namespace _321labs.Game
         public double TimeBetweenAttacks { get => 1.3; }
         public int EnergyCost { get => 120; }
         public int AttackRange { get => 4; }
-        public int X { get; }
-        public int Y { get; }
+        public double X { get => x; }
+        public double Y { get => y; }
         public Player Team { get; set; }
+        internal List<Nanite> Nanites { get => nanites; set => nanites = value; }
+
+        public Replicant(double x, double y)
+        {
+            this.y = y;
+            this.x = x;
+        }
 
         public void Attack(IUnit attacked)
         {
-            if (Distance(attacked.X, attacked.Y) <= this.AttackRange)
+            double dist = Distance(attacked.X, attacked.Y);
+            if (dist <= this.AttackRange)
             {
                 attacked.Hp -= this.Damage - attacked.Armor;
             }
             else
             {
-                MoveTo(attacked.X, attacked.Y);
+                double k = (dist - this.AttackRange) / dist;
+                double attRangeX = this.X + (attacked.X - this.X) * k;
+                double attRangeY = this.Y + (attacked.Y - this.Y) * k;
+                MoveTo(attRangeX, attRangeY);
+                this.Attack(attacked);
             }
         }
 
-        public double MoveTo(int x, int y)
+        public void MoveTo(double x, double y)
         {
-            double timeToTravel = Distance(x, y) / MovementSpeed;
-            return timeToTravel;
+            this.x = x;
+            this.y = y;
         }
-        public double Distance(int x, int y)
+        public double Distance(double x, double y)
         {
             int destX = (int)Math.Pow(x - this.x, 2);
             int destY = (int)Math.Pow(y - this.y, 2);
@@ -50,12 +62,12 @@ namespace _321labs.Game
         public void Produce(Nanite unit) //Репликант может проивзодить нанитов, но не больше 15 шт.
         {
             int cost = unit.EnergyCost;
-            if (Team.Energy >= cost && nanites.Count < maxNaniteCapacity)
+            if (Team.Energy >= cost && Nanites.Count < maxNaniteCapacity)
             {
                 unit.Team = this.Team;
                 Team.Energy -= unit.EnergyCost;
                 unit.Replicator = this;
-                nanites.Add(unit);
+                Nanites.Add(unit);
             }
             else
             {

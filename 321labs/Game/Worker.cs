@@ -6,25 +6,30 @@ namespace _321labs.Game
 {
     class Worker : IUnit, ICanProduce<IBuilding>, ICanWalk
     {
-        int x;
-        int y;
+        double x;
+        double y;
         int hp = 60;
         public string Name { get => "Рабочий"; }
         public int Hp { get => hp; set => hp = value; }
         public int Armor { get => 0; }
         public int EnergyCost { get => 50; }
         public Player Team { get; set; }
-        public int X { get; }
-        public int Y { get; }
+        public double X { get => x; }
+        public double Y { get => y; }
         public int MovementSpeed { get => 3; }
 
-        public double MoveTo(int x, int y)
+        public Worker(double x, double y)
         {
-            double timeToTravel = Distance(x, y) / MovementSpeed;
-            return timeToTravel;
+            this.y = y;
+            this.x = x;
+        }
+        public void MoveTo(double x, double y)
+        {
+            this.x = x;
+            this.y = y;
         }
 
-        public double Distance(int x, int y)
+        public double Distance(double x, double y)
         {
             int destX = (int)Math.Pow(x - this.x, 2);
             int destY = (int)Math.Pow(y - this.y, 2);

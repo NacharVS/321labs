@@ -8,6 +8,6 @@ namespace _321labs.Game
     {
         int MovementSpeed { get;  }
 
-        double MoveTo(int x, int y);
+        void MoveTo(double x, double y);
     }
 }

@@ -6,8 +6,8 @@ namespace _321labs.Game
 {
     class Gunner : ICanWalk, ICanAttack
     {
-        int x;
-        int y;
+        double x;
+        double y;
         int hp = 80;
         public string Name { get => "Стрелок";  }
         public int Hp { get => hp; set => hp = value; }
@@ -17,29 +17,41 @@ namespace _321labs.Game
         public double TimeBetweenAttacks { get => 0.5;  }
         public int EnergyCost { get => 60; }
         public int AttackRange { get => 5;  }
-        public int X { get; }
-        public int Y { get; }
+        public double X { get => x; }
+        public double Y { get => y; }
         public Player Team { get; set; }
+
+        public Gunner(double x, double y)
+        {
+            this.y = y;
+            this.x = x;
+        }
+
 
         public void Attack(IUnit attacked) //attacked = атакуемый (тот кого будет атаковать)
         {
-            //Если у юнита атака не достаёт до цели то он пойдёт к ней в плотную
-            if (Distance(attacked.X, attacked.Y) <= this.AttackRange)
+            //Если у юнита атака не достаёт до цели то он пойдёт к точке из которой он сможет атаковать 
+            double dist = Distance(attacked.X, attacked.Y);
+            if (dist <= this.AttackRange)
             {
                 attacked.Hp -= this.Damage - attacked.Armor;
             }
             else
             {
-                MoveTo(attacked.X, attacked.Y); 
+                double k = (dist - this.AttackRange) / dist;
+                double attRangeX = this.X + (attacked.X - this.X) * k;
+                double attRangeY = this.Y + (attacked.Y - this.Y) * k;
+                MoveTo(attRangeX, attRangeY);
+                this.Attack(attacked);
             }
         }
 
-        public double MoveTo(int x, int y)
+        public void MoveTo(double x, double y)
         {
-            double timeToTravel = Distance(x, y) / MovementSpeed;
-            return timeToTravel;
+            this.x = x;
+            this.y = y;
         }
-        public double Distance(int x, int y)
+        public double Distance(double x, double y)
         {
             int destX = (int)Math.Pow(x - this.x, 2);
             int destY = (int)Math.Pow(y - this.y, 2);

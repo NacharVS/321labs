@@ -6,6 +6,8 @@ namespace _321labs.Game
 {
     class CommandCenter : IBuilding, ICanProduce<Worker>
     {
+        double x;
+        double y;
         int hp = 2000;
         bool isDisabled = false;
         public string Name { get => "Командный центр"; }
@@ -14,9 +16,15 @@ namespace _321labs.Game
         public int EnergyConsumption { get => 10;  }
         public int EnergyCost { get => 500; }
         public Player Team { get; set; }
-        public int X { get; }
-        public int Y { get; }
+        public double X { get; }
+        public double Y { get; }
         public bool IsDisabled { get; }
+
+        public CommandCenter(double x, double y)
+        {
+            this.y = y;
+            this.x = x;
+        }
 
         public void Consume()
         {
@@ -35,6 +43,7 @@ namespace _321labs.Game
                 {
                     worker.Team = this.Team;
                     Team.Energy -= cost;
+                    this.Consume();
                 }
                 else
                 {

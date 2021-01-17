@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _321labs
+namespace _321labs.Game
 {
     class Program
     {
