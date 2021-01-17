@@ -2,11 +2,11 @@
 
 namespace _321labs.Kamalov.Game
 {
-    class Sniper:DynamicHero, IRun, IShoot, IStop
+    class Sniper : DynamicHero, IRun, IShoot, IStop
     {
         public Sniper(int health,
-            int speed, 
-            string name, 
+            int speed,
+            string name,
             int damage) : base(health, speed, name, damage)
         {
             this.Health = health;
@@ -18,7 +18,7 @@ namespace _321labs.Kamalov.Game
 
         public void Run(int x, int y)
         {
-            Console.WriteLine($"Герой класса Sniper переместился по координатам: x - {x}; y - {y} ");
+            Console.WriteLine($"Герой класса Sniper переместился по координатам: x - [{x}]; y - [{y}] ");
         }
 
         public void Shoot(Hero hero)
@@ -29,12 +29,12 @@ namespace _321labs.Kamalov.Game
                 Console.WriteLine("Использована способность Shoot");
                 this.Damage = this.Damage / 2;
                 this.Health = this.Health - this.Damage;
-                Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health}");
+                Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health} HP");
             }
 
             else
             {
-                Console.WriteLine("Ошибка: Очень слабый противник!");
+                Console.WriteLine("Он и без выстрела, скоро умрет...");
             }
         }
 

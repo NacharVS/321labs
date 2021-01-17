@@ -10,8 +10,11 @@ namespace _321labs
             Console.WriteLine("Leave hope behind all who enters here....");
             Sniper sniper = new Sniper(100, 50, "Alex", 45);
             Sniper sniper1 = new Sniper(100, 5, "Fedor", 34);
-            FireTower fireTower = new FireTower(100, 0 ,"fire", 34);
+            FireTower fireTower = new FireTower(100, 0, "fire", 34);
+            ElectricTower electricTower = new ElectricTower(20, 0, "fe", 13);
+            electricTower.Heal(electricTower);
             fireTower.Shoot(sniper1);
+            sniper.Run(3, 5);
         }
     }
 }

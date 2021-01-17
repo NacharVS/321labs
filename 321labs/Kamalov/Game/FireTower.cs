@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class FireTower:StaticHero, IShoot, IHeal
+    class FireTower : StaticHero, IShoot, IHeal
     {
         public FireTower(int health,
             int speed,
@@ -35,24 +35,30 @@ namespace _321labs.Kamalov.Game
         public void Shoot(Hero hero)
         {
             {
-                double sum = this.Damage / 2;
-
-                if (this.Damage > sum)
+                for (int i = 0; i < 3; i++)
                 {
-                    Console.WriteLine("Использована способность Shoot");
-                    this.Damage = this.Damage / 8;
-                    this.Health = this.Health - this.Damage;
-                    Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health}");
-                }
 
-                else
-                {
-                    Console.WriteLine("Ошибка: Очень слабый противник!");
-                }
+                    double sum = this.Damage / 2;
+                    if (this.Health == 10)
+                        break;
+                    if (this.Damage > sum)
+                    {
+                        Console.WriteLine("Использована способность Shoot");
+                        this.Health -= this.Damage;
+                        Console.WriteLine($"Врагу было нанесено: {this.Damage} урона. У врага осталось: {this.Health}");
+                        if (this.Health < 0)
+                        {
+                            Console.WriteLine($"{hero.Name} мертв");
+                        }
+                    }
 
+                    else
+                    {
+                        Console.WriteLine("Ошибка: Очень слабый противник!");
+                    }
+
+                }
             }
         }
     }
 }
-   
-

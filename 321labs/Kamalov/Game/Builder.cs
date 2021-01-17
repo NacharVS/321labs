@@ -5,14 +5,14 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class Builder:DynamicHero, IRun, IHeal
+    class Builder : DynamicHero, IRun, IHeal
     {
         public Builder(int health,
             int speed,
             string name,
             int damage) : base(health, speed, name, damage)
         {
-                
+
         }
 
         public void Heal(Hero hero)

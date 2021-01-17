@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class Courier:DynamicHero, IFly, IStop
+    class Courier : DynamicHero, IFly, IStop
     {
         public Courier(int health,
             int speed,
@@ -22,7 +22,7 @@ namespace _321labs.Kamalov.Game
         {
             Speed += 30;
             Console.WriteLine("Увеличена скорость");
-            Console.WriteLine("Курьер прибыл на заданное место\n"+
+            Console.WriteLine("Курьер прибыл на заданное место\n" +
             $"Теперь он находится в x - {x}, y - {y}");
         }
 

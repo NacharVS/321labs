@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace _321labs.Kamalov.Game
 {
-    class DefenseTower:StaticHero, IShoot, IHeal
+    class DefenseTower : StaticHero, IShoot, IHeal
     {
         public DefenseTower(int health,
             int speed,
@@ -18,7 +18,7 @@ namespace _321labs.Kamalov.Game
 
         public void Heal(Hero hero)
         {
-            if (hero.Health<30)
+            if (hero.Health < 30)
             {
                 Thread.Sleep(5000);
                 hero.Health += 30;
