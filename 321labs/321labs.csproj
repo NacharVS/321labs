@@ -13,7 +13,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Game\Unit\Iunit.cs" />
+    <Compile Include="Game\Archer.cs" />
+    <Compile Include="Game\Barak.cs" />
+    <Compile Include="Game\Bard.cs" />
+    <Compile Include="Game\Berserk.cs" />
+    <Compile Include="Game\Facrtory.cs" />
+    <Compile Include="Game\IAttack.cs" />
+    <Compile Include="Game\Iunit.cs" />
+    <Compile Include="Game\Tower.cs" />
   </ItemGroup>
 
 </Project>
