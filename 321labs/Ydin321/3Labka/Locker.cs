@@ -28,7 +28,34 @@ namespace _321labs.Ydin321._3Labka
                 Console.WriteLine();
             }
         }
-      
+        public void Last()
+        {
+            lock (locker)
+            {
+                Random rand = new Random();
+
+                for (int i = 0; i < ArrNumbTwo.Length; i++)
+                {
+                    ArrNumbTwo[i] = rand.Next(0, 20);
+                    Console.WriteLine($"{i + 1} элемент второго массива {ArrNumbTwo[i]}");
+                    Thread.Sleep(10);
+                }
+                Console.WriteLine();
+            }
+        }
+        public void Sum()
+        {
+            lock (locker)
+            {
+                for (int i = 0; i < sum.Length; i++)
+                {
+                    sum[i] = ArrNumbOne[i] + ArrNumbTwo[i];
+                    Console.WriteLine($"Сумма {i + 1} элементов: {sum[i]}");
+                    Thread.Sleep(10);
+                }
+            }
+        }
     }
 }
+
 
