@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using _321labs.Threads;
+using _321labs.ThreadLocker;
+
 
 
 namespace _321labs
@@ -9,7 +11,8 @@ namespace _321labs
     {  
         static void Main(string[] args)
         {
-            Laba2.MainLaba2();
+            //Laba2.MainLaba2();
+            ThreadLocker.TheadLocker.MainTheadLocker();
             //Console.WriteLine("Leave hope behind all who enters here....");
            
         }
