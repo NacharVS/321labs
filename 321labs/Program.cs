@@ -1,4 +1,5 @@
-﻿using _321labs.Mironov.Threads;
+﻿using _321labs.Mironov.Locker;
+using _321labs.Mironov.Threads;
 using System;
 using System.Threading;
 
@@ -9,8 +10,10 @@ namespace _321labs
         static void Main(string[] args)
         {
 
-            Console.WriteLine("Leave hope behind all who enters here....");
-     
+             Console.WriteLine("Leave hope behind all who enters here....");
+       
+            
+            
         }
     }
 }
