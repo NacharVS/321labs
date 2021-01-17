@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading;
-using _321labs.Game;
+using _321labs.Koshelev.Game;
 using _321labs.Koshelev.Thread;
+using _321labs.Game;
 
 namespace _321labs
 {
@@ -11,17 +12,17 @@ namespace _321labs
         static int[] mas2 = new int[10];
         static int[] mas3 = new int[10];
         static object locker = new object();
+
         static void Main(string[] args)
         {
-            Thread thread = new Thread(() => RandomIntNumForMas1(mas1));
-            thread.Start();
-            thread = new Thread(() => RandomIntNumForMas2(mas2));
-            thread.Start();
-            thread = new Thread(() => SumMas());
-            thread.Start();
-
-
-
+            
+            Warrior warrior = new Warrior();
+            Tower tower = new Tower();
+            warrior.Attack(tower);
+            tower.Blocking();
+            Barracks barracks = new Barracks();
+            barracks.Notification();
+            
         }
         static void RandomIntNumForMas1(int[] mas)
         {
