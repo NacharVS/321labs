@@ -5,7 +5,7 @@ using _321labs.LabGame.Base;
 
 namespace _321labs.LabGame.Heroes
 {
-    class Cleric : Unit, IMoveable, IScan, IHealer
+    class Cleric:Unit,IMoveable,IScan,IHealer
     {
         private int hp;
         private int maxHp;
@@ -73,7 +73,7 @@ namespace _321labs.LabGame.Heroes
             this.Range = Range;
         }
         // Все настройки Cleric
-        public Cleric(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range, int HealZoneSize = 1, int HealStr = 1, float Speed = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
+        public Cleric(Vector2 UnitPosition, float Size, string Name, int HealthPoints, int Defense, float Stealth, float Range,int HealZoneSize = 1, int HealStr = 1, float Speed = 1, float Sense = 1) : this(UnitPosition, Size, Name, HealthPoints, Defense, Stealth, Range)
         {
             this.HealStr = HealStr;
             this.HealZoneSize = HealZoneSize;
@@ -84,7 +84,7 @@ namespace _321labs.LabGame.Heroes
         public bool CanMoveToPoint(Vector2 position)
         {
             //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size + this.Speed) > 0 && unit != this) == null)
+            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size) > 0 && unit != this) == null)
                 return true;
             else
                 return false;
@@ -161,7 +161,7 @@ namespace _321labs.LabGame.Heroes
 
         public void HealToPoint(Vector2 position)
         {
-            List<Unit> HealedUnits = units.FindAll((unit) => this.InHealZone(position, unit.UnitPosition));
+            List<Unit> HealedUnits = units.FindAll((unit) => this.InHealZone(position,unit.UnitPosition));
             if (HealedUnits != null)
             {
                 foreach (Unit u in HealedUnits)
@@ -171,9 +171,9 @@ namespace _321labs.LabGame.Heroes
             }
         }
 
-        public bool InHealZone(Vector2 healPosition, Vector2 position)
+        public bool InHealZone(Vector2 healPosition,Vector2 position)
         {
-            return (float)Math.Sqrt(Math.Pow((healPosition.X - position.X), 2) + Math.Pow((healPosition.Y - position.Y), 2)) < HealZoneSize;
+            return (float)Math.Sqrt(Math.Pow((healPosition.X - position.X), 2) + Math.Pow((healPosition.Y - position.Y), 2))<HealZoneSize;
         }
     }
 }

@@ -94,7 +94,7 @@ namespace _321labs.LabGame.Heroes
         public bool CanMoveToPoint(Vector2 position)
         {
             //Не занята ли наша точка каким либо юнитом?
-            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size + this.Size + this.Speed) > 0 && unit != this) == null)
+            if (units.Find((unit) => ToPointDist(unit.UnitPosition) - (unit.Size) > 0 && unit != this) == null)
                 return true;
             else
                 return false;
