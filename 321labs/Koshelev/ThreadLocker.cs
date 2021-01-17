@@ -12,11 +12,5 @@ namespace _321labs.Koshelev
         {
             this.mas1 = mas1;
         }
-
-        public void RandomNums(int[] mas)
-        {
-            Random random = new Random();
-            for(int i = 0; i < mas.Length)
-        }
     }
 }
