@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace _321labs
 {
@@ -11,48 +12,68 @@ namespace _321labs
         static int[] masResult = new int[10];
 
         static object locker = new object();
-        public static void Filling()
+
+        public static void FillingArray()
         {
             lock (locker)
             {
-                Random rand = new Random();
+                Random rnd = new Random();
                 for (int i = 0; i < mas1.Length; i++)
                 {
-                    mas1[i] = rand.Next(1, 10);
+                    mas1[i] = rnd.Next(1, 20);
                 }
-
-                for (int i = 0; i < mas2.Length; i++)
+                Console.WriteLine("Первый массив");
+                foreach (var item in mas1)
                 {
-                    mas2[i] = rand.Next(1, 10);
+                    Console.Write(item + " ");
                 }
-                Out();
+                Console.WriteLine();
+            }
+        }
+        public static void FillingArray2()
+        {
+            lock (locker)
+            {
+                Random rnd = new Random();
+                for (int i = 0; i < mas1.Length; i++)
+                {
+                    mas2[i] = rnd.Next(1, 20);
+                }
+                Console.WriteLine("Второй массив");
+                foreach (var item in mas2)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
             }
         }
 
         public static void Sum()
         {
-            for (int i = 0; i < masResult.Length; i++)
+            lock (locker)
             {
-                masResult[i] = mas1[i] + mas2[i];
-            }
-            for (int i = 0; i < masResult.Length; i++)
-            {
-                Console.Write(masResult[i] + " ");
-            }
-            Console.WriteLine();
-        }
 
-        private static void Out()
+                for (int i = 0; i < masResult.Length; i++)
+                {
+                    masResult[i] = mas1[i] + mas2[i];
+
+                }
+                Console.WriteLine("Сумма");
+                foreach (var item in masResult)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+        public void Start()
         {
-            for (int i = 0; i < mas1.Length; i++)
-            {
-                Console.Write(mas1[i] + " ");
-            }
-            Console.WriteLine();
-            for (int i = 0; i < mas2.Length; i++)
-            {
-                Console.Write(mas2[i] + " ");
-            }
+            Thread thread1 = new Thread(FillingArray);
+            Thread thread2 = new Thread(FillingArray2);
+            Thread thread3 = new Thread(Sum);
+            thread1.Start();
+            thread2.Start();
+            thread3.Start();
         }
     }
 }
