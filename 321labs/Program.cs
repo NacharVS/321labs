@@ -12,10 +12,8 @@ namespace _321labs
         {
 
              Console.WriteLine("Leave hope behind all who enters here....");
-            int[] arr = new int[] { 1, 6, 7, 46, 6, 4 };
-            TasksArr tasksArr 
             
-            
+          
         }
     }
 }

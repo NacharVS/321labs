@@ -27,6 +27,7 @@ namespace _321labs.Mironov
             threadSum.Start();
             threadMax.Start();
             threadSort.Start();
+            Task.WaitAny(threadSum, threadMax, threadSort);
 
 
         }
