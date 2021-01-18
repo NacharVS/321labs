@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace _321labs
 {
@@ -7,14 +8,27 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Leave hope behind all who enters here....");
+            Task task1 = new Task(() =>
+            {
+                TaskArray.Max();
+            });
+            Task task2 = new Task(() =>
+            {
+                TaskArray.Sum();
+            });
+            Task task3 = new Task(() =>
+            {
+                TaskArray.Sort();
+            });
 
-            Thread randomArr1 = new Thread(new ThreadStart(LockThread.RandomizerArr1));
-            randomArr1.Start();
-            Thread randomArr2 = new Thread(new ThreadStart(LockThread.RandomizerArr2));
-            randomArr2.Start();
-            Thread threadSum = new Thread(new ThreadStart(LockThread.Sum));
-            threadSum.Start();
+            task1.Start();
+            task1.Wait();
+            
+            task2.Start();
+            task2.Wait();
+
+            task3.Start();
+            task3.Wait();
         }
     }
 }
