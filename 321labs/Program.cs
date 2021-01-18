@@ -13,6 +13,7 @@ namespace _321labs
 
         static void Main(string[] args)
         {
+            //
             Threads threads = new Threads(mas1);
             Task task = new Task(threads.Max);
             Task task1 = new Task(threads.SortMas);    
@@ -23,6 +24,7 @@ namespace _321labs
             task.Wait();
             task1.Wait();
             task2.Wait();
+            //
         }
     }
 }
