@@ -148,6 +148,8 @@ namespace _321labs.LabGame.Buildings
 
         public void HealToPoint(Vector2 position)
         {
+            if (!InRange(position)) return;
+
             List<Unit> HealedUnits = units.FindAll((unit) => this.InHealZone(position, unit.UnitPosition));
             if (HealedUnits != null)
             {
