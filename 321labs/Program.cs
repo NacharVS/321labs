@@ -2,6 +2,7 @@
 using System.Threading;
 using _321labs.Threads;
 using _321labs.ThreadLocker;
+using _321labs.TaskLaba3;
 
 
 
@@ -12,8 +13,9 @@ namespace _321labs
         static void Main(string[] args)
         {
             //Laba2.MainLaba2();
-            ThreadLocker.TheadLocker.MainTheadLocker();
+            //ThreadLocker.TheadLocker.MainTheadLocker();
             //Console.WriteLine("Leave hope behind all who enters here....");
+            TaskLaba.MainTask();
            
         }
     }

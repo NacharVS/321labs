@@ -10,6 +10,9 @@ namespace _321labs.Game
         private int healthPoints;
         private int power;
         private int speed;
+        private int size;
+        private int defense;
+        public Unit() { }
         public string Name
         {
             get 
@@ -55,6 +58,28 @@ namespace _321labs.Game
                 this.speed = value;
             }
         }
-    
+        public int Size
+        {
+            get
+            {
+                return size;
+            }
+            set
+            {
+                this.size = value;
+            }
+        }
+        public int Defense
+        {
+            get
+            {
+                return defense;
+            }
+            set
+            {
+                this.defense = value;
+            }
+        }
+
     }
 }
