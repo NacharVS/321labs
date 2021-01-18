@@ -9,7 +9,7 @@ namespace _321labs
         static void Main(string[] args)
         {
             //Console.WriteLine("Я без понятия правильно это или нет, я не мб это все вообще не правильно");
-            ThreadLocker threads = new ThreadLocker();
+            Tasks threads = new Tasks();
             threads.Start();
         }
     }
