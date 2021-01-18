@@ -8,7 +8,9 @@ namespace _321labs.Theards
         static void Main(string[] args)
         {
 
-
+            Tasks SAS = new Tasks();
+            SAS.Start();
+                
         }
     }
 }
