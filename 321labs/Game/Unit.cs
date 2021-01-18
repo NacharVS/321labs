@@ -6,80 +6,25 @@ namespace _321labs.Game
 {
     abstract class Unit
     {
-        private string name;
-        private int healthPoints;
-        private int power;
-        private int speed;
-        private int size;
-        private int defense;
-        public Unit() { }
-        public string Name
+        protected Unit(int LVL, string Name)
         {
-            get 
-            {
-                return name;
-            }
-            set 
-            {
-                this.name = value;
-            }
+            this.LVL = LVL;
+            this.Name = Name;
+        }
         
-        }
-        public int HealthPoints
-        {
-            get
-            {
-                return healthPoints;
-            }
-            set
-            {
-                this.healthPoints = value;
-            }
-        }
-        public int Power
-        {
-            get
-            {
-                return power;
-            }
-            set
-            {
-                this.power = value;
-            }
-        }
-        public int Speed
-        {
-            get
-            {
-                return speed;
-            }
-            set
-            {
-                this.speed = value;
-            }
-        }
-        public int Size
-        {
-            get
-            {
-                return size;
-            }
-            set
-            {
-                this.size = value;
-            }
-        }
-        public int Defense
-        {
-            get
-            {
-                return defense;
-            }
-            set
-            {
-                this.defense = value;
-            }
-        }
+        abstract protected int PowerCoef { get; }
+        abstract protected int AggilityCoef { get; }
+        abstract protected int DefenseCoef { get; }
+        abstract protected int MaxHealthCoef { get; }
 
+        abstract public int LVL { get; set; }
+        abstract public int Exp { get; set; }
+        abstract public string Name { get; set; }
+        abstract public int MaxHealth { get; }
+        abstract public int Health{get; set;}
+        abstract public int Power { get;  }
+        abstract public int Aggility { get;  }
+        abstract public int Defense { get;  }
+        abstract public void GetDamage(int Damage);
     }
 }
