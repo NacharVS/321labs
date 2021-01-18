@@ -1,58 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs.Fedotov
 {
     class Tasks
     {
-        static int[] array1 = new int[10];
-        static int[] array2 = new int[10];
-        static int[] array3 = new int[10];
+        static int[] array = new int[10];
 
 
         public void Start()
         {
-            
-        }
-
-        void GenericArray1()
-        {
             Random rnd = new Random();
             for (int i = 0; i < 10; i++)
             {
-                array1[i] = rnd.Next(0, 100);
+                array[i] = rnd.Next(0, 100);
             }
-        }
+            Task task1 = new Task(() =>
+            {
+                int max = array[0];
+                for (int i = 1; i < array.Length; i++)
+                {
+                    if (max < array[i])
+                        max = array[i];
+                }
+                Console.WriteLine("Max=" + max);
+            });
+            Task task2 = new Task(() =>
+            {
+                int sum = 0;
+                for (int i = 0; i < array.Length; i++)
+                    sum += array[i];
+                Console.WriteLine("Sum=" + sum);
+            });
+            Task task3 = new Task(() =>
+            {
+                Array.Sort(array);
+                foreach (int item in array)
+                {
+                    Console.Write(item + " ");
+                }
+                Console.WriteLine();
+            });
 
-        void GenericArray2()
-        {
-            Random rnd = new Random();
-            for (int i = 0; i < 10; i++)
-            {
-                array2[i] = rnd.Next(0, 100);
-            }
-        }
-
-        void Summ()
-        {
-            Console.WriteLine("Thread 1");
-            foreach (int item in array1)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nThread 2");
-            foreach (int item in array2)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nResult");
-            for (int i = 0; i < 10; i++)
-            {
-                array3[i] = array1[i] + array2[i];
-                Console.Write(array3[i] + " ");
-            }
-            Console.WriteLine();
+            task1.Start();
+            task2.Start();
+            task3.Start();
+            task1.Wait();
+            task2.Wait();
+            task3.Wait();
         }
     }
 }
