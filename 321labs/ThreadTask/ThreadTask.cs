@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace _321labs
 {
-    class ThreadLocker
+    class ThreadTask
     {
         static Random rnd = new Random();
         static object x = new object();
         static int[] first = new int[10];
         static int[] second = new int[10];
         static int[] third = new int[10];
-        public static void GenerateRndDigitFirst()
+
+        Task taskGen = new Task(() =>
         {
             lock (x)
             {
@@ -40,9 +41,11 @@ namespace _321labs
                 }
                 Console.WriteLine();
             }
-        }
-        public static void SumArray()
+        });
+
+        Task taskSum = new Task(() =>
         {
+            Thread.Sleep(100);
             lock (x)
             {
                 for (int i = 0; i < third.Length; i++)
@@ -58,18 +61,18 @@ namespace _321labs
 
                 Console.WriteLine();
             }
-        }
+        });
 
         public void Start()
         {
-            Thread first = new Thread(GenerateRndDigitFirst);
-            Thread sum = new Thread(SumArray);
-            first.Start();
+            taskGen.Start();
             lock (x)
             {
-                sum.Start();
+                taskSum.Start();
             }
-            Thread.Sleep(1000);
+            taskSum.Wait();
+            taskGen.Wait();
+
         }
     }
 }
