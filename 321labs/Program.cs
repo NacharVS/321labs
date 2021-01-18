@@ -2,7 +2,7 @@
 using System.Threading;
 
 
-namespace _321labs.Lock
+namespace _321labs.Tasks
 {
     class Program
     {
