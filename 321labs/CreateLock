@@ -7,36 +7,82 @@ namespace _321labs
 {
     class Program
     {
-        static int[] mas1 = new int[10];
-        static int[] mas2 = new int[10];
-        static int[] mas3 = new int[10];
-        object o = new object();
-
-        static void Main()
+        private static object locker = new object();
+        static void Main(string[] args)
         {
-            Random r = new Random();
-            for (int i = 0; i < mas1.Length; i++)
-            {
-                mas1[i] = r.Next(0,10);
-            }
-            foreach (int item in mas1)
-            {
-                Console.Write(item + ", ");
-            }
-            Console.WriteLine();
+            Locker createLocker = new Locker();
+            Thread thread1 = new Thread(createLocker.First);
+            Thread thread2 = new Thread(createLocker.Second);
+            Thread thread3 = new Thread(createLocker.Sum);
 
-           
-
-            public static void summ()
+            lock (locker)
             {
-                for (int i = 1; i < 9; i++)
+                thread1.Start();
+            }
+            lock (locker)
+            {
+                thread2.Start();
+            }
+            lock (locker)
+            {
+                thread3.Start();
+            }
+        }
+        class Locker
+        {
+            static int[] mas1 = new int[10];
+            static int[] mas2 = new int[10];
+            static int[] mas3 = new int[10];
+
+            public void First()
+            {
+                lock (locker)
                 {
-                    Console.WriteLine("Второй поток:");
-                    Console.WriteLine(i * i);
-                    Thread.Sleep(400);
+                    Console.Write("Первый массив: ");
+                    Random r = new Random();
+                    for (int i = 0; i < mas1.Length; i++)
+                    {
+                        mas1[i] = r.Next(0, 10);
+                        Thread.Sleep(500);
+                    }
+                    foreach (int item in mas1)
+                    {
+                        Console.Write(item + ", ");
+                    }
+                    Console.WriteLine();
                 }
             }
+            public void Second()
+            {
+                lock (locker)
+                {
+                    Console.Write("Второй массив: ");
+                    Random r = new Random();
+                    for (int i = 0; i < mas2.Length; i++)
+                    {
+                        mas2[i] = r.Next(10, 20);
+                        Thread.Sleep(500);
+                    }
+                    foreach (int item in mas2)
+                    {
+                        Console.Write(item + ", ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            public void Sum()
+            {
+                lock (locker)
+                {
+                    for (int i = 0; i < mas3.Length; i++)
+                    {
+                        mas3[i] = mas1[i] + mas2[i];
+                        Console.WriteLine($"Сумма элементов {mas1[i]} и {mas2[i]} равна {mas3[i]}");
+                        Thread.Sleep(500);
+                    }
+                }
+            }
+            
         }
     }
 }
-

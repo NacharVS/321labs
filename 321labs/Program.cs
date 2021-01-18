@@ -7,9 +7,6 @@ namespace _321labs
 {
     class Program
     {
-        static void Main()
-        {
-
-        }
+        
     }
 }
