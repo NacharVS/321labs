@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace _321labs
 {
@@ -7,10 +8,16 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Leave hope behind all who enters here....");
+            Task t1 = new Task(Tasks.Max);
+            Task t2 = new Task(Tasks.Sum);
+            Task t3 = new Task(Tasks.SortArray);
+            t1.Start();
+            t2.Start();
+            t3.Start();
 
-            ThreadLocker t = new ThreadLocker();
-            t.Start();
+            t1.Wait();
+            t2.Wait();
+            t3.Wait();
         }
     }
 }
