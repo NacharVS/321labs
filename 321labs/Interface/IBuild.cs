@@ -4,8 +4,8 @@ using System.Text;
 
 namespace _321labs
 {
-    interface IUnit : ICommonUnit
+    interface IBuild : ICommonUnit
     {
-        void EXAttac();
+        void Building();
     }
 }
