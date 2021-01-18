@@ -7,83 +7,54 @@ namespace _321labs
 {
     class Tasks
     {
-        static int[] array = new int[10];
-        static int[] array2 = new int[10];
-        static int[] resultArray = new int[10];
-        object x= new object();
-        public void GenerateArray()
+        public int[] arr = new int[4] { 4, 2, 3, 4 };
+    
+  
+
+
+        public void Sorting()
         {
-            lock (x)
+            Array.Sort(arr);
+            Console.WriteLine("Отсортированная вещь: \n");
+            foreach (var item in arr)
             {
-                Random rnd = new Random();
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array[i] = rnd.Next(1, 20);
-                }
-                Console.WriteLine("Первый массив");
-                foreach (var item in array)
-                {
-                    Console.WriteLine(item + " ");
-
-                }
-                
-            }
-        }
-        public void GenerateArray2()
-        {
-            lock (x)
-            {
-
-                Random rnd = new Random();
-                for (int i = 0; i < array.Length; i++)
-                {
-                    array2[i] = rnd.Next(1, 20);
-                }
-                Console.WriteLine("Второй массив");
-                foreach (var item in array2)
-                {
-                    Console.WriteLine(item + " ");
-
-                }
-               
+                Console.WriteLine(item + " \n");
             }
         }
 
-        public void SumOfArrays()
+        public void MaxThread()
         {
-            lock (x)
-            {
+            int[] bufferArray = this.arr;
+            Array.Sort(bufferArray);
+            int max = bufferArray[bufferArray.Length - 1];
+            Console.WriteLine($"Максимальный элемент - {max}\n");
 
-                for (int i = 0; i < resultArray.Length; i++)
+        }
+
+        public void SumArray()
+        {
+            int sum = 0;
+                foreach (var item in arr)
                 {
-                    resultArray[i] = array[i] + array2[i];
-
+                    sum += item;
                 }
-                Console.WriteLine("Сумма");
-                foreach (var item in resultArray)
-                {
-                    Console.WriteLine(item + " ");
+         
+            Console.WriteLine($"Сумма всех элементов равна {sum}\n");
 
-                }
-                
-            }
+
         }
         public void Start()
         {
-            Task task = new Task(GenerateArray);
-            Task task1 = new Task(GenerateArray2);
-            Task task2 = new Task(SumOfArrays);
-           
-            task.Start();
-            task.Wait();
-            task1.Start();
-            task1.Wait();
-            task2.Start();
-            
+            Task theard = new Task(Sorting);
+            Task theard1 = new Task(SumArray);
+            Task thread2 = new Task(MaxThread);
+            theard.Start();
+            theard.Wait();
+            theard1.Start();
+            theard1.Wait();
+            thread2.Start();
           
-
         }
-
 
     }
 }
