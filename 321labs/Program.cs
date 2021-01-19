@@ -2,6 +2,7 @@
 using _321labs.Treads;
 using _321labs.Synh;
 using _321labs.Task_;
+using _321labs.ContinuationTasks;
 namespace _321labs
 {
 	class Program
@@ -9,12 +10,9 @@ namespace _321labs
 		static void Main(string[] args)
 		{
 
-			ThreadLocker threadLocker = new ThreadLocker();
-			threadLocker.start();
 			
-;
-			TaskThreading taskThreading = new TaskThreading();
-			taskThreading.start();
+
+			;
 			
 		}
 	}
