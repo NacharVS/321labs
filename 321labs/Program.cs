@@ -9,7 +9,7 @@ namespace _321labs
         static void Main(string[] args)
         {
             //Console.WriteLine("Я без понятия правильно это или нет, я не мб это все вообще не правильно");
-            Tasks threads = new Tasks();
+            ContinuationTasks threads = new ContinuationTasks();
             threads.Start();
         }
     }
