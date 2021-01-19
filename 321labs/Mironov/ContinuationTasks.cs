@@ -11,10 +11,11 @@ namespace _321labs.Mironov
         static Random rnd = new Random();
         public static void Start()
         {
-            
+            Task task1 = new Task(GenerateValue);
+            Task<long> task2 = task1.ContinueWith(m=>MultiplyElem());
 
         }
-        private  void GenerateValue()
+        private static void GenerateValue()
         {
 
             for (int i = 0; i < arr.Length; i++)
@@ -27,7 +28,7 @@ namespace _321labs.Mironov
             }
         }
 
-        private  long MultiplyElem()
+        private static long MultiplyElem()
         {
             long product=1;
             foreach (var item in arr)
