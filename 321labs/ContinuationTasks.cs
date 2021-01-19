@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace _321labs
 {
@@ -25,15 +27,15 @@ namespace _321labs
 
         public void ProductArray()
         {
-          
-            
             for (int i = 0; i < array.Length; i++)
             {
                 product *= array[i];
             }
-            Console.WriteLine("Умножение ахах: "+ product);
+            Console.WriteLine("Умножение ахах: " + product);
+
+
         }
-        
+
         public void EvenProduct()
         {
             Console.WriteLine("тут четность");
@@ -59,9 +61,14 @@ namespace _321labs
 
         public void Start()
         {
-            GenerateArray();
-            ProductArray();
-            EvenProduct();
+            Task task = new Task(GenerateArray);
+           
+            task.ContinueWith(pa =>ProductArray());
+            Task task2 = task.ContinueWith(ep => EvenProduct());
+            task.Start();
+            task.Wait();
+            
+         
 
         }
 
