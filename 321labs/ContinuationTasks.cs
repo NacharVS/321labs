@@ -10,50 +10,53 @@ namespace _321labs
     {
         static int[] array = new int[20];
         static Random rnd = new Random();
-        static int product =1;
-        static List<int> evenDigints = new List<int>();
 
         static ContinuationTasks()
         {
-            Task start = new Task(WriteInArray);
-            Task task2 = start.ContinueWith(Product);
-            Task task3 = start.ContinueWith(EvenDigits);
+            Task<int[]> start = new Task<int[]>(WriteInArray);
+            Task<long> task2 = start.ContinueWith(pr => Product(pr.Result));
+            Task task3 = task2.ContinueWith(eDig => EvenDigits(eDig.Result));
             start.Start();
         }
 
-        static void WriteInArray()
+        static int[] WriteInArray()
         {
+            int[] intArray = array;
             Console.Write("Массив: ");
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < intArray.Length; i++)
             {
-                array[i] = rnd.Next(1, 10);
-                Console.Write(i+" ");
+                intArray[i] = rnd.Next(1, 10);
+                Console.Write(intArray[i]+" ");
             }
             Console.WriteLine();
+            return intArray;
         }
 
-        static void Product(Task t)
+        static long Product(int[] array)
         {
+            long product = 1;
             for (int i = 0; i < array.Length; i++)
             {
                 product *= array[i];
             }
             Console.WriteLine("Проивзедение: "+ product);
+            return product;
         }
 
-        static void EvenDigits(Task t)
+        static List<int> EvenDigits(long product)
         {
+            List<int> evenDigints = new List<int>();
             double prd = product;
-            int numberLength = prd.ToString().Length;
-            while (numberLength != 0)
+            int numberLength = prd.ToString().Length-1;
+            while (numberLength != -1)
             {
                 int digit = (int)Math.Floor(prd / Math.Pow(10, numberLength));
-                if (digit %2==0)
+                if (digit % 2 == 0)
                 {
                     evenDigints.Add(digit);
                 }
                 prd -= digit * Math.Pow(10, numberLength);
-                
+
                 numberLength--;
             }
             Console.Write("Чётные цифры: ");
@@ -61,6 +64,7 @@ namespace _321labs
             {
                 Console.Write(item + " ");
             }
+            return evenDigints;
         }
     }
 }
