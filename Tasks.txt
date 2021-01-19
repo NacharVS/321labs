@@ -16,3 +16,10 @@ First and second with random integers, third - for resuilts.
 Have to generate values in different threads, for first and second, 
 and find sum of elements of arrays, also in other thread. 
 Summ has to save in array for resuilts.
+
+Task 19.01.2021(DeadLine 21.01.2021) ContinuationTasks
+Array with length 20 is avaliable. 
+Generate random numbers for each element of array, 
+find product of all elements, 
+and get only even digits from the resuilt.
+Create right siquence of Continuation Tasks.
