@@ -6,14 +6,14 @@ namespace _321labs
 {
     class ContinuationTasks
     {
-        int[] array = new int[20];
+        int[] array = new int[10];
         int product = 1;
         public void GenerateArray()
         {
                 Random rnd = new Random();
                 for (int i = 0; i < array.Length; i++)
                 {
-                    array[i] = rnd.Next(1, 20);
+                    array[i] = rnd.Next(1, 9);
                 }
                 Console.WriteLine("Массив");
                 foreach (var item in array)
@@ -36,14 +36,25 @@ namespace _321labs
         
         public void EvenProduct()
         {
+            Console.WriteLine("тут четность");
             string number = Convert.ToString(product);
             char[] dig_mas = new char[number.Length];
             for (int i = 0; i < number.Length; i++)
             {
                 dig_mas[i] = number[i];
-                Console.WriteLine(dig_mas[i]);
+                
 
             }
+            
+            int[] buffer = Array.ConvertAll(dig_mas, c => (int)Char.GetNumericValue(c));
+            foreach (var item in buffer)
+            {
+                if (item%2==0)
+                {
+                    Console.WriteLine(item + " ");
+                }
+            }
+
         }
 
         public void Start()
