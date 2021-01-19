@@ -4,37 +4,61 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-
 namespace _321labs
 {
     class ContinuationTasks
     {
-        static int[] arr = new int [20];
+        static int[] array = new int [20];
         static Random random = new Random();
+        static int product = 1;
+        static string p; // = Convert.ToString(product);
 
-        static void GeneratArr(int[] array)
+        static int[] GeneratArr(int[] arr)
         {
-            for (int i = 0; i < array.Length; i++)
+            Console.WriteLine("Сгенерированный массив: ");
+            for (int i = 0; i < arr.Length; i++)
             {
-                array[i] = random.Next(1, 100);
-                Console.WriteLine(array[i]);
+                arr[i] = random.Next(1, 50);
+                Console.Write(arr[i] + " ");
             }
+            return arr;
         }
 
-        static void Product(int[] array)
+        static string Product(int[] arr)
         {
-            int product = 1;
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                product *= array[i];
+                product *= arr[i];
             }
-            Console.WriteLine($"Произведение всех элементов массива: {product}");
+            Console.WriteLine($"\nПроизведение всех элементов массива: {Math.Abs(product)}");
+            p = Convert.ToString(product);
+            return p;
         }
 
-        public static void Start(int[] array)
+        static string EvenDigits(string p)
         {
-            GeneratArr(array);
-            Product(array);
+            
+            string Cifra = "";
+            for (int i = 0; i < p.Length; i++)
+            {
+
+                if (Convert.ToChar(p[i]) % 2 == 0)
+                {
+                    Cifra += p[i];
+                }
+            }
+            p = Cifra;
+            Console.WriteLine("Четные цифры: " + p);
+            return p;
+        }
+
+        public static void Start(int[] arr)
+        {
+            Task<int[]> task1 = new Task<int[]>(() => GeneratArr(arr));
+            Task<string> task2 = task1.ContinueWith(arr => Product(arr.Result));
+            Task<string> task3 = task2.ContinueWith(p => EvenDigits(p.Result));
+            task1.Start();
+            task3.Wait();
 
         }
     }
