@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs
 {
@@ -55,9 +55,13 @@ namespace _321labs
         }
         public void Start()
         {
-            GenerateNumbers();
-            ElementProduct();
-            EvenFromProduct();
+            Task task = new Task(GenerateNumbers);
+            task.ContinueWith(ep => ElementProduct());
+            Task task2 = task.ContinueWith(efp => EvenFromProduct());
+            task.Start();
+            task.Wait();
+            task2.Wait();
+            
         }
     }
 }
