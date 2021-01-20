@@ -19,7 +19,6 @@ namespace _321labs.Garifullin.Continue
             {
                 mas[i] = rand.Next(1, 10);
                 Console.WriteLine($"{i + 1} элемент массива {mas[i]}");
-                Thread.Sleep(10);
             }
             Console.WriteLine();
         }
@@ -28,38 +27,40 @@ namespace _321labs.Garifullin.Continue
             for (int i = 0; i < mas.Length; i++)
             {
                 prod *= mas[i];
-                Thread.Sleep(20);
             }
-            Console.WriteLine(prod);
+            Console.WriteLine($"Произведение элементов: {prod}\n");
         }
         public void Evendigits(Task t)
         {
-            //prod = Math.Abs(prod);
-            //var digits = new List<int>();
-            //while (prod > 0)
-            //{
-            //    int digit = prod % 10;
-            //    prod /= 10;
-            //    digits.Add(digit);
-            //}
-
+            string stringProd = prod.ToString();
+            char[] element = new char[stringProd.Length];
+            for (int i = 0; i < element.Length; i++)
+            {
+                element[i] = stringProd[i];
+            }
+            List<int> evenNumbers = new List<int>();
+            for (int i = 0; i < element.Length; i++)
+            {
+                if ((int)char.GetNumericValue(element[i]) % 2 == 0 && (int)char.GetNumericValue(element[i]) != 0)
+                {
+                     evenNumbers.Add((int)char.GetNumericValue(element[i]));
+                }
+            }
+            Console.Write($"Even numbers from product: ");
+            foreach (var item in evenNumbers)
+            {
+                Console.Write(item + " ");
+            }
         }
 
         public void StartThreads()
         {
             Task full = new Task(MassFull);
             Task prodv = full.ContinueWith(Product);
-
+            Task evendig = prodv.ContinueWith(Evendigits);
             full.Start();
 
-            prodv.Wait();
-
-        }
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Leave hope behind all who enters here....");
-            ContinuationTasks tasks = new ContinuationTasks();
-            tasks.StartThreads();
+            evendig.Wait();
         }
     }
 }
