@@ -8,7 +8,7 @@ namespace _321labs.Lovkov
     class ContinuationTasks
     {
         static int[] mass = new int[20];
-        int massproduct;
+        int massproduct = 1;
 
         public void RandomMass()
         {
@@ -21,42 +21,47 @@ namespace _321labs.Lovkov
             }
             Console.WriteLine();
         }
-        public void ProductMass()
+        public void ProductMass(Task t)
         {
             for (int i = 0; i < mass.Length; i++)
             {
-                massproduct = mass[i] * mass[i + 1];
+                massproduct *= mass[i];
             }
         }
-        public void EvenMass()
+        public void EvenMass(Task t)
         {
-            for (int i = 0; i < massproduct; i++)
+            string stringProd = massproduct.ToString();
+            char[] element = new char[stringProd.Length];
+            for (int i = 0; i < element.Length; i++)
             {
-                if (i % 2 == 0)
+                element[i] = stringProd[i];
+            }
+            List<int> evenNumbers = new List<int>();
+            for (int i = 0; i < element.Length; i++)
+            {
+                if ((int)char.GetNumericValue(element[i]) % 2 == 0 && (int)char.GetNumericValue(element[i]) != 0)
                 {
-                    for (int j = 0; j < mass.Length; j++)
-                    {
-                        mass[j] = i;
-                        Console.WriteLine($"Все чётные числа {mass[j]}");
-                    }
+                    evenNumbers.Add((int)char.GetNumericValue(element[i]));
                 }
+            }
+            Console.Write($"Even numbers from product: ");
+            foreach (var item in evenNumbers)
+            {
+                Console.Write(item + " ");
             }
         }
         public void TaskStarter()
         {
-            Task task1 = new Task(RandomMass);
-            Task task2 = new Task(ProductMass);
-            Task task3 = new Task(EvenMass);
+            Task RandomMas = new Task(RandomMass);
+            Task prodv = RandomMas.ContinueWith(ProductMass);
+            Task evendig = prodv.ContinueWith(EvenMass);
+            RandomMas.Start();
+
+            evendig.Wait();
         }
         //    static void Main(string[] args)
         //    {
-        //        ContinuationTasks g = new ContinuationTasks();
-        //        Task task4 = new Task(g.RandomMass);
-        //        Task task5 = new Task(g.ProductMass);
-        //        Task task6 = new Task(g.EvenMass);
-
-        //        task4.Start();
-        //        task5.Wait();
+        //       
 
         //    }
         //}
