@@ -41,5 +41,23 @@ namespace _321labs.Ydin321._4labka
             }
             return product;
         }
+        private static void ShowEven(long number)
+        {
+            Console.WriteLine(number);
+            string num = number.ToString();
+            long[] b = new long[num.Length];
+            for (int i = 0; i < num.Length; i++)
+            {
+                b[i] = Int64.Parse(num[i].ToString());
+            }
+            Console.WriteLine("Even numbers");
+            for (int i = 0; i < b.Length; i++)
+            {
+                if (b[i] % 2 == 0)
+                {
+                    Console.Write(b[i] + " ");
+                }
+            }
+        }
     }
 }
