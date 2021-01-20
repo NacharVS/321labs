@@ -7,14 +7,14 @@ namespace _321labs
     class ContinuationTasks
     {
         int[] array = new int[20];
-        int product = 1;
+        long product = 1;
         
         public void GenerateNumbers()
         {
             Random rnd = new Random();
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = rnd.Next(1, 30);
+                array[i] = rnd.Next(1,15);
             }
             foreach (var item in array)
             {
@@ -23,6 +23,7 @@ namespace _321labs
         }
         public void ElementProduct()
         {
+            Console.WriteLine();
             for (int i = 0; i < array.Length; i++)
             {
                 product *= array[i];
@@ -32,28 +33,31 @@ namespace _321labs
 
         public void EvenFromProduct()
         {
-            string number = Convert.ToString(product);
-
-            //double buffer;
-            //List<double> evenNumb = new List<double>();
-            //while (number!=0)
-            //{
-            //    buffer = number % 10;
-            //    if (buffer%2 == 0)
-            //    {
-            //        evenNumb.Add(buffer);
-            //        number -= buffer;
-            //    }
-            //    else
-            //    {
-            //        number -= buffer;
-            //    }
-            //}
-            //evenNumb.Reverse();
-            //foreach (var item in evenNumb)
-            //{
-            //    Console.WriteLine(item+" ");
-            //}
+            string stringProduct = product.ToString();
+            char[] numbers = new char[stringProduct.Length];
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                numbers[i] = stringProduct[i];
+            }
+            List<int> evenNumbers = new List<int>();
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if ((int)Char.GetNumericValue(numbers[i])%2==0)
+                {
+                    evenNumbers.Add((int)Char.GetNumericValue(numbers[i]));
+                }
+            }
+            Console.Write($"Even numbers from product: ");
+            foreach (var item in evenNumbers)
+            {
+                Console.Write(item+" ");
+            }
+        }
+        public void Start()
+        {
+            GenerateNumbers();
+            ElementProduct();
+            EvenFromProduct();
         }
     }
 }
