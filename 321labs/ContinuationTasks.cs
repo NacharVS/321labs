@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs
 {
@@ -20,9 +21,10 @@ namespace _321labs
             {
                 Console.Write(numbers[i] + " ");
             }
+            Console.WriteLine();
         }
 
-        public static void GetEvenNumvers()
+        public static void GetEvenNumvers(Task t)
         {
             Console.WriteLine("Even numbers:");
             for (int i = 0; i < numbers.Length; i++)
