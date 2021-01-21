@@ -12,7 +12,7 @@ namespace _321labs.ContinuationTasks
         private static int[] mas = new int[20];
         private static long product = 1;
 
-        public void Filling()
+        public static void Filling()
         {
             Random r = new Random();
 
@@ -26,9 +26,10 @@ namespace _321labs.ContinuationTasks
                 Console.Write($"{item}" + " ");
             }
             Console.WriteLine();
+            Console.WriteLine();
         }
 
-        public void Product(Task t)
+        public static void Product(Task t)
         {
             for (int i = 0; i < mas.Length; i++)
             {
@@ -38,16 +39,16 @@ namespace _321labs.ContinuationTasks
             Console.WriteLine();
         }
 
-        public void EvenNumbers(Task t)
+        public static void EvenNumbers(Task t)
         {
             List<int> evenNum = new List<int>();
             for (int i = 0; i < mas.Length; i++)
             {
-                if (mas[i] % 2 == 0) 
+                if (mas[i] % 2 == 0)
                 {
                     evenNum.Add(mas[i]);
                 }
-                evenNum.Add(mas[i]);
+
             }
 
             Console.Write("Чётные цифры массива: ");
@@ -55,9 +56,10 @@ namespace _321labs.ContinuationTasks
             {
                 Console.Write($"{item}" + " ");
             }
+            Console.WriteLine();
         }
 
-        public void StartTask()
+        public static void StartTask()
         {
             Task task1 = new Task(Filling);
             Task task2 = task1.ContinueWith(Product);
