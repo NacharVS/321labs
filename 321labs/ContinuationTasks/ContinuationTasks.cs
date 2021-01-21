@@ -7,50 +7,64 @@ using _321labs;
 
 namespace _321labs.ContinuationTasks
 {
-    class ContinuationTasks
+    public class ContinuationTasks
     {
-        Task TaskGenerate = new Task(() =>
+        private static int[] mas = new int[20];
+        private static long product = 1;
+
+        public void Filling()
         {
-            int[] mas = new int[20];
             Random r = new Random();
+
             for (int i = 0; i < mas.Length; i++)
             {
-                mas[i] = r.Next(1, 5);
-                // Thread.Sleep(500);
+                mas[i] = r.Next(1, 10);
             }
-            //    Task TaskProduct = new Task(() =>
-            //    {
-            //        int a = 0;
-            //        for (int i = 0; i < mas.Length; i++)
-            //        {
-            //            Console.WriteLine("Сумма элементов:");
-            //            a *= mas[i];
-            //            Console.WriteLine(a);
-            //           // Thread.Sleep(1000);
-            //        }
-            //        Console.WriteLine();
-            //    });
-            //    //Task TaskEven = new Task(() =>
-            //    //{
-            //    //    int a = 0;
-            //    //    for (int i = 0; i < mas.Length; i++)
-            //    //    {
-            //    //        Console.WriteLine("Сумма элементов:");
-            //    //        if ((mas[i]%2)==0)
-            //    //        {
-            //    //            Console.WriteLine(a);
-            //    //            Thread.Sleep(1000);
-            //    //        }
-            //    //    }
-            //    //    Console.WriteLine();
-            //    //});
-            //});
-        });
-        Task task2 = .ContinueWith(Display);
+            Console.Write("Дан массив: ");
+            foreach (var item in mas)
+            {
+                Console.Write($"{item}" + " ");
+            }
+            Console.WriteLine();
+        }
 
-        TaskGenerete.Start();
-             
+        public void Product(Task t)
+        {
+            for (int i = 0; i < mas.Length; i++)
+            {
+                product *= mas[i];
+            }
+            Console.WriteLine($"Произведение элементов массива = {product}");
+            Console.WriteLine();
+        }
 
-        TaskEven.Wait();
+        public void EvenNumbers(Task t)
+        {
+            List<int> evenNum = new List<int>();
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] % 2 == 0) 
+                {
+                    evenNum.Add(mas[i]);
+                }
+                evenNum.Add(mas[i]);
+            }
+
+            Console.Write("Чётные цифры массива: ");
+            foreach (var item in evenNum)
+            {
+                Console.Write($"{item}" + " ");
+            }
+        }
+
+        public void StartTask()
+        {
+            Task task1 = new Task(Filling);
+            Task task2 = task1.ContinueWith(Product);
+            Task task3 = task2.ContinueWith(EvenNumbers);
+            task1.Start();
+            task2.Wait();
+            task3.Wait();
+        }
     }
 }
