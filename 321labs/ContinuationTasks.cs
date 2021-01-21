@@ -35,9 +35,17 @@ namespace _321labs
 
             long a;
             int z = 10;
-
+            int size;
+            if (product > 0)
+            {
+                size = product.ToString().Length;
+            }
+            else
+            {
+                size = product.ToString().Length - 1;
+            }
             Console.WriteLine("Четные цифры:");
-            for (int i = 0; ; i++)
+            for (int i = 0; i < size; i++)
             {
                 a = product % z;
                 if (a % 2 == 0)
@@ -54,12 +62,3 @@ namespace _321labs
         }
     }
 }
-
-//1234567891012
-//asd 2
-//asd 1
-//asd 910
-//asd 7800
-//asd 56000
-//asd 340000
-//asd 1200000
