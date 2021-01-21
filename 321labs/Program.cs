@@ -10,10 +10,12 @@ namespace _321labs
 		static void Main(string[] args)
 		{
 
-			
 
-			;
-			
+			ContinuationTask continuation = new ContinuationTask();
+			ContinuationTask.Start();
+
+
+
 		}
 	}
 }
