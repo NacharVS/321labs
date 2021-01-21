@@ -9,10 +9,10 @@ namespace _321labs
 {
     class ContinuationTasks
     {
-        int[] array = new int[20];
+        static int[] array = new int[20];
         static Random rnd = new Random();
 
-        public void Generator()
+        private static void Generator()
         {
             for (int i = 0; i < array.Length; i++)
             {
@@ -27,36 +27,41 @@ namespace _321labs
             Console.WriteLine();
         }
 
-        public void Product()
+        private static long Product()
         {
-            int sum = 1;
-            int even = 0;
-            for (int i = 0; i < array.Length; i++)
+            long product = 1;
+            foreach (var item in array)
             {
-                sum *= array[i];
+                product *= item;
             }
-            Console.WriteLine("Sum elements array: {0}",sum);
-
-            Console.WriteLine("Even digit: ");
-            while (sum % 10 != 0)
+            return product;
+        }
+        private static void Even(long number)
+        {
+            Console.WriteLine("Sum product of array: {0}",number);
+            Console.Write("Even digit: ");
+            string num = number.ToString();
+            long[] a = new long[num.Length];
+            for (int i = 0; i < a.Length; i++)
             {
-                if (true)
+                a[i] = Convert.ToInt32(num[i].ToString());
+            }
+            for (int i = 0; i < a.Length; i++)
+            {
+                if (a[i] % 2 == 0)
                 {
-
+                    Console.Write(a[i] + " ");
                 }
             }
-            
-            
-
         }
 
-        //public void EvenDigit()
-        //{
-        //    int evenDigit = 0;
-        //    while ()
-        //    {
-
-        //    }
-        //}
+        public void Start()
+        {
+            Task task1 = new Task(Generator);
+            Task<long> task2 = task1.ContinueWith(g => Product());
+            Task task3 = task2.ContinueWith(e => Even(task2.Result));
+            task1.Start();
+            task3.Wait();
+        }
     }
 }

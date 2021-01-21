@@ -8,8 +8,7 @@ namespace _321labs
         static void Main(string[] args)
         {
             ContinuationTasks tasks = new ContinuationTasks();
-            tasks.Generator();
-            tasks.Product();
+            tasks.Start();
 
         }
     }
