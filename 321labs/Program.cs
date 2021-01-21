@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using _321labs.LabGame;
-using _321labs.LabGame.Base;
-using _321labs.LabGame.Heroes;
+using _321labs.ContinuationTasks;
 
 namespace _321labs
 {
@@ -11,7 +9,7 @@ namespace _321labs
     {
        static void Main()
         {
-            ProgramLabGame.MainLabGame();
+            ContinuationTasksProgram.ContinuationTasksMain();
         }
     }
 }
