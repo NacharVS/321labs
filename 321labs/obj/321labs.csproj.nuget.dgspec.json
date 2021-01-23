@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\номе\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj": {}
+    "C:\\Users\\211802\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj": {}
   },
   "projects": {
-    "C:\\Users\\номе\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj": {
+    "C:\\Users\\211802\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\номе\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj",
+        "projectUniqueName": "C:\\Users\\211802\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj",
         "projectName": "321labs",
-        "projectPath": "C:\\Users\\номе\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj",
-        "packagesPath": "C:\\Users\\номе\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\номе\\Desktop\\321labs-Vardanyan\\321labs\\obj\\",
+        "projectPath": "C:\\Users\\211802\\Desktop\\321labs-Vardanyan\\321labs\\321labs.csproj",
+        "packagesPath": "C:\\Users\\211802\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\211802\\Desktop\\321labs-Vardanyan\\321labs\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\номе\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\211802\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -26,7 +31,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -38,7 +42,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -54,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
