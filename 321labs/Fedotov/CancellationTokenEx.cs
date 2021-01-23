@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,17 +9,35 @@ namespace _321labs.Fedotov
 {
     class CancellationTokenEx
     {
-        int[] array = new int[20];
+        int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        static CancellationTokenSource cancellationToken = new CancellationTokenSource();
+        CancellationToken token1 = cancellationToken.Token;
+        CancellationToken token2 = cancellationToken.Token;
+        CancellationToken token3 = cancellationToken.Token;
 
         public void Start()
         {
-            CancellationTokenSource cancellationToken = new CancellationTokenSource();
-            CancellationToken token = cancellationToken.Token;
-            
+            Task task1 = new Task(Generic);
+            Task task2 = new Task(Sum);
+            Task task3 = new Task(ShowEven);
 
+            task1.Wait();
+            task2.Wait();
+            task3.Wait();
+
+            Console.WriteLine("Введите какие операции выбрать(вводить в строку через пробел всего 3 операции):");
+            string str = Console.ReadLine();
+            int[] arrayint = str.Split(' ').Select(int.Parse).ToArray();
+
+            for (int i = 0; i < arrayint.Length; i++)
+            {
+                
+            }
         }
         void Generic()
         {
+            if (token1.IsCancellationRequested) return;
+
             Console.WriteLine("Сгенерировался");
             Random rnd = new Random();
             for (int i = 0; i < array.Length; i++)
@@ -29,26 +48,27 @@ namespace _321labs.Fedotov
             Console.WriteLine();
         }
 
-        int Product()
+        void Sum()
         {
-            int product = 1;
+            if (token2.IsCancellationRequested) return;
+
+            int sum = 0;
             for (int i = 0; i < array.Length; i++)
-                product *= array[i];
-            Console.WriteLine("Умножился: " + product);
-            return product;
+                sum += array[i];
+            Console.WriteLine("Сумма массива: " + sum);
         }
 
-        void ShowEven(int n)
+        void ShowEven()
         {
-            if (n < 0) n *= -1;
+            if (token3.IsCancellationRequested) return;
+
             Console.WriteLine("Четные цифры:");
-            while (n != 0)
+            for (int i = 0; i < array.Length; i++)
             {
-                if ((n % 10) % 2 == 0)
+                if (array[i] % 2 == 0)
                 {
-                    Console.Write(n % 10 + " ");
+                    Console.Write(array[i] + " ");
                 }
-                n /= 10;
             }
         }
     }
