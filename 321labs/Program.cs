@@ -7,10 +7,9 @@ namespace _321labs.Theards
     {
         static void Main(string[] args)
         {
-
-            ContinuationTasks continuationTasks = new ContinuationTasks();
-            continuationTasks.Start();
-                
+            CancellationTokenEx cancellationToken = new CancellationTokenEx();
+            cancellationToken.Start();
+        
         }
     }
 }
