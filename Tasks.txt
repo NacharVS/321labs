@@ -23,3 +23,9 @@ Generate random numbers for each element of array,
 find product of all elements, 
 and get only even digits from the resuilt.
 Create right siquence of Continuation Tasks.
+
+Task 23.01.2021 (DeadLine 25.01.2021) CancellationTokenEx
+Implement 3 different operations in 3 different tasks.
+Each operation has different resource cost(use sleep).
+User may choose each operration single or grouply. 
+Selected operation/s works, other cancels.
