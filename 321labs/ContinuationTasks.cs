@@ -50,12 +50,13 @@ namespace _321labs
                 a = product % z;
                 if (a % 2 == 0)
                 {
+                    if (a < 0)
+                    {
+                        a *= -1;
+                    }
                     Console.WriteLine(a);
                 }
-                else if ((product < 10) && (product > -10))
-                {
-                    return;
-                }
+                
                 product -= a;
                 product /= z;
             }

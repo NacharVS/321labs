@@ -8,22 +8,29 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-           
-            Task task1 = new Task(() => ContinuationTasks.Randomizer());
+            Task task = new Task(() =>
+            {
 
-            Task task2 = task1.ContinueWith(sum => ContinuationTasks.Product());
-            
-            
+            });
 
-            task1.Start();
-            task2.Wait();
-        }
+            task.Start();
+            {
+                //    Task task1 = new Task(() => ContinuationTasks.Randomizer());
 
-        static int Sum(int a, int b) => a + b;
+                //    Task task2 = task1.ContinueWith(sum => ContinuationTasks.Product());
 
-        static void SumConsole(int sum)
-        {
-            Console.WriteLine(sum);
+
+
+                //    task1.Start();
+                //    task2.Wait();
+                //}
+
+                //static int Sum(int a, int b) => a + b;
+
+                //static void SumConsole(int sum)
+                //{
+                //    Console.WriteLine(sum);
+            }
         }
     }
 }
