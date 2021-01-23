@@ -3,7 +3,11 @@ using _321labs.Treads;
 using _321labs.Synh;
 using _321labs.Task_;
 using _321labs.ContinuationTasks;
+
+using _321labs.Canseltas;
+
 namespace _321labs
+	
 {
 	class Program
 	{
@@ -11,10 +15,10 @@ namespace _321labs
 		{
 
 
-			ContinuationTask continuation = new ContinuationTask();
-			ContinuationTask.Start();
+			
 
-
+			CancelTasks canseltask = new CancelTasks();
+			canseltask.start();
 
 		}
 	}
