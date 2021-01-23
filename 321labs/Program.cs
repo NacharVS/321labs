@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace _321labs
 {
@@ -6,7 +8,19 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Leave hope behind all who enters here....");
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancellationTokenSource.Token;
+
+            Console.WriteLine($"Выберите режим: \n" +
+                $"1. Сумма двух чисел \n" +
+                $"2. Проверка на четность \n" +
+                $"3. Возвести в квадрат");
+            int paragraph = Convert.ToInt32(Console.ReadLine());
+            if (true)
+            {
+
+            }
+            Task task1 = new Task(() => CancellationTokenEx.Sum(20, 12));
         }
     }
 }
