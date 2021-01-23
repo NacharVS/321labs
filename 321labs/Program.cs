@@ -11,7 +11,7 @@ namespace _321labs
     { 
         static void Main(string[] args)
         {
-            
+            CancellationTokenEx.CancellationTokenEx.CTE();
         }
     }
 }
