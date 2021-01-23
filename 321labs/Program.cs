@@ -7,9 +7,9 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            ContinuationTasks tasks = new ContinuationTasks();
-            tasks.Start();
-
+            CancellationTokenExa tokenExa = new CancellationTokenExa();
+            tokenExa.Start();
+            
         }
     }
 }
