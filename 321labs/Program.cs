@@ -8,11 +8,8 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Task t = new Task(ContinuationTasks.CreateArray);
-            Task t2 = t.ContinueWith(ContinuationTasks.GetEvenNumvers);
-
-            t.Start();
-            t2.Wait();
+            CancellationTokenSource cancellation = new CancellationTokenSource();
+            CancellationToken token = cancellation.Token;
         }
     }
 }
