@@ -8,12 +8,8 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Task task = new Task(() =>
-            {
+            CancellationTokenEx.Run();
 
-            });
-
-            task.Start();
             {
                 //    Task task1 = new Task(() => ContinuationTasks.Randomizer());
 
