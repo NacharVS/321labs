@@ -22,6 +22,7 @@ namespace _321labs.Mironov
             Console.WriteLine("1-Фибаначи 2-Факториал  3-Степень");
 
             int x = Convert.ToInt32(Console.ReadLine());
+          
             Task task1 = new Task(() => Fibanchi(x, token1));
             Task task2 = new Task(() => Factorial(x, token2));
             Task task3 = new Task(() => Deegree(x, token3));
@@ -29,15 +30,27 @@ namespace _321labs.Mironov
             task1.Start();
             task2.Start();
             task3.Start();
-       
-            Console.WriteLine("Введите номер операции  для её отмены операции или любой другой символ для ее продолжения:");
-            string s = Console.ReadLine();
-            if (s == "1")
-                cancelTokenSource1.Cancel();
-            if (s == "2")
-                cancelTokenSource2.Cancel();
-            if (s == "3")
-                cancelTokenSource3.Cancel();
+
+            while (true)
+            {
+                Console.WriteLine("Введите номер операции  для её отмены операции или любой другой символ для ее продолжения:");
+                string s = Console.ReadLine();
+                if (s == "1")
+                    cancelTokenSource1.Cancel();
+                if (s == "2")
+                    cancelTokenSource2.Cancel();
+                if (s == "3")
+                    cancelTokenSource3.Cancel();
+                if(token1.IsCancellationRequested && token2.IsCancellationRequested && token3.IsCancellationRequested)
+                {
+                    break;
+                }
+            }
+
+            task1.Wait();
+            task2.Wait();
+            task3.Wait();
+
         }
 
         public static void Fibanchi(int x, CancellationToken token)
@@ -47,12 +60,12 @@ namespace _321labs.Mironov
             {
                 if (token.IsCancellationRequested)
                 {
-                    Console.WriteLine("Операция прервана токеном");
+                    Console.WriteLine("Операция фибаначи прервана токеном");
                     return;
                 }
                 Console.WriteLine($"{i} элемент фибначи = {i}");
                 j = i - j;
-                Thread.Sleep(1500);
+                Thread.Sleep(1000);
             }
 
 
@@ -64,13 +77,13 @@ namespace _321labs.Mironov
             {
                 if (token.IsCancellationRequested)
                 {
-                    Console.WriteLine("Операция прервана токеном");
+                    Console.WriteLine("Операция факториал прервана токеном");
                     return;
                 }
 
                 result *= i;
                 Console.WriteLine($"Факториал числа {x} равен {result}");
-                Thread.Sleep(1000);
+                Thread.Sleep(1500);
             }
         }
 
@@ -78,6 +91,10 @@ namespace _321labs.Mironov
         {
             int sum = x;
             int i = 2;
+            if (token.IsCancellationRequested)
+            {
+                Console.WriteLine("Операция степени прервана токеном");
+            }
             while (token.IsCancellationRequested==false)
             {
                 sum *= x;
