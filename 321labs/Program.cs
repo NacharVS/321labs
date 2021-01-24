@@ -7,8 +7,7 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            CancellationTokenExa tokenExa = new CancellationTokenExa();
-            tokenExa.Start();
+            CancellationTokenExa.Start();
             
         }
     }
