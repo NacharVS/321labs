@@ -54,6 +54,7 @@ namespace _321labs
                 if (token2.IsCancellationRequested)
                 {
                     Console.WriteLine("Operation Division aborted");
+                    return;
                 }
                 division = division / 2;
                 Console.WriteLine("Division: {0}", division);
@@ -85,15 +86,16 @@ namespace _321labs
             taskSum.Start();
             taskDiv.Start();
             taskProd.Start();
-
             stop = Console.ReadLine();
+           
             if (stop == "1")
                 cancelTokenSource1.Cancel();
             if (stop == "2")
                 cancelTokenSource2.Cancel();
             if (stop == "3")
                 cancelTokenSource3.Cancel();
-
+            
+            
             taskSum.Wait();
             taskDiv.Wait();
             taskProd.Wait();
