@@ -9,7 +9,8 @@ namespace _321labs
     {
         Random rnd = new Random();
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-      
+        CancellationTokenSource cancellationTokenSource1 = new CancellationTokenSource();
+        CancellationTokenSource cancellationTokenSource2 = new CancellationTokenSource();
         int x;
         int y;
         int a;
@@ -31,15 +32,15 @@ namespace _321labs
                     return;
                 }
                 f++;
-                Console.WriteLine(f);
-                Thread.Sleep(1000);
+                Console.WriteLine("Это первое кароче "+ f);
+                Thread.Sleep(3000);
             }
 
             Console.WriteLine($"Количество итераций цикла = {f}");
         }
         public void Array()
         {
-            CancellationToken Token1 = cancellationTokenSource.Token;
+            CancellationToken Token1 = cancellationTokenSource1.Token;
             int[] g = new int[5];
             for (int i = 0; i < g.Length; i++)
             {
@@ -48,13 +49,13 @@ namespace _321labs
                     return;
                 }
                 g[i] = rnd.Next(1, 20);
-                Console.WriteLine($"Добавлен элемент {g[i]}");
-                Thread.Sleep(1000);
+                Console.WriteLine($"Это второе {g[i]}");
+                Thread.Sleep(3000);
             }
         }
         public void Product()
         {
-            CancellationToken Token2 = cancellationTokenSource.Token;
+            CancellationToken Token2 = cancellationTokenSource2.Token;
             x = 10;
             y = rnd.Next(1,5);
             for (int i = 0; i < y; i++)
@@ -64,7 +65,9 @@ namespace _321labs
                     return;
                 }
                 x *= 10;
-                Console.WriteLine(x);
+                
+                Console.WriteLine("Чето в третьем " + x);
+                Thread.Sleep(3000);
             }
 
         }
@@ -76,31 +79,34 @@ namespace _321labs
           
             Task task1 = new Task(Array);
             task1.Start();
+         
 
             Task task2 = new Task(Product);
             task2.Start();
 
-            string s = Console.ReadLine();
-            if (s == "1")
+            while (true)
             {
-                Console.WriteLine("Операция остановлена");
-                cancellationTokenSource.Cancel();
+                string s = Console.ReadLine();
+                if (s=="1")
+                {
+                    Console.WriteLine("Операция 1 остановлена");
+                    cancellationTokenSource.Cancel();
+                }
+                if (s == "2")
+                {
+                    Console.WriteLine("Операция 2 остановлена");
+                    cancellationTokenSource1.Cancel();
+
+                }
+                if (s == "3")
+                {
+                    Console.WriteLine("Операция 3 остановлена");
+                    cancellationTokenSource2.Cancel();
+
+                }
 
             }
-            string s1 = Console.ReadLine();
-            if (s1 == "2")
-            {
-                Console.WriteLine("Операция остановлена");
-                cancellationTokenSource.Cancel();
-
-            }
-            string s2 = Console.ReadLine();
-            if (s2 == "3")
-            {
-                Console.WriteLine("Операция остановлена");
-                cancellationTokenSource.Cancel();
-
-            }
+                       
 
         }
     }
