@@ -14,6 +14,7 @@ namespace _321labs.Garifullin.CancellationTokenEx
         int sum;
         int dif;
         long prod = 1;
+        
         public void Sum()
         {
             for (int i = 0; i < c; i++)
