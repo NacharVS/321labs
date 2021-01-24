@@ -10,10 +10,9 @@ namespace _321labs.Fedotov
     class CancellationTokenEx
     {
         int[] array = new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-        static CancellationTokenSource cancellationToken = new CancellationTokenSource();
-        CancellationToken token1 = cancellationToken.Token;
-        CancellationToken token2 = cancellationToken.Token;
-        CancellationToken token3 = cancellationToken.Token;
+        static CancellationTokenSource token1 = new CancellationTokenSource();
+        static CancellationTokenSource token2 = new CancellationTokenSource();
+        static CancellationTokenSource token3 = new CancellationTokenSource();
 
         public void Start()
         {
@@ -21,29 +20,48 @@ namespace _321labs.Fedotov
             Task task2 = new Task(Sum);
             Task task3 = new Task(ShowEven);
 
+            task1.Start();
+            task2.Start();
+            task3.Start();
+            
+
+            string str = Console.ReadLine();
+            int[] arrayInt = {1, 2, 3};
+            int[] arrayIntR = str.Split(' ').Select(int.Parse).ToArray();
+            IEnumerable<int> arrayToken = arrayInt.Except(arrayIntR); 
+
+            foreach (int item in arrayToken)
+            {
+                switch (item)
+                {
+                    case 1:
+                        token1.Cancel();
+                        break;
+
+                    case 2:
+                        token2.Cancel();
+                        break;
+
+                    case 3:
+                        token3.Cancel();
+                        break;
+                }
+            }
+
             task1.Wait();
             task2.Wait();
             task3.Wait();
-
-            Console.WriteLine("Введите какие операции выбрать(вводить в строку через пробел всего 3 операции):");
-            string str = Console.ReadLine();
-            int[] arrayint = str.Split(' ').Select(int.Parse).ToArray();
-
-            for (int i = 0; i < arrayint.Length; i++)
-            {
-                
-            }
         }
         void Generic()
         {
             if (token1.IsCancellationRequested) return;
 
-            Console.WriteLine("Сгенерировался");
             Random rnd = new Random();
             for (int i = 0; i < array.Length; i++)
             {
                 array[i] = rnd.Next(1, 10);
-                Console.Write(array[i] + " ");
+                Console.WriteLine("Сгенерировался " + array[i]);
+                Thread.Sleep(1000);
             }
             Console.WriteLine();
         }
@@ -54,7 +72,10 @@ namespace _321labs.Fedotov
 
             int sum = 0;
             for (int i = 0; i < array.Length; i++)
+            {
                 sum += array[i];
+                Thread.Sleep(1000);
+            }
             Console.WriteLine("Сумма массива: " + sum);
         }
 
@@ -62,12 +83,12 @@ namespace _321labs.Fedotov
         {
             if (token3.IsCancellationRequested) return;
 
-            Console.WriteLine("Четные цифры:");
             for (int i = 0; i < array.Length; i++)
             {
                 if (array[i] % 2 == 0)
                 {
-                    Console.Write(array[i] + " ");
+                    Console.WriteLine("Четные цифры:" + array[i]);
+                    Thread.Sleep(1000);
                 }
             }
         }
