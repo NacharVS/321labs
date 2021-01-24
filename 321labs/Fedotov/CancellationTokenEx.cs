@@ -19,7 +19,6 @@ namespace _321labs.Fedotov
             Task task1 = new Task(Generic);
             Task task2 = new Task(Sum);
             Task task3 = new Task(ShowEven);
-
             task1.Start();
             task2.Start();
             task3.Start();
