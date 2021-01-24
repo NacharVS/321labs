@@ -7,8 +7,7 @@ namespace _321labs.Theards
     {
         static void Main(string[] args)
         {
-            CancellationTokenEx cancellationToken = new CancellationTokenEx();
-            cancellationToken.Start();
+            
         
         }
     }
