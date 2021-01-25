@@ -22,9 +22,9 @@ namespace _321labs
             }
             else
             {
-                x *= x;
-                Thread.Sleep(2000);
-                Console.WriteLine(x);
+                int res = x * x;
+                Thread.Sleep(1000);
+                Console.WriteLine($"{x} * {x} = {res}");
             }
         }
 
@@ -56,8 +56,8 @@ namespace _321labs
                 }
                 else 
                 {
-                    double procent = x * (33/100);
-                    Thread.Sleep(3500);
+                    double procent = x * 0.33;
+                    Thread.Sleep(1000);
                     Console.WriteLine($"33 процента от числа {x} равно {procent}");
                 }
         }
@@ -67,8 +67,6 @@ namespace _321labs
             Task t1 = new Task(Step2);
             Task t2 = new Task(EvenDigits);
             Task t3 = new Task(Procent);
-            t1.Start();
-            t3.Start();
             Console.WriteLine("Нажмите" +
                 "\n1 - квадратный корень числа" +
                 "\n2 - четное ли число" +
@@ -78,54 +76,74 @@ namespace _321labs
                 "\n6 - 33% от рандомнного числа + четное ли число" +
                 "\n7 - задействовать все 3 метода");
 
-            string s = Console.ReadLine();
-            switch (s)
-            {
-                case "1":
-                    {
-                        t1.Start();
-                        break;
-                    };
-                case "2":
-                    {
-                        t2.Start();
-                        break;
-                    };
-                case "3":
-                    {
-                        t3.Start();
-                        break;
-                    };
-                case "4":
-                    {
-                        t1.Start();
-                        t2.Start();
-                        break;
-                    }
-                case "5":
-                    {
-                        t1.Start();
-                        t3.Start();
-                        break;
-                    }
-                case "6":
-                    {
-                        t2.Start();
-                        t3.Start();
-                        break;
-                    }
-                case "7":
-                    {
-                        t1.Start();
-                        t2.Start();
-                        t3.Start();
-                        break;
-                    }
+           
+            while(true)
+            { 
+                string s = Console.ReadLine();
+                switch (s)
+                {
+                    case "1":
+                        {
+                            t1.Start();
+                            t1.Wait();
+                            break;
+                        };
+                    case "2":
+                        {
+                            t2.Start();
+                            t2.Wait();
+                            break;
+                        };
+                    case "3":
+                        {
+                            t3.Start();
+                            t3.Wait();
+                            break;
+                        };
+                    case "4":
+                        {
+                            t1.Start();
+                            t2.Start();
+                            t1.Wait();
+                            t2.Wait();
+                            break;
+                        }
+                    case "5":
+                        {
+                            t1.Start();
+                            t3.Start();
+                            t1.Wait();
+                            t3.Wait();
+                            break;
+                        }
+                    case "6":
+                        {
+                            t2.Start();
+                            t3.Start();
+                            t2.Wait();
+                            t3.Wait();
+                            break;
+                        }
+                    case "7":
+                        {
+                            t1.Start();
+                            t2.Start();
+                            t3.Start();
+                            t1.Wait();
+                            t2.Wait();
+                            t3.Wait();
 
-                default:
-                    break;
+                            break;
+                        }
+                    case "x":
+                        {
+                            return;
+                        }
+
+                    default:
+                        break;
+                }
             }
-
         }
     }
 }
