@@ -47,62 +47,35 @@ namespace _321labs
 
         public static void Start()
         {
-            CancellationTokenSource cancellation = new CancellationTokenSource();
-            CancellationToken token = cancellation.Token;
+            CancellationTokenSource token1 = new CancellationTokenSource();
+            CancellationTokenSource token2 = new CancellationTokenSource();
+            CancellationTokenSource token3 = new CancellationTokenSource();
 
             Task t1 = new Task(Sum);
             Task t2 = new Task(Max);
             Task t3 = new Task(SortArray);
-            Info();
+            t1.Start();
+            t2.Start();
+            t3.Start();
+
             int num = Convert.ToInt32(Console.ReadKey());
+            switch (num)
+            {
+                case 1:
+                    token1.Cancel();
+                    break;
 
+                case 2:
+                    token2.Cancel();
+                    break;
 
-            //switch (num)
-            //{
-            //    case 1:
-            //        t1.Start();
-            //        t2.Start();
-            //        t3.Start();
-            //        break;
-            //    case 2:
-            //        t1.Start();
-            //        t2.Start();
-            //        break;
-            //    case 3:
-            //        t2.Start();
-            //        t3.Start();
-            //        break;
-            //    case 4:
-            //        t1.Start();
-            //        t3.Start();
-            //        break;
-            //    case 5:
-            //        t1.Start();
-            //        break;
-            //    case 6:
-            //        t2.Start();
-            //        break;
-            //    case 7:
-            //        t3.Start();
-            //        break;
-            //    default:
-            //        t1.Start();
-            //        t2.Start();
-            //        t3.Start();
-            //        break;
-            //}
-
-        }
-        private static void Info()
-        {
-            Console.WriteLine("Choose which function tou want to run:");
-            Console.WriteLine("1 - All");
-            Console.WriteLine("2 - Sum and Max");
-            Console.WriteLine("3 - Max and Sort");
-            Console.WriteLine("4 - Sum and Sort");
-            Console.WriteLine("5 - Sum");
-            Console.WriteLine("6 - Max");
-            Console.WriteLine("7 - Sort");
+                case 3:
+                    token3.Cancel();
+                    break;
+            }
+            t1.Wait();
+            t2.Wait();
+            t3.Wait();
         }
     }
 }
