@@ -22,6 +22,7 @@
     <Compile Include="Game\IBarak.cs" />
     <Compile Include="Game\Iunit.cs" />
     <Compile Include="Game\Tower.cs" />
+    <Compile Include="Game\Users info\User.cs" />
   </ItemGroup>
 
 </Project>
