@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs.Fedotov
 {
@@ -13,6 +14,11 @@ namespace _321labs.Fedotov
         public int FinishedMatches { get; set; }
         public int Victories { get; set; }
         public int GamePoints { get; set; }
+
+        public GameCreationStart()
+        {
+            
+        }
 
         public GameCreationStart(string userName, DateTime dayOfBirth, int finishedMatches, int victories, int gamePoints)
         {
@@ -26,7 +32,13 @@ namespace _321labs.Fedotov
 
         public static GameCreationStart SearchByName(string name)
         {
-            return Players.Find(p => p.UserName == name);
+            GameCreationStart player = new GameCreationStart();
+            Parallel.ForEach(Players, (p) =>
+            {
+                if (p.UserName == name)
+                    player = p;
+            });
+            return player;
         }
 
         public static int GameStat()
