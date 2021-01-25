@@ -8,6 +8,7 @@ namespace _321labs.Game
     {
         bool IsDisabled { get; }
         int EnergyConsumption { get; }
+        bool IsDestroed { get; }
         void Consume();
         void Switch();
     }

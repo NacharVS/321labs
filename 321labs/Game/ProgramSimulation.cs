@@ -4,13 +4,15 @@ using System.Text;
 
 namespace _321labs.Game
 {
+    delegate void MatchHandler(Player p1, Player p2);
     class ProgramSimulation
     {
-        static void Start()
+        public static event MatchHandler match; 
+        static void Start(Player p1, Player p2)
         {
+            match(p1,p2);
             //пример работы программы
-            Player p1 = new Player(100, 100);
-            Player p2 = new Player(-100, -100);
+            
 
             Worker wk = new Worker(100, 100);
             p1.StartingCC.Produce(wk);

@@ -10,8 +10,21 @@ namespace _321labs.Game
         double y;
         int hp = 1000;
         bool isDisabled = false;
+        bool isDestroed = false;
         public string Name { get => "Генератор"; }
-        public int Hp { get => hp; set => hp = value; }
+        public int Hp
+        {
+            get { return hp; }
+            set
+            {
+                hp = value;
+                if (hp <= 0)
+                {
+                    isDestroed = true;
+                }
+            }
+        }
+        public bool IsDestroed { get; }
         public int Armor { get => 4; }
         public int EnergyConsumption { get => 5; }
         public int EnergyCost { get => 200; }
