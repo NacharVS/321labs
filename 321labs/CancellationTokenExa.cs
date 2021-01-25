@@ -86,6 +86,7 @@ namespace _321labs
             taskSum.Start();
             taskDiv.Start();
             taskProd.Start();
+            start:
             stop = Console.ReadLine();
            
             if (stop == "1")
@@ -94,7 +95,8 @@ namespace _321labs
                 cancelTokenSource2.Cancel();
             if (stop == "3")
                 cancelTokenSource3.Cancel();
-            
+            stop = "";
+            goto start;
             
             taskSum.Wait();
             taskDiv.Wait();
