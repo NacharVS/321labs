@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +8,7 @@ namespace _321labs
 {
     class CancellationTokenEx
     {
+
         public static void Sum(double num1, double num2)
         {
             Console.WriteLine($"Сумма: {num1 + num2}.");
@@ -24,7 +27,7 @@ namespace _321labs
         }
         public static void Squared(int num)
         {
-            Console.WriteLine(Math.Sqrt(num));
+            Console.WriteLine(num * num);
         }
     }
 }
