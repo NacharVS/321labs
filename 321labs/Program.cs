@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using _321labs.ContinuationTasks;
+using System.Threading;
+using System.Threading.Tasks;
+using _321labs.CansalationTask;
 
 namespace _321labs
 {
@@ -9,7 +11,8 @@ namespace _321labs
     {
        static void Main()
         {
-            ContinuationTasksProgram.ContinuationTasksMain();
+            CansalationProgram.CansalationMain();
+            
         }
     }
 }
