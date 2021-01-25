@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+
 namespace _321labs.Koshelev
 {
     class GameCreationStart
@@ -24,9 +26,16 @@ namespace _321labs.Koshelev
         public int Victories { get; set; }
         public int GamePoints { get; set; }
 
-        public static GameCreationStart SearchByName(string userName)
+        public static List<GameCreationStart> SearchByName(string userName)
         {
-            return game.Find(u => u.UserName == userName);
+            List<GameCreationStart> gameCreationStarts = new List<GameCreationStart>();
+            Parallel.ForEach(game, g => 
+            {   if(g.UserName == userName)
+                {
+                    gameCreationStarts.Add(g);
+                }
+            });
+            return gameCreationStarts;
         }
 
         public static int GameStat()

@@ -20,7 +20,7 @@ namespace _321labs
             GameCreationStart user6 = new GameCreationStart("Vasa", new DateTime(2009, 01, 11), 1407, 698, 1593);
 
             var userSearch = GameCreationStart.SearchByName("Kane");
-            Console.WriteLine(userSearch.UserName + " " + userSearch.FinishedMatches);
+            userSearch.ForEach(user => Console.WriteLine(user.UserName + " " + user.FinishedMatches));
             Console.WriteLine(GameCreationStart.GameStat());
         }
     }
