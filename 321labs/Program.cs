@@ -12,6 +12,9 @@ namespace _321labs
             //CancellationToken token = cancellation.Token;
 
             //Task t1 = new Task(CancellTokenEx.Sum);
+
+            Console.WriteLine(GameCreationStart.SearchByName("Oleg"));
+            GameCreationStart.GameStat();
         }
     }
 }
