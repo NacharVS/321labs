@@ -29,3 +29,11 @@ Implement 3 different operations in 3 different tasks.
 Each operation has different resource cost(use sleep).
 User may choose each operration single or grouply. 
 Selected operation/s works, other cancels.
+
+Task 25.01.2021 (Deadline 27.01.2021) GameCreationStart
+Create class for game user with fields:
+- UserName; - DayOfBirth; -FinishedMatches, - Victories, - gamePoints;
+Implement required properties.
+Inplement methods:
+- SearchByName(gets string name) returns required object stats;
+- GameStat() returns all statistics from game(all matches quantity)
