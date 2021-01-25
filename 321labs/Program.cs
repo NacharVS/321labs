@@ -15,10 +15,10 @@ namespace _321labs
 		{
 
 
-			
 
-			CancelTasks canseltask = new CancelTasks();
-			canseltask.start();
+
+			CancellationTokenEx canseltask = new CancellationTokenEx();
+			CancellationTokenEx.Start();
 
 		}
 	}
