@@ -17,7 +17,7 @@ namespace _321labs
             GameCreationStart g5 = new GameCreationStart("Y", DateTime.Today, 50, 25, 1000);
             GameCreationStart g6 = new GameCreationStart("Vaskin", DateTime.Today, 15, 10, 900);
 
-            Console.WriteLine($"GameStat: {GameCreationStart.GameStat()}");
+            Console.WriteLine($"GameStat: {GameCreationStart.GameStat()} ");
             GameCreationStart player = GameCreationStart.SearchByName("CHERT");
             Console.WriteLine(player.UserName + " Victories:" + player.Victories);
         }
