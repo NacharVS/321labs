@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using _321labs.Game;
 
 namespace _321labs
 {
@@ -9,11 +10,17 @@ namespace _321labs
     {   static int[] arr = new int[20];
         static void Main(string[] args)
         {
-            List<Game.GameCreationStart> listHero = new List<Game.GameCreationStart>();
-            Game.GameCreationStart hero1 = new Game.GameCreationStart("Smelev Ranil", new DateTime(2002, 09, 03), 18, 4, 120);
-            listHero.Add(hero1);
-            Console.WriteLine(Game.GameCreationStart.SearchByName(listHero[0]));
+            GameCreationStart user1 = new GameCreationStart("Andrey", new DateTime(2002, 07, 13), 167, 34, 867);
+            GameCreationStart user2 = new GameCreationStart("Il'ya", new DateTime(2000, 01, 23), 577, 353, 678);
+            GameCreationStart user3 = new GameCreationStart("Rob", new DateTime(2004, 10, 30), 343, 1588, 453);
+            GameCreationStart user4 = new GameCreationStart("Vlamer", new DateTime(1999, 05, 15), 325, 375, 133);
+            GameCreationStart user5 = new GameCreationStart("Targarian", new DateTime(1995, 09, 01), 770, 435, 2625);
+            GameCreationStart user6 = new GameCreationStart("Vesteros", new DateTime(2009, 11, 11), 1407, 698, 1593);
 
+            var userSearch = GameCreationStart.SearchByName("Kane");
+            userSearch.ForEach(user => Console.WriteLine(user.UserName + " " + user.FinishedMatches));
+            Console.WriteLine(GameCreationStart.GameStat());
+            
             //CancellationTokenEx.Start();
             //ContinuationTasks.Start(arr);
             //locker.loker.Start();

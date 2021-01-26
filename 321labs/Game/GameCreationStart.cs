@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs.Game
 {
     class GameCreationStart
     {
+        static List<GameCreationStart> game = new List<GameCreationStart>();
+
         string userName;           //Имя пользователя.
         DateTime dayOfBirth;      //День рождения.
         int finishedMatches;     //Законченные матчи.
@@ -27,21 +31,22 @@ namespace _321labs.Game
             this.gamePoints = gamePoints;
         }
 
-        public static GameCreationStart SearchByName(GameCreationStart hero)
+        public static List<GameCreationStart> SearchByName(string userName)
         {
-            Console.WriteLine($"Имя пользователя - {hero.UserName}" +
-                              $"\nДень рождения - {hero.DayOfBirth}" +
-                              $"\nЗаконченные матчи - {hero.FinishedMatches}" +
-                              $"\nПобеды - {hero.victories}" +
-                              $"\nИгровые очки - {hero.GamePoints}");
-            Console.WriteLine(); 
-
-            return hero;
+            List<GameCreationStart> gameCreationStarts = new List<GameCreationStart>();
+            Parallel.ForEach(game, g =>
+            {
+                if (g.UserName == userName)
+                {
+                    gameCreationStarts.Add(g);
+                }
+            });
+            return gameCreationStarts;
         }
 
-        public void GameStat()
+        public static int GameStat()
         {
-            
+            return game.Sum(f => f.FinishedMatches);
         }
     }
 }
