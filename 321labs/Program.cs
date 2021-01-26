@@ -13,8 +13,8 @@ namespace _321labs
 
              Console.WriteLine("Leave hope behind all who enters here....");
             
-            CancellationTokenEx.Start();
             
+
         }
     }
 }
