@@ -34,6 +34,12 @@ Task 25.01.2021 (Deadline 27.01.2021) GameCreationStart
 Create class for game user with fields:
 - UserName; - DayOfBirth; -FinishedMatches, - Victories, - gamePoints;
 Implement required properties.
-Inplement methods:
+Implement methods:
 - SearchByName(gets string name) returns required object stats;
 - GameStat() returns all statistics from game(all matches quantity)
+
+Task 26.01.2021(Deadline 29.01.2021) asyncStart
+Create 3 arrays. Two of them for generation random value, third for resuilts.
+Generate random integer values for fist and second array, solve summ of arrays(a[0] + b[0]) and 
+save resuilts in third array. After that sort recieved array by increase.
+Do operations by async methods.
