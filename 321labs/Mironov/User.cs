@@ -44,9 +44,15 @@ namespace _321labs.Mironov.Game.Class
             return result;
         }
 
-        public int GameStat()
+        public static int GameStat()
         {
-            return this.FinishedMatches;
+            int sum = 0;
+            foreach (var user in userList)
+            {
+                sum += user.FinishedMatches;
+            }
+
+            return sum;
         }
 
 
