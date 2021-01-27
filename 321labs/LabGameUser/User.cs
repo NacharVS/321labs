@@ -22,6 +22,7 @@ namespace _321labs.LabGameUser
             this.finishedMatches = finishedMatches;
             this.victories = victories;
             this.gamePoints = gamePoints;
+            Users.Add(this);
         }
 
         public string UserName { get => userName; set => userName = value; }
