@@ -8,12 +8,12 @@ namespace _321labs
 {
     class User
     {
-        string userName;
-        DateTime dayOfBirth;
-        int finishedMatch;
-        int vicroties;
-        double gamePoint;
-        List<User> users = new List<User> { };
+        private string userName;
+        private DateTime dayOfBirth;
+        private int finishedMatch;
+        private int vicroties;
+        private double gamePoint;
+        private static List<User> users = new List<User> { };
 
         public string UserName { get => userName; set => userName = value; }
         public DateTime DayOfBirth { get => dayOfBirth; set => dayOfBirth = value; }
@@ -21,26 +21,37 @@ namespace _321labs
         public int Vicroties { get => vicroties; set => vicroties = value; }
         public double GamePoint { get => gamePoint; set => gamePoint = value; }
 
-        public User(string userName, DateTime dayOfBirth, int finishedMatch, int victories, double gamePoint)
+        public User(string userName, DateTime dateTime, int finishMatches, int vicroties, int gamePoint)
         {
             UserName = userName;
-            DayOfBirth = dayOfBirth;
-            FinishedMatch = finishedMatch;
-            Vicroties = victories;
+            DayOfBirth = dateTime;
+            FinishedMatch = finishMatches;
+            Vicroties = vicroties;
             GamePoint = gamePoint;
             users.Add(this);
         }
         
-        public void ByName(string nameUser)
+        public static List<User> ByName(string name)
         {
-            Parallel.ForEach(users, item =>
+            List<User> man = new List<User>();
+            Parallel.ForEach(users, p =>
             {
-                if (item.UserName == nameUser)
+                if (p.userName == name)
                 {
-                    Console.WriteLine();
+                    man.Add(p);
                 }
             });
-            
+            return man;
+        }
+        public static int GameStats()
+        {
+            int sum = 0;
+            foreach (var user in users)
+            {
+                sum += user.FinishedMatch;
+            }
+
+            return sum;
         }
     }
 }
