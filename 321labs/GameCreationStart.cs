@@ -8,12 +8,10 @@ namespace _321labs
     class GameCreationStart
     {
         string userName;
-        DateTime dayOfBirth;
         int finishedMatches;
         int victories;
         int gamePoints;
         public string UserName { get; set; }
-        public DateTime DayOfBirth { get; set; }
         public int FinishedMatches { get; set; }
         public int Victories { get; set; }
         public int GamePoints { get; set; }
@@ -22,25 +20,27 @@ namespace _321labs
         public GameCreationStart(string userName, int finishedMatches, int victories, int gamePoints)
         {
             UserName = userName;
-            //DayOfBirth = dayOfBirth;
             FinishedMatches = finishedMatches;
             Victories = victories;
             GamePoints = gamePoints;
             usersList.Add(this);
         }
 
-        public static string SearchByName(string userName)
+        public static List<GameCreationStart> SearchByName(string userName)
         {
-            string stats = null;
+            List<GameCreationStart> players = new List<GameCreationStart>();
             Parallel.ForEach(usersList, user =>
             {
                 if (user.userName == userName)
                 {
-                    stats = $"User: {userName} -- FinishedMatches:{user.FinishedMatches} -- Victories:{user.Victories} " +
-                     $"-- GamePoints:{user.GamePoints}";
+                    players.Add(user);
                 }
             });
-            returnn
+            return players;
+        }
+        public string GameStat()
+        {
+            return $"Finished matches: {this.FinishedMatches} | Victories: {this.Victories}";
         }
         
     }
