@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using _321labs.CansalationTask;
+using _321labs.AsyncMethods;
 
 namespace _321labs
 {
@@ -11,8 +11,8 @@ namespace _321labs
     {
        static void Main()
         {
-            CansalationProgram.CansalationMain();
-            
+            AsyncMethodsProgram.AsyncMethodsMain();
+            Console.ReadLine();
         }
     }
 }
