@@ -6,6 +6,7 @@ using _321labs.TaskLaba3;
 using _321labs.ContinuationTasks;
 using _321labs.CancellationTokenEx;
 using _321labs.Game;
+using _321labs.asyncStart;
 
 
 
@@ -20,7 +21,8 @@ namespace _321labs
             //Console.WriteLine("Leave hope behind all who enters here....");
             //TaskLaba.MainTask();
             //ContinuationTask.MainTask();
-            CancellationTokenEx.CancellationTokenEx.MainCancellationTokenEx();
+            //CancellationTokenEx.CancellationTokenEx.MainCancellationTokenEx();
+            Laba7.MainLaba7();
           
            
         }

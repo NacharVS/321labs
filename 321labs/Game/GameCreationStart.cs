@@ -91,7 +91,7 @@ namespace _321labs.Game
         }
         public static void GameStat()
         {
-            return gameCreationStarts.Sum(u=>u.finishedMatches);
+             gameCreationStarts.Sum(u=>u.finishedMatches);
         }
 
 
