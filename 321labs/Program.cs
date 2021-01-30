@@ -8,8 +8,9 @@ namespace _321labs
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(GameCreationStart.SearchByName("Oleg"));
-            GameCreationStart.GameStat();
+            AsyncStart async = new AsyncStart();
+            async.Start();
+            Console.ReadKey();
         }
     }
 }
