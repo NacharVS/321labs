@@ -22,6 +22,7 @@ namespace _321labs
             //Console.WriteLine(player.UserName + " Victories:" + player.Victories);
             AsyncStart threads = new AsyncStart();
             threads.Start();
+            Console.ReadLine();
         }
     }
 }

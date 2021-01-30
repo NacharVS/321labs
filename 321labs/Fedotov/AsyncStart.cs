@@ -14,10 +14,13 @@ namespace _321labs.Fedotov
 
         public void Start()
         {
-            
+            GenericArray1Async();
+            GenericArray2Async();
+            SummAsync();
+            SortAsync();
         }
 
-        async void GenericArray1()
+        async void GenericArray1Async()
         {
             await Task.Run(() =>
             {
@@ -29,37 +32,51 @@ namespace _321labs.Fedotov
             });
         }
 
-        void GenericArray2()
+        async void GenericArray2Async()
         {
-            lock (new object())
+            await Task.Run(() =>
             {
                 Random rnd = new Random();
                 for (int i = 0; i < 10; i++)
                 {
                     array2[i] = rnd.Next(0, 100);
                 }
-            }
+            });
         }
 
-        void Summ()
+        async void SummAsync()
         {
-            Console.WriteLine("Thread 1");
-            foreach (int item in array1)
+            await Task.Run(() =>
             {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nThread 2");
-            foreach (int item in array2)
+                Console.WriteLine("Thread 1");
+                foreach (int item in array1)
+                {
+                    Console.Write(item + " ");
+                }
+
+                Console.WriteLine("\nThread 2");
+                foreach (int item in array2)
+                {
+                    Console.Write(item + " ");
+                }
+
+                Console.WriteLine("\nResult");
+                for (int i = 0; i < 10; i++)
+                {
+                    array3[i] = array1[i] + array2[i];
+                    Console.Write(array3[i] + " ");
+                }
+
+                Console.WriteLine();
+            });
+        }
+
+        async void SortAsync()
+        {
+            await Task.Run(() =>
             {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine("\nResult");
-            for (int i = 0; i < 10; i++)
-            {
-                array3[i] = array1[i] + array2[i];
-                Console.Write(array3[i] + " ");
-            }
-            Console.WriteLine();
+                Array.Sort(array3);
+            });
         }
     }
 }
