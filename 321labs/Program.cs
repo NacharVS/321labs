@@ -10,18 +10,58 @@ namespace _321labs
 {
     class Program
     {
+        static object locker = new object();
+        private static int[] mas1 = new int[10];
+        private static int[] mas2 = new int[10];
+        private static int[] mas3 = new int[10];
+
         static void Main(string[] args)
         {
-            GameCreationStart user1 = new GameCreationStart("Pasha", new DateTime(2019, 02, 20), 153, 76, 350);
-            GameCreationStart user2 = new GameCreationStart("Valera", new DateTime(2018, 10, 10), 314, 203, 783);
-            GameCreationStart user3 = new GameCreationStart("Kane", new DateTime(2008, 11, 04), 2302, 1843, 4871);
-            GameCreationStart user4 = new GameCreationStart("Lil work", new DateTime(2014, 03, 20), 801, 375, 1332);
-            GameCreationStart user5 = new GameCreationStart("Pimp", new DateTime(2011, 04, 30), 1145, 743, 2105);
-            GameCreationStart user6 = new GameCreationStart("Vasa", new DateTime(2009, 01, 11), 1407, 698, 1593);
+            RandomIntNumForMas1(mas1);
+            RandomIntNumForMas2(mas2);
+            SumMas();
+            Console.ReadKey();
+        }
+        static async void RandomIntNumForMas1(int[] mas)
+        {
+            await Task.Run(() =>
+            {
+                Random random = new Random();
+                lock(locker)
+                {
+                    for (int i = 0; i < mas.Length; i++)
+                    {
+                        mas[i] = random.Next(0, 50);
+                    }
+                }
+            });
+        }
+        static async void RandomIntNumForMas2(int[] mas)
+        {
 
-            var userSearch = GameCreationStart.SearchByName("Kane");
-            userSearch.ForEach(user => Console.WriteLine(user.UserName + " " + user.FinishedMatches));
-            Console.WriteLine(GameCreationStart.GameStat());
+            await Task.Run(() =>
+            {
+                Random random = new Random();
+                lock(locker)
+                {
+                    for (int i = 0; i < mas.Length; i++)
+                    {
+                        mas[i] = random.Next(0, 50);
+                    }
+                }
+            });
+        }
+        static async void SumMas()
+        {
+            await Task.Run(() =>
+            {
+                Console.Write("MasResult: ");
+                for (int i = 0; i < mas3.Length; i++)
+                {
+                    mas3[i] = mas1[i] + mas2[i];
+                    Console.Write(mas3[i] + ", ");
+                }
+            });
         }
     }
 }
