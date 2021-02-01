@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Libmongocrypt;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace _321labs.Garifullin.Game
 {
@@ -28,5 +34,29 @@ namespace _321labs.Garifullin.Game
             }
             Console.WriteLine($"Здоровье и защита {building.Name} улучшены с {temp} и {alpha} на {building.Health} и {building.Defence}");
         }
+
+        private static async Task SaveDocs()
+        {
+            string connectionString = "mongodb://localhost";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Game");
+            var collection = database.GetCollection<RanilAllWorker>("Worker");
+            RanilAllWorker workerRanil = new RanilAllWorker(50, 30, 20, "Marat", 160)
+            {
+                Health = 100,
+                Experience = 20,
+                Position = 10,
+                Name = "Ranil",
+                WorkPower = 200
+            };
+            await collection.InsertOneAsync(workerRanil);
+        }
+
+        static void Main(string[] args)
+        {
+            RanilAllWorker.SaveDocs();
+            Console.ReadKey();
+        }
     }
+
 }
