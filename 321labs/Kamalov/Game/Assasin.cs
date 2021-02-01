@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Libmongocrypt;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace _321labs.Kamalov.Game
 {
@@ -45,5 +50,16 @@ namespace _321labs.Kamalov.Game
             Speed = 0;
             Console.WriteLine($"{this.Name} - остановился и слился с фауной.");
         }
+
+        public static async Task SaveDocs()
+        {
+            string connectionString = "mongodb://localhost";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("DataGame");
+            var collection = database.GetCollection<Assasin>("Assasin");
+            Assasin workerRanil = new Assasin(100,65,"Robert",43);
+            await collection.InsertOneAsync(workerRanil);
+        }
+        
     }
 }
