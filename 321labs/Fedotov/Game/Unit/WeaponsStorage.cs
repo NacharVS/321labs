@@ -6,7 +6,7 @@ namespace _321labs.Fedotov.Game
 {
     class WeaponsStorage : IUnit, IStorage
     {
-        public string typeWeapons;
+        public Guid id { get; set; }
         public bool FlagLive { get; set; }
         public int Health { get; set; }
         public int PositionX { get; set; }

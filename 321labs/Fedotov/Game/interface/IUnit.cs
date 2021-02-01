@@ -6,6 +6,7 @@ namespace _321labs.Fedotov.Game
 {
     interface IUnit
     {
+        Guid id { get; set; }
         bool FlagLive { get; set; }
         int Health { get; set; }
         int PositionX { get; set; }

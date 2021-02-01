@@ -6,13 +6,13 @@ namespace _321labs.Fedotov.Game
 {
     class Weapon
     {
-        private string Name { get; set; }
-        private int BulletInTheHolder { get; set; }
-        private int CountHolder { get; set; }
-        private int Durability { get; set; }
-        private TimeSpan ReloadTime { get; set; }
-        private int Cost { get; set; }
-        int Damage { get; set; }
+        public string Name { get; set; }
+        public int BulletInTheHolder { get; set; }
+        public int CountHolder { get; set; }
+        public int Durability { get; set; }
+        public TimeSpan ReloadTime { get; set; }
+        public int Cost { get; set; }
+        public int Damage { get; set; }
 
         public Weapon(string name, int bulletInTheHolder, int countHolder, int durability, TimeSpan reloadTime, int cost, int damage)
         {

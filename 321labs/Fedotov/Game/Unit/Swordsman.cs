@@ -4,6 +4,7 @@ namespace _321labs.Fedotov.Game.Unit
 {
     class Swordsman : IUnit, IMove, IAttack
     {
+        public Guid id { get; set; }
         public bool FlagLive { get; set; }
         public int Health { get; set; }
         public int PositionX { get; set; }
@@ -22,6 +23,8 @@ namespace _321labs.Fedotov.Game.Unit
         {
             Console.WriteLine("Мечник идет");
         }
+
+        public Weapon weapon { get; set; }
 
         public void TakeDamage()
         {
