@@ -28,13 +28,14 @@ namespace _321labs.Game
 
         public static async Task SaveDocs()
         {
-            string connectionSring = "";
+            string connectionSring = "mongodb://localhost:27017";
             var client = new MongoClient(connectionSring);
             var database = client.GetDatabase("321Shmelev");
             var collection = database.GetCollection<Archer>("archer");
             Archer archer = new Archer(100, 30, 10, 150, 15)
             {
-
+                Energy = 100,
+                Dexterity = 100
             };
             await collection.InsertOneAsync(archer);
         }
