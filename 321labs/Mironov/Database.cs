@@ -11,24 +11,17 @@ namespace _321labs.Mironov
     class Database
     {
 
-        public static async Task Connect()
+      
+
+        public static Task Add(IUnit unit)
         {
-            string connectionString = "mongodb://localhost";
+            string connectionString = "mongodb://localhost:27017";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Game321");
             var collection = database.GetCollection<BsonDocument>("Units");
-
+            return collection.InsertOneAsync(unit.ToBsonDocument());
         }
 
-        public static async Task Add(IUnit unit)
-        {
-
-        }
-
-        public static async Task ShowResult(IUnit unit)
-        {
-
-        }
 
     }
 }

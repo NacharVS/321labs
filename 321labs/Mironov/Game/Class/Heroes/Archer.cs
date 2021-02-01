@@ -1,20 +1,47 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace _321labs.Mironov.Game
 {
     class Archer : IUnit, IMoveable, IRangeAttacker
     {
-        public int Range { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int RangeVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Cost { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        [BsonId]
+        public ObjectId id
+        {
+            get ;
+            set ;
+        }
+
+        public int Range { get ; set ; }
+        public int Speed { get ; set; }
+        public int Health { get ; set ; }
+        public int Armor { get; set; }
+        public int RangeVisible { get; set; }
+        public int Cost { get; set; }
+        public string Description  {get; set; }
+        [BsonIgnoreIfDefault]
+        public int X { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Y { get; set; }
+
+
+
+        public Archer(int range, int speed, int health, int armor, int rangeVisible, int cost, string description, int x, int y)
+        {
+            Range = range;
+            Speed = speed;
+            Health = health;
+            Armor = armor;
+            RangeVisible = rangeVisible;
+            Cost = cost;
+            Description = description;
+            X = x;
+            Y = y;
+        }
+
 
         public void Move(int X, int Y)
         {

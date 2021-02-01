@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson;
 
 namespace _321labs.Mironov.Game.Class
 {
     class BlacksmithShop : IUnit
     {
-        public int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int RangeVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Cost { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ObjectId id { get; set; }
+        public int Health { get; set ; }
+        public int Armor { get; set; }
+        public int RangeVisible { get; set; }
+        public int Cost { get; set; }
+        public string Description { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

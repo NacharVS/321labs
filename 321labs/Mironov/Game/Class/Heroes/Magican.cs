@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,6 +16,7 @@ namespace _321labs.Mironov.Game.Class.Heroes
         public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Mana { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ObjectId id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void MagicAttack()
         {
