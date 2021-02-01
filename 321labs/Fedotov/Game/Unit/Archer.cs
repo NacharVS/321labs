@@ -13,9 +13,9 @@ namespace _321labs.Fedotov.Game
         public int PositionZ { get; set; }
         public int SpeedMove { get; set; }
         public int AgilityMove { get; set; }
-        public int Damage { get; set; }
         public int Distance { get; set; }
         public int Accuracy { get; set; }
+        public Weapon weapon { get; set; }
 
         public void StopMove()
         {
@@ -26,6 +26,7 @@ namespace _321labs.Fedotov.Game
         {
             Console.WriteLine("Лучник идет");
         }
+
 
         public void TakeDamage()
         {
