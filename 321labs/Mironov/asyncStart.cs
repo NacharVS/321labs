@@ -12,12 +12,12 @@ namespace _321labs.Mironov
         static int[] arr2 = new int[10];
         static int[] result = new int[10];
         static Random rnd = new Random();
-        public static void Start()
+        public static  void Start()
         {
-           GenerateValueAsync(arr1);
-           GenerateValueAsync(arr2);
-           SumArrayAsync();
-           SortArrayAsync();
+             GenerateValueAsync(arr1);
+             GenerateValueAsync(arr2);
+            SumArrayAsync();
+             SortArrayAsync();
 
         }
 
