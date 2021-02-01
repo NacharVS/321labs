@@ -20,7 +20,33 @@ namespace _321labs.Ydin321.AsyncStart
             {
                 Console.WriteLine(item);
             }
+             static async void AsyncMain()
+            {
+                await Task.Run(() => GenerateRandomToArray(ref args0));
+                await Task.Run(() => GenerateRandomToArray(ref args1));
+                await Task.Run(() => ArraySum());
+            }
+
+            static void GenerateRandomToArray(ref int[] args)
+            {
+                Random rand = new Random();
+                for (int i = 0; i < args.Length; i++)
+                {
+                    args[i] = rand.Next(1, 10);
+                    Console.Write(args[i] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            static void ArraySum()
+            {
+                for (int i = 0; i < args0.Length; i++)
+                {
+                    args2[i] = args0[i] + args1[i];
+                }
+            }
         }
     }
+}
     
 
