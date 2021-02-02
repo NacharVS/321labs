@@ -7,6 +7,7 @@ namespace _321labs.Fedotov.Game
 {
     class Tent : IUnit, IBarracks
     {
+        public string NickName { get; set; }
         public Guid id { get; set; }
         public bool FlagLive { get; set; }
         public int Health { get; set; }

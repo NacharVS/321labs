@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using _321labs.Fedotov.Game;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -36,14 +38,40 @@ namespace _321labs.Fedotov
             return collection.Find(filter).First();
         }
 
-        public void UpsertRecord<T>(string table, Guid id, T record)
+        public T LoadRecordByName<T>(string table, string name)
+        {
+            var collection = db.GetCollection<T>(table);
+            var filter = Builders<T>.Filter.Eq("NickName", name);
+            return collection.Find(filter).First();
+        }
+
+        public async Task ReplaceRecordById<T>(string table, Guid id, T record)
         {
             var collection = db.GetCollection<T>(table);
 
-            var result = collection.ReplaceOne(
+            await collection.ReplaceOneAsync(
                 new BsonDocument("_id", id),
                 record,
-                new UpdateOptions { IsUpsert = true });
+                new ReplaceOptions { IsUpsert = true });
+        }
+        public async Task ReplaceRecordByName<T>(string table, string name, T record )
+        {
+            var collection = db.GetCollection<T>(table);
+
+            await collection.ReplaceOneAsync(
+                new BsonDocument("NickName", name),
+                record,
+                new ReplaceOptions { IsUpsert = true });
+        }
+
+        public async void UpdateRecordByHealth<T>(string table, string name, T record)
+        {
+            var collection = db.GetCollection<T>(table);
+
+            await collection.UpdateManyAsync(
+                new BsonDocument("NickName", name),
+                new BsonElement(s),
+                new UpdateOptions() {IsUpsert = true});
         }
 
         public void DeleteRecors<T>(string table, Guid id)

@@ -4,6 +4,7 @@ namespace _321labs.Fedotov.Game.Unit
 {
     class Swordsman : IUnit, IMove, IAttack
     {
+        public string NickName { get; set; }
         public Guid id { get; set; }
         public bool FlagLive { get; set; }
         public int Health { get; set; }

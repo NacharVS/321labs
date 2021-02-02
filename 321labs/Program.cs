@@ -13,12 +13,32 @@ namespace _321labs
             //AsyncStart threads = new AsyncStart();
             //threads.Start();
             //Console.ReadLine();
-            ArcherAddMongo();
+            //ArcherAddMongo();
+            ArcherReplaceOneMonngo();
+            ArcherShowMongo();
 
-           
+
 
         }
 
+        static void ArcherReplaceOneMonngo()
+        {
+            MongoCRUD db = new MongoCRUD("GameUnit");
+            var recs = db.LoadRecords<Archer>("Archer");
+
+            var oneRec = db.LoadRecordByName<Archer>("Archer", "Forx");
+            oneRec.Health = 80;
+            db.ReplaceRecordByName("Archer", oneRec.NickName, oneRec).Wait();
+        }
+
+        static void ArcherUpdateManyMonngo()
+        {
+            MongoCRUD db = new MongoCRUD("GameUnit");
+            var recs = db.LoadRecords<Archer>("Archer");
+
+            var oneRec = db.LoadRecordByName<Archer>("Archer", "Forx");
+            db.ReplaceRecordByName("Archer", oneRec.NickName, 10).Wait();
+        }
         static void ArcherAddMongo()
         {
             MongoCRUD db = new MongoCRUD("GameUnit");
@@ -29,6 +49,7 @@ namespace _321labs
             db.InsertRecord("Archer", a);
             Archer a1 = new Archer()
             {
+                NickName = "Shalk",
                 PositionX = 270,
                 PositionY = 100,
                 PositionZ = 40,
@@ -42,6 +63,7 @@ namespace _321labs
 
             Archer a2 = new Archer()
             {
+                NickName = "Forx",
                 PositionX = 100,
                 PositionY = 300,
                 PositionZ = 20,
@@ -55,6 +77,7 @@ namespace _321labs
 
             Archer a3 = new Archer()
             {
+                NickName = "Tolm",
                 SpeedMove = 40,
                 AgilityMove = 26,
                 Distance = 250,
@@ -62,10 +85,16 @@ namespace _321labs
                 weapon = new Weapon("Sniper", 5, 6, 96, TimeSpan.FromSeconds(10), 4200, 120)
             };
             db.InsertRecord("Archer", a3);
+        }
+
+        static void ArcherShowMongo()
+        {
+            MongoCRUD db = new MongoCRUD("GameUnit");
+            var recs = db.LoadRecords<Archer>("Archer");
 
             foreach (var rec in recs)
             {
-                Console.WriteLine($"{rec.id}: {(rec.FlagLive ? "Health " + rec.Health : "Dead")}");
+                Console.WriteLine($"{rec.id}: {rec.NickName} {(rec.FlagLive ? "Health " + rec.Health : "Dead")}");
                 if (rec.weapon != null)
                 {
                     Console.WriteLine($"Weapon {rec.weapon.Name}, Bullet {rec.weapon.BulletInTheHolder}/{rec.weapon.CountHolder}, ReloadTime {rec.weapon.ReloadTime}," +

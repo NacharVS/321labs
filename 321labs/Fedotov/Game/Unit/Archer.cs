@@ -8,9 +8,14 @@ namespace _321labs.Fedotov.Game
     class Archer : IUnit, IMove, IShooting
     {
         [BsonId]
+        [BsonIgnoreIfDefault]
         public Guid id { get; set; }
 
+        [BsonIgnoreIfDefault] 
+        public string NickName { get; set; } = "Player";
+        [BsonIgnoreIfDefault]
         public bool FlagLive { get; set; } = true;
+        [BsonIgnoreIfDefault]
         public int Health { get; set; } = 100;
         [BsonIgnoreIfDefault]
         public int PositionX { get; set; }
