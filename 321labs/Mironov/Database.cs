@@ -21,6 +21,14 @@ namespace _321labs.Mironov
             var collection = database.GetCollection<BsonDocument>("Units");
             return collection.InsertOneAsync(unit.ToBsonDocument());
         }
+        public static Task Replace(int X,int Y,IUnit unit)
+        {
+            string connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Game321");
+            var collection = database.GetCollection<IUnit>("Units");
+            
+        }
 
 
     }

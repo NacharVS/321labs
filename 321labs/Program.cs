@@ -14,8 +14,9 @@ namespace _321labs
         {
 
              Console.WriteLine("Leave hope behind all who enters here....");
-            Archer archer1 = new Archer(12,5,50,2,100,20,"SimpleArcher",0,0);
-            Database.Add(archer1).GetAwaiter();
+            Archer archer1 = new Archer(15,5,50,2,1204,20,"Simple Archer",0,0);
+            string description = "SimpleArcher";
+            Database.Replace(description,archer1).GetAwaiter().GetResult();
             Console.ReadKey();
 
         }

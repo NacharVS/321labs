@@ -9,6 +9,7 @@ namespace _321labs.Mironov.Game
     class Archer : IUnit, IMoveable, IRangeAttacker
     {
         [BsonId]
+        [BsonIgnoreIfDefault]
         public ObjectId id
         {
             get ;
