@@ -1,8 +1,10 @@
-﻿using MongoDB.Bson;
+﻿using _321labs.Game;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace _321labs.Koshelev
 {
@@ -23,10 +25,22 @@ namespace _321labs.Koshelev
             MongoClient client = new MongoClient(connectionString);
              Database = client.GetDatabase(NameDatabase);
         }
-        public void CreatNewDataInCollection<T>(string dataCollection, T TObject)
+        public async Task CreatNewDataInCollection<T>(string dataCollection, T TObject)
         {
             var collection = Database.GetCollection<T>(dataCollection);
-            collection.InsertOne(TObject);
+            await collection.InsertOneAsync(TObject);
+        }
+
+
+        public async Task ReplaceData(string dataCollection, Warrior warrior)
+        {
+            var collection = Database.GetCollection<Warrior>(dataCollection);
+            await collection.ReplaceOneAsync(war => war.Damage == 27, warrior, new ReplaceOptions { IsUpsert = true });
+        }
+        public async Task UpdateData(string dataCollection, Warrior warrior)
+        {
+            var collection = Database.GetCollection<Warrior>(dataCollection);
+            await collection.UpdateManyAsync(w => w.Speed == 12, new UpdateDefi)
         }
 
     }

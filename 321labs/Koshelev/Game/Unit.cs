@@ -10,6 +10,7 @@ namespace _321labs.Game
     class Unit : IUnit, IAttack
     {
         [BsonId]
+        [BsonIgnoreIfDefault]
         public Guid Id { get; set; }
         [BsonIgnoreIfDefault]
         public int Helth { get; set; }
@@ -19,6 +20,8 @@ namespace _321labs.Game
         public int Speed { get; set; }
         [BsonIgnoreIfDefault]
         public int Range { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Exp { get; set; }
         [BsonIgnoreIfDefault]
         public double PositionX { get; set; }
         [BsonIgnoreIfDefault]
