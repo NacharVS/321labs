@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
+using MongoDB.Bson;
 
 namespace _321labs.Game
 {
     class WisdomCastle : Unit, IWisdomBuster
     {
+        public override ObjectId Id { get; set; }
+
         protected override int PowerCoef { get; } = 4;
         protected override int AggilityCoef { get; } = 0;
         protected override int DefenseCoef { get; } = 2;

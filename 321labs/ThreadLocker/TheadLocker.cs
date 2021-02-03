@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using MongoDB.Bson;
+using MongoDB;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace _321labs.ThreadLocker
 {

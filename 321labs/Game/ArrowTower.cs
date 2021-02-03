@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
+using MongoDB.Bson;
 
 namespace _321labs.Game
 {
     class ArrowTower : Unit, IAttack
     {
+        public override ObjectId Id { get; set; }
         protected override int PowerCoef { get; } = 1;
         protected override int AggilityCoef { get; } = 4;
         protected override int DefenseCoef { get; } = 1;

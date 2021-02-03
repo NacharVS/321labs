@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Threading;
 
 
+
 namespace _321labs.asyncStart
 {
     class Laba7

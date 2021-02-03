@@ -1,17 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
+using MongoDB.Bson;
 
 namespace _321labs.Game
 {
+    [BsonIgnoreExtraElements]
     abstract class Unit
-    {
+    {     
+        [BsonId]
+        abstract public ObjectId Id { get; set; }
+        
         protected Unit(int LVL, string Name)
         {
             this.LVL = LVL;
             this.Name = Name;
         }
         
+        [BsonIgnoreIfDefault]
         abstract protected int PowerCoef { get; }
         abstract protected int AggilityCoef { get; }
         abstract protected int DefenseCoef { get; }

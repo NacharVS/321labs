@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Driver;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver.GeoJsonObjectModel;
+using MongoDB.Bson;
 
 namespace _321labs.Game
 {
     class WarUnit : Unit, IAttack
     {
+
+        public override ObjectId Id { get; set; }
+
+
         protected override int PowerCoef { get; } = 3;
         protected override int AggilityCoef { get; } = 1;
         protected override int DefenseCoef { get; } = 2;
@@ -23,7 +31,7 @@ namespace _321labs.Game
         public override int Aggility => LVL * AggilityCoef;
         public override int Defense => LVL * DefenseCoef;
 
-
+        
         public WarUnit(string Name,int LVL):base(LVL,Name) { }
         public void Damage(object obj)
         {
