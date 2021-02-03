@@ -14,6 +14,7 @@ namespace _321labs
             //threads.Start();
             //Console.ReadLine();
             //ArcherAddMongo();
+            //ArcherReplaceOneMonngo();
             ArcherUpdateManyMonngo();
             ArcherShowMongo();
 
