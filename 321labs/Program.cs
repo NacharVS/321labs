@@ -14,9 +14,9 @@ namespace _321labs
         {
 
              Console.WriteLine("Leave hope behind all who enters here....");
-            Archer archer1 = new Archer(15,5,50,2,1204,20,"Simple Archer",0,0);
-            string description = "SimpleArcher";
-            Database.Replace(description,archer1).GetAwaiter().GetResult();
+            Archer archer2 = new Archer(25,5,55,2,13,25,"Cool Archer",20,4,0);
+
+            MongoCRUD.Update("Speed",5).GetAwaiter().GetResult();
             Console.ReadKey();
 
         }

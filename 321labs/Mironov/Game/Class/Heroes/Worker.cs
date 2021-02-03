@@ -10,7 +10,6 @@ namespace _321labs.Mironov.Game
     {
         public int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Speed { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public ObjectId id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Health { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Armor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int RangeVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -18,6 +17,7 @@ namespace _321labs.Mironov.Game
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ObjectId id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void Build()
         {

@@ -16,6 +16,7 @@ namespace _321labs.Mironov.Game.Class
         public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int X { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void RangedAttack()
         {

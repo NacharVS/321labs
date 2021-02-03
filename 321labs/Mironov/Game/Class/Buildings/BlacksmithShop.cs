@@ -15,5 +15,6 @@ namespace _321labs.Mironov.Game.Class
         public string Description { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+        
     }
 }

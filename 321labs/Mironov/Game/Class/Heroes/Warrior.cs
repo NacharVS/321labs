@@ -17,6 +17,7 @@ namespace _321labs.Mironov.Game
         public int Y { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public int Damage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public ObjectId id { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+   
 
         public void CloseAttack()
         {

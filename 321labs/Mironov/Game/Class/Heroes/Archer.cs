@@ -10,27 +10,29 @@ namespace _321labs.Mironov.Game
     {
         [BsonId]
         [BsonIgnoreIfDefault]
-        public ObjectId id
-        {
-            get ;
-            set ;
-        }
-
-        public int Range { get ; set ; }
-        public int Speed { get ; set; }
-        public int Health { get ; set ; }
+        public ObjectId id { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Speed { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Health { get; set; }
+        [BsonIgnoreIfDefault]
         public int Armor { get; set; }
+        [BsonIgnoreIfDefault]
         public int RangeVisible { get; set; }
+        [BsonIgnoreIfDefault]
         public int Cost { get; set; }
-        public string Description  {get; set; }
+        [BsonIgnoreIfDefault]
+        public string Description { get; set; }
         [BsonIgnoreIfDefault]
         public int X { get; set; }
         [BsonIgnoreIfDefault]
         public int Y { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Range { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Damage { get; set; }
 
-
-
-        public Archer(int range, int speed, int health, int armor, int rangeVisible, int cost, string description, int x, int y)
+        public Archer(int range, int speed, int health, int armor, int rangeVisible, int cost, string description,  int damage, int x, int y)
         {
             Range = range;
             Speed = speed;
@@ -41,8 +43,8 @@ namespace _321labs.Mironov.Game
             Description = description;
             X = x;
             Y = y;
+            Damage = damage;
         }
-
 
         public void Move(int X, int Y)
         {
