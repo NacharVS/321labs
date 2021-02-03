@@ -29,17 +29,18 @@ namespace _321labs
             GamePoints = this.gamePoints;
             gameCreationStarts.Add(this);
         }
-        public static string SearchByName(string UserName)
+        public static List<GameCreationStart> SearchByName(string name)
         {
-            string s = null;
-            Parallel.ForEach(gameCreationStarts, item =>
+            List<GameCreationStart> dudes = new List<GameCreationStart>();
+            Parallel.ForEach(gameCreationStarts, p =>
             {
-                if (item.UserName == UserName)
+                if (p.userName == UserName)
                 {
-                    s = $"имя {UserName} завершенные матчи {item.finishedMatches} поебды {item.victories}x";
+                    dudes.Add(p);
                 }
-
-            }
+                return dudes;
+            });
+            
             );
             return s;
         }
