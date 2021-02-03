@@ -19,13 +19,14 @@ namespace _321labs.Game
             return collection.InsertOneAsync(unit.ToBsonDocument());
         }
 
-        public static Task Replace(IUnit unit)
+        public async static Task Replace(IUnit unit, ObjectId id)
         {
+            
             string connectionString = "mongodb://localhost:27017";
             var client = new MongoClient(connectionString);
             var database = client.GetDatabase("Game");
             var collection = database.GetCollection<IUnit>("Units");
-            return collection.ReplaceOneAsync(u => u.EnergyCost == 5, unit, new ReplaceOptions { IsUpsert = true });
+            await collection.ReplaceOneAsync(new BsonDocument("_id", id), unit, new ReplaceOptions { IsUpsert = true });
         }
     }
 }
