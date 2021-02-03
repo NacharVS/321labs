@@ -64,13 +64,13 @@ namespace _321labs.Fedotov
                 new ReplaceOptions { IsUpsert = true });
         }
 
-        public async void UpdateRecordByHealth<T>(string table, string name, T record)
+        public async Task UpdateRecordByHealth<T>(string table, string name, int record)
         {
             var collection = db.GetCollection<T>(table);
 
             await collection.UpdateManyAsync(
                 new BsonDocument("NickName", name),
-                new BsonElement(s),
+                new BsonDocument("$inc", new BsonDocument("Health", record)),
                 new UpdateOptions() {IsUpsert = true});
         }
 

@@ -14,7 +14,7 @@ namespace _321labs
             //threads.Start();
             //Console.ReadLine();
             //ArcherAddMongo();
-            ArcherReplaceOneMonngo();
+            ArcherUpdateManyMonngo();
             ArcherShowMongo();
 
 
@@ -37,7 +37,7 @@ namespace _321labs
             var recs = db.LoadRecords<Archer>("Archer");
 
             var oneRec = db.LoadRecordByName<Archer>("Archer", "Forx");
-            db.ReplaceRecordByName("Archer", oneRec.NickName, 10).Wait();
+            db.UpdateRecordByHealth<Archer>("Archer", oneRec.NickName, 10).Wait();
         }
         static void ArcherAddMongo()
         {
