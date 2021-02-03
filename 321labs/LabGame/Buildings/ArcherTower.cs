@@ -1,7 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Numerics;
+using System.Collections.Generic;
 using _321labs.LabGame.Base;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace _321labs.LabGame.Buildings
 {
@@ -30,6 +32,11 @@ namespace _321labs.LabGame.Buildings
             }
         }
 
+
+        public override ObjectId Id { get; set; }
+
+        [BsonIgnoreIfDefault]
+
         public override int Defense { get; set; }
 
 
@@ -39,6 +46,7 @@ namespace _321labs.LabGame.Buildings
         public float Speed { get; set; }
         public float Sense { get; set; }
         public override float Stealth { get; set; }
+
 
         // Все настройки Unit
         public ArcherTower(Vector2 UnitPosition)

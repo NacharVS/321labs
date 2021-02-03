@@ -2,12 +2,19 @@
 using System.Numerics;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace _321labs.LabGame.Base
 {
     public abstract class Unit
     {
         protected static List<Unit> units = new List<Unit>();
+        public static List<Unit> Units { get => units; }
+        [BsonId]
+        public abstract ObjectId Id { get; set; }
+
+        [BsonIgnoreIfDefault]
         public abstract Vector2 UnitPosition { get; set; }
         public abstract string Name { get; set; }
         public abstract int MaxHeathPoints { get; set; }

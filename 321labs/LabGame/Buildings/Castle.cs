@@ -2,6 +2,8 @@
 using System.Numerics;
 using System.Collections.Generic;
 using _321labs.LabGame.Base;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace _321labs.LabGame.Buildings
 {
@@ -28,6 +30,11 @@ namespace _321labs.LabGame.Buildings
                 maxHp = Math.Max(value, 0);
             }
         }
+
+
+        public override ObjectId Id { get; set; }
+
+        [BsonIgnoreIfDefault]
 
         public override int Defense { get; set; }
 

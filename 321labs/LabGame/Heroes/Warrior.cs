@@ -2,7 +2,8 @@
 using System.Numerics;
 using System.Collections.Generic;
 using _321labs.LabGame.Base;
-
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace _321labs.LabGame.Heroes
 {
@@ -30,10 +31,10 @@ namespace _321labs.LabGame.Heroes
 
             }
         }
+        public override ObjectId Id { get; set; }
 
+        [BsonIgnoreIfDefault]
         public override int Defense { get; set; }
-
-
         public override float Range { get; set; }
         public int Attack { get; set; }
         public override float Size { get; set; }
