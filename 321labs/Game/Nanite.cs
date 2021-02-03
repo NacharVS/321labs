@@ -1,6 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace _321labs.Game
 {
@@ -9,18 +14,36 @@ namespace _321labs.Game
         double x;
         double y;
         int hp = 30;
+
+        [BsonId]
+        [BsonIgnoreIfDefault]
+
+        public ObjectId Id { get; set; }
+        [BsonIgnoreIfDefault]
         public string Name { get => "Нанит"; }
+        [BsonIgnoreIfDefault]
         public int Hp { get => hp; set => hp = value; }
+        [BsonIgnoreIfDefault]
         public int Armor { get => 0; }
+        [BsonIgnoreIfDefault]
         public int MovementSpeed { get => 5; }
+        [BsonIgnoreIfDefault]
         public int Damage { get => 5; }
+        [BsonIgnoreIfDefault]
         public double TimeBetweenAttacks { get => 1; }
+        [BsonIgnoreIfDefault]
         public int EnergyCost { get => 5; }
+        [BsonIgnoreIfDefault]
         public int AttackRange { get => 1; }
+        [BsonIgnoreIfDefault]
         public double X { get => x; }
+        [BsonIgnoreIfDefault]
         public double Y { get => y; }
+        [BsonIgnoreIfDefault]
         public Player Team { get; set; }
+        [BsonIgnoreIfDefault]
         public Replicant Replicator { get; set; }
+        
 
         public Nanite(double x, double y)
         {
