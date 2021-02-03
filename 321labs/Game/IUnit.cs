@@ -6,11 +6,7 @@ namespace _321labs.Game
 {
     interface IUnit
     {
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string Name {get; set;}
         public int Health
         {
             get;

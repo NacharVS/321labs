@@ -1,28 +1,42 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Driver;
 
 namespace _321labs.Game
 {
     class Hero : IHero
     {
+     
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public string Name { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Health { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Vision { get; set; }
+        [BsonIgnoreIfDefault]
+        public int NightVision { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Armor { get; set; }
+        [BsonIgnoreIfDefault]
+        public int Damage { get; set; }
+        [BsonIgnoreIfDefault]
+        public int AttackRange { get; set; }
+        [BsonIgnoreIfDefault]
 
-        string IUnit.Name { get; set; }
-        int IUnit.Health { get; set; }
-        int IUnit.Vision { get; set; }
-        int IUnit.NightVision { get; set; }
-        int IUnit.Armor { get; set; }
-        int IUnit.Damage { get; set; }
-        int IUnit.AttackRange { get; set; }
-        
-        int IHero.MoveSpeed { get; set; }
+        public int MoveSpeed { get; set; }
 
-        void IHero.Move()
+
+        public void Move()
         {
             Console.WriteLine("Челик ходит");
         }
 
-        void IUnit.Shoot()
+        public void Shoot()
         {
             Console.WriteLine("Челик стреляет");
         }
@@ -32,7 +46,13 @@ namespace _321labs.Game
         }
         public Hero(string Name, int Health, int Vision, int NightVision, int Armor, int Damage, int AttackRange, int MoveSpeed)
         {
-            
+            this.Name = Name;
+            this.Health = Health;
+            this.Vision = Vision;
+            this.Armor = Armor;
+            this.Damage = Damage;
+            this.AttackRange = AttackRange;
+            this.MoveSpeed = MoveSpeed;
         }
     }
 }
