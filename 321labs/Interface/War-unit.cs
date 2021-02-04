@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +8,10 @@ namespace _321labs
 {
     class War_unit : IUnit
     {
+        [BsonId]
+        [BsonIgnoreIfDefault]
+
+        public ObjectId Id { get; set; }
         double cost;
         string name;
         int hp;

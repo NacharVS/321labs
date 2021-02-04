@@ -65,7 +65,6 @@ namespace _321labs
         public static void asyncStarts()
         {
             GenArrAsync(first);
-            Thread.Sleep(50);
             GenArrAsync(second);
             SumArrAsync();
             SortArrAsync();

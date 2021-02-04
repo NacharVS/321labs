@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 
 namespace _321labs
 {
@@ -13,7 +15,19 @@ namespace _321labs
         int strenght;
         double evasion;
         int armor;
-        public string TypeUnit { get; } = "Рабочий"; 
+
+        [BsonId]
+        [BsonIgnoreIfDefault]
+
+        public ObjectId Id { get; set; }
+        public string TypeUnit { get; } = "Рабочий";
+        public double Cost { get => cost; set => cost = value; }
+        public string Name { get => name; set => name = value; }
+        public int Hp { get => hp; set => hp = value; }
+        public int Strenght { get => strenght; set => strenght = value; }
+        public double Evasion { get => evasion; set => evasion = value; }
+        public int Armor { get => armor; set => armor = value; }
+
         public Worker(double cost, string name, int hp, int strenght, int armor, double evasion)
         {
             this.Cost = cost;
@@ -25,12 +39,7 @@ namespace _321labs
 
         }
 
-        public double Cost { get => cost; set => cost = value; }
-        public string Name { get => name; set => name = value; }
-        public int Hp { get => hp; set => hp = value; }
-        public int Strenght { get => strenght; set => strenght = value; }
-        public double Evasion { get => evasion; set => evasion = value; }
-        public int Armor { get => armor; set => armor = value; }
+        
 
         public void Build()
         {
