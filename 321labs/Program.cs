@@ -14,6 +14,7 @@ namespace _321labs
             //Console.ReadKey();
 
             WorkWIthBD.Update();
+            //WorkWIthBD.Replace();
             Console.ReadKey();
         }
     }

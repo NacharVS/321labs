@@ -25,7 +25,7 @@ namespace _321labs
             await collection.InsertOneAsync(archer);
         }
 
-        public static async Task Update()
+        public static async Task Replace()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("321Shmelev");
@@ -36,6 +36,14 @@ namespace _321labs
                 Energy = 150,
                 Dexterity = 40
             });
+        }
+
+        public static async Task Update()
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("321Shmelev");
+            var collection = database.GetCollection<Archer>("archer");
+            var result = await collection.UpdateOneAsync(new BsonDocument("Name", "Ilya"), new BsonDocument("$set", new BsonDocument("Energy", 2000)));
         }
     }
 }
