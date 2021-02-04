@@ -17,7 +17,6 @@ namespace _321labs.Game
 
         [BsonId]
         [BsonIgnoreIfDefault]
-
         public ObjectId Id { get; set; }
         [BsonIgnoreIfDefault]
         public string Name { get => "Нанит"; }
@@ -37,9 +36,7 @@ namespace _321labs.Game
         public int AttackRange { get => 1; }
         [BsonIgnoreIfDefault]
         public double X { get => x; }
-        [BsonIgnoreIfDefault]
         public double Y { get => y; }
-        [BsonIgnoreIfDefault]
         public Player Team { get; set; }
         [BsonIgnoreIfDefault]
         public Replicant Replicator { get; set; }

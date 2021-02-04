@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +13,10 @@ namespace _321labs.Game
         double y;
         int hp = 150;
         List<Nanite> nanites = new List<Nanite>(maxNaniteCapacity);
+
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public ObjectId Id { get; set; }
         public string Name { get => "Репликант"; }
         public int Hp { get => hp; set => hp = value; }
         public int Armor { get => 2; }

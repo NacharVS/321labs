@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +11,9 @@ namespace _321labs.Game
         double x;
         double y;
         int hp = 80;
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public ObjectId Id { get; set; }
         public string Name { get => "Стрелок";  }
         public int Hp { get => hp; set => hp = value; }
         public int Armor { get => 1;  }

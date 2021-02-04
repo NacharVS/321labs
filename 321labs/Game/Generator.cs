@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +13,10 @@ namespace _321labs.Game
         int hp = 1000;
         bool isDisabled = false;
         bool isDestroed = false;
+
+        [BsonId]
+        [BsonIgnoreIfDefault]
+        public ObjectId Id { get; set; }
         public string Name { get => "Генератор"; }
         public int Hp
         {
