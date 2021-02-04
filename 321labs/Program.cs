@@ -13,7 +13,7 @@ namespace _321labs
             //async.Start();
             //Console.ReadKey();
 
-            Archer.SaveDocs();
+            WorkWIthBD.Update();
             Console.ReadKey();
         }
     }
