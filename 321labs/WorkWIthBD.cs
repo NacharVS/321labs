@@ -30,7 +30,7 @@ namespace _321labs
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("321Shmelev");
             var collection = database.GetCollection<Archer>("archer");
-            var result = await collection.ReplaceOneAsync(new BsonDocument("Name", "Keks"), new Archer(1,1,1,1,1) 
+            var result = await collection.ReplaceOneAsync(new BsonDocument("Name", "Keks"), new Archer(1, 1, 1, 1, 1)
             {
                 Name = "Ilya",
                 Energy = 150,
