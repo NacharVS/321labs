@@ -37,11 +37,11 @@ namespace _321labs.Koshelev
             var collection = Database.GetCollection<Warrior>(dataCollection);
             await collection.ReplaceOneAsync(war => war.Damage == 27, warrior, new ReplaceOptions { IsUpsert = true });
         }
-        public async Task UpdateData(string dataCollection, Warrior warrior)
+        public async Task UpdateDataBySpeed(string dataCollection, int speed)
         {
             var collection = Database.GetCollection<Warrior>(dataCollection);
-            await collection.UpdateManyAsync(w => w.Speed == 12, new UpdateDefi)
+            await collection.UpdateManyAsync(w => w.Speed == 12, new BsonDocument("$inc", new BsonDocument("Speed", speed)) );
         }
 
     }
-}
+} 

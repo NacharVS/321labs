@@ -23,7 +23,7 @@ namespace _321labs
             };
             MongoCRUD mongoCRUD = new MongoCRUD("OtkritiyRot");
             mongoCRUD.ConnectionMongoDatabase();
-            //mongoCRUD.CreatNewDataInCollection<Warrior>("Chelust", warrior).Wait();
+            mongoCRUD.CreatNewDataInCollection("Chelust", warrior).Wait();
             mongoCRUD.ReplaceData("Chelust", new Warrior()
             {
                 Helth = 90,
@@ -31,7 +31,8 @@ namespace _321labs
                 Range = 10,
                 Speed = 80,
             }).Wait();
-            
+            mongoCRUD.UpdateDataBySpeed("Chelust", 10).Wait();
+
 
         }
       
