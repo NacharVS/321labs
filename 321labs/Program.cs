@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using _321labs.Fedotov.Game;
 using _321labs.Fedotov;
@@ -14,15 +15,50 @@ namespace _321labs
             //threads.Start();
             //Console.ReadLine();
             //ArcherAddMongo();
-            //ArcherReplaceOneMonngo();
-            ArcherUpdateManyMonngo();
+            //ArcherReplaceOneMongo();
+            //ArcherUpdateManyMongo();
+            ArcherAddTmpAndMongo();
+            ArcherShowMongo();
+            Console.WriteLine();
+            ArcherDeleteManyMongo();
             ArcherShowMongo();
 
 
 
         }
 
-        static void ArcherReplaceOneMonngo()
+        static void ArcherAddTmpAndMongo()
+        {
+            MongoCRUD db = new MongoCRUD("GameUnit");
+            var recs = db.LoadRecords<Archer>("Archer");
+
+            for (int i = 0; i < 3; i++)
+            {
+                Archer a = new Archer()
+                {
+                    NickName = "Kyrze",
+                    PositionX = 100,
+                    PositionY = 300,
+                    PositionZ = 20,
+                    SpeedMove = 40,
+                    AgilityMove = 26,
+                    Distance = 250,
+                    Accuracy = 80,
+                    weapon = new Weapon("Sniper", 5, 6, 96, TimeSpan.FromSeconds(10), 4200, 120)
+                };
+                db.InsertRecord("Archer", a);
+            }
+        }
+
+        static void ArcherDeleteManyMongo()
+        {
+            MongoCRUD db = new MongoCRUD("GameUnit");
+            var recs = db.LoadRecords<Archer>("Archer");
+
+            db.DeleteManyRecorsByName<Archer>("Archer", "Kyrze").Wait();
+        }
+
+        static void ArcherReplaceOneMongo()
         {
             MongoCRUD db = new MongoCRUD("GameUnit");
             var recs = db.LoadRecords<Archer>("Archer");
@@ -32,7 +68,7 @@ namespace _321labs
             db.ReplaceRecordByName("Archer", oneRec.NickName, oneRec).Wait();
         }
 
-        static void ArcherUpdateManyMonngo()
+        static void ArcherUpdateManyMongo()
         {
             MongoCRUD db = new MongoCRUD("GameUnit");
             var recs = db.LoadRecords<Archer>("Archer");
@@ -40,14 +76,15 @@ namespace _321labs
             var oneRec = db.LoadRecordByName<Archer>("Archer", "Forx");
             db.UpdateRecordByHealth<Archer>("Archer", oneRec.NickName, 10).Wait();
         }
+
         static void ArcherAddMongo()
         {
             MongoCRUD db = new MongoCRUD("GameUnit");
             var recs = db.LoadRecords<Archer>("Archer");
 
             Archer a = new Archer();
-
             db.InsertRecord("Archer", a);
+
             Archer a1 = new Archer()
             {
                 NickName = "Shalk",

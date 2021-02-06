@@ -54,6 +54,7 @@ namespace _321labs.Fedotov
                 record,
                 new ReplaceOptions { IsUpsert = true });
         }
+
         public async Task ReplaceRecordByName<T>(string table, string name, T record )
         {
             var collection = db.GetCollection<T>(table);
@@ -74,11 +75,25 @@ namespace _321labs.Fedotov
                 new UpdateOptions() {IsUpsert = true});
         }
 
-        public void DeleteRecors<T>(string table, Guid id)
+        public async Task DeleteOneRecorsById<T>(string table, Guid id)
         {
             var collection = db.GetCollection<T>(table);
-            var filter = Builders<T>.Filter.Eq("Id", id);
-            collection.DeleteOne(filter);
+            
+            await collection.DeleteOneAsync(Builders<T>.Filter.Eq("Id", id));
+        }
+
+        public async Task DeleteOneRecorsByName<T>(string table, string name)
+        {
+            var collection = db.GetCollection<T>(table);
+            
+            await collection.DeleteOneAsync(Builders<T>.Filter.Eq("NickName", name));
+        }
+
+        public async Task DeleteManyRecorsByName<T>(string table, string name)
+        {
+            var collection = db.GetCollection<T>(table);
+            
+            await collection.DeleteManyAsync(Builders<T>.Filter.Eq("NickName", name));
         }
     }
 }
