@@ -30,7 +30,7 @@ namespace _321labs
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("321Shmelev");
             var collection = database.GetCollection<Archer>("archer");
-            var result = await collection.ReplaceOneAsync(new BsonDocument("Name", "Keks"), new Archer(1, 1, 1, 1, 1)
+            await collection.ReplaceOneAsync(new BsonDocument("Name", "Keks"), new Archer(1, 1, 1, 1, 1)
             {
                 Name = "Ilya",
                 Energy = 150,
@@ -43,7 +43,7 @@ namespace _321labs
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("321Shmelev");
             var collection = database.GetCollection<Archer>("archer");
-            var result = await collection.UpdateOneAsync(new BsonDocument("Name", "Ilya"), new BsonDocument("$set", new BsonDocument("Energy", 2000)));
+            await collection.UpdateOneAsync(new BsonDocument("Name", "Ilya"), new BsonDocument("$set", new BsonDocument("Energy", 2000)));
         }
 
         public static async Task DeleteOneByName(string name)
@@ -51,7 +51,14 @@ namespace _321labs
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("321Shmelev");
             var collection = database.GetCollection<Archer>("archer");
-            await collection.DeleteOneAsync( str => str.Name == "Keks");
+            await collection.DeleteOneAsync(str => str.Name == name);
+        }
+        public static async Task DeleteManyByName(string name)
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("321Shmelev");
+            var collection = database.GetCollection<Archer>("archer");
+            await collection.DeleteManyAsync(str => str.Name == name);
         }
     }
 }

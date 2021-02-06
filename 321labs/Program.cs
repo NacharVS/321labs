@@ -15,7 +15,9 @@ namespace _321labs
 
             //WorkWIthBD.Update();
             //WorkWIthBD.Replace();
-            WorkWIthBD.SaveDocs();
+            //WorkWIthBD.SaveDocs()
+            //WorkWIthBD.DeleteOneByName("Keks");
+            //WorkWIthBD.DeleteManyByName("Keks");
             Console.ReadKey();
         }
     }
