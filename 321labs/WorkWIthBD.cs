@@ -45,5 +45,13 @@ namespace _321labs
             var collection = database.GetCollection<Archer>("archer");
             var result = await collection.UpdateOneAsync(new BsonDocument("Name", "Ilya"), new BsonDocument("$set", new BsonDocument("Energy", 2000)));
         }
+
+        public static async Task DeleteOneByName(string name)
+        {
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("321Shmelev");
+            var collection = database.GetCollection<Archer>("archer");
+            await collection.DeleteOneAsync( str => str.Name == "Keks");
+        }
     }
 }
