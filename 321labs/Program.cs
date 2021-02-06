@@ -13,8 +13,7 @@ namespace _321labs.Game
             Hero hero1 = new Hero("sosisochka", 300, 300, 300, 300, 300, 300, 300);
 
 
-            mongocrud.Replace(hero1).GetAwaiter().GetResult();
-            Console.ReadLine();
+            
         
         }
     }

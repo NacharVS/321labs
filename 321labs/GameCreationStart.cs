@@ -29,20 +29,7 @@ namespace _321labs
             GamePoints = this.gamePoints;
             gameCreationStarts.Add(this);
         }
-        public static List<GameCreationStart> SearchByName(string name)
-        {
-            List<GameCreationStart> dudes = new List<GameCreationStart>();
-            Parallel.ForEach(gameCreationStarts, p =>
-            {
-                if (p.userName == UserName)
-                {
-                    dudes.Add(p);
-                }
-                return dudes;
-            });
-            
-            );
-            return s;
+        
         }
     }
-    }
+    

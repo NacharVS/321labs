@@ -32,6 +32,14 @@ namespace _321labs.Game
             var collection = database.GetCollection<Hero>(dataCollection);
             await collection.UpdateManyAsync(w => w.MoveSpeed == 12, new BsonDocument("$inc", new BsonDocument("Speed", speed)));
         }
+        public async Task DeleteByName(string Name)
+        {
+            string connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Game123");
+            var collection = database.GetCollection<Hero>("Units");
+            await collection.DeleteOneAsync(str=> str.Name == Name);
+        }
 
     }
 }
