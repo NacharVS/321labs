@@ -42,6 +42,15 @@ namespace _321labs.Mironov
             Console.WriteLine("найдено по соответствию: {0}; обновлено: {1}",
                 result.MatchedCount, result.ModifiedCount);
         }
+        public static Task Delete(string Description)
+        {
+            string connectionString = "mongodb://localhost:27017";
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase("Game321");
+            var collection = database.GetCollection<IUnit>("Units");
+            return collection.DeleteOneAsync(new BsonDocument("Description", Description));
+
+        }
 
 
 

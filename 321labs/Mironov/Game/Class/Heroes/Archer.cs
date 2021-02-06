@@ -23,9 +23,8 @@ namespace _321labs.Mironov.Game
         public int Cost { get; set; }
         [BsonIgnoreIfDefault]
         public string Description { get; set; }
-        [BsonIgnoreIfDefault]
         public int X { get; set; }
-        [BsonIgnoreIfDefault]
+        
         public int Y { get; set; }
         [BsonIgnoreIfDefault]
         public int Range { get; set; }

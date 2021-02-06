@@ -14,9 +14,9 @@ namespace _321labs
         {
 
              Console.WriteLine("Leave hope behind all who enters here....");
-            Archer archer2 = new Archer(25,5,55,2,13,25,"Cool Archer",20,4,0);
-
-            MongoCRUD.Update("Speed",5).GetAwaiter().GetResult();
+            Archer archer2 = new Archer(25,5,55,2,13,25,"Good Archer",20,4,0);
+           
+            MongoCRUD.Delete("Good Archer").GetAwaiter().GetResult();
             Console.ReadKey();
 
         }
