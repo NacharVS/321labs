@@ -25,22 +25,35 @@ namespace _321labs.Koshelev
             MongoClient client = new MongoClient(connectionString);
              Database = client.GetDatabase(NameDatabase);
         }
+
         public async Task CreatNewDataInCollection<T>(string dataCollection, T TObject)
         {
             var collection = Database.GetCollection<T>(dataCollection);
             await collection.InsertOneAsync(TObject);
         }
-
-
+        
         public async Task ReplaceData(string dataCollection, Warrior warrior)
         {
             var collection = Database.GetCollection<Warrior>(dataCollection);
             await collection.ReplaceOneAsync(war => war.Damage == 27, warrior, new ReplaceOptions { IsUpsert = true });
         }
+        
         public async Task UpdateDataBySpeed(string dataCollection, int speed)
         {
             var collection = Database.GetCollection<Warrior>(dataCollection);
             await collection.UpdateManyAsync(w => w.Speed == 12, new BsonDocument("$inc", new BsonDocument("Speed", speed)) );
+        }
+        
+        public async Task DeleteOneByName(string dataCollection, int damage)
+        {
+            var collection = Database.GetCollection<Warrior>(dataCollection);
+            await collection.DeleteOneAsync(w => w.Damage == damage);
+        }
+
+        public async Task DeleteManyByName(string dataCollection, int damage)
+        {
+            var collection = Database.GetCollection<Warrior>(dataCollection);
+            await collection.DeleteManyAsync(w => w.Damage == damage);
         }
 
     }
